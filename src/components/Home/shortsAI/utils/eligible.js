@@ -96,7 +96,7 @@ async function handleGenerateClick(handleGenerate, setLoading) {
 
     // 2) check limit
     if (!canGenerateForIp(ip)) {
-      toast.error("Limit reached — only 3 Generates allowed per 24 hours for this IP.");
+      toast.error("Oops — you’ve hit the daily limit. This tool can be used 3 times every 24 hours and you’ve used them up. Want unlimited use right now? Upgrade to our paid plan");
       setLoading?.(false);
       return;
     }
@@ -109,7 +109,6 @@ async function handleGenerateClick(handleGenerate, setLoading) {
     await handleGenerate();
 
     // success toast (optional)
-    toast.success("Short generated!");
     setLoading?.(false);
   } catch (err) {
     console.error(err);

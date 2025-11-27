@@ -5,13 +5,13 @@ import { MdOutlineLanguage, MdCheck } from "react-icons/md";
 import { FiChevronDown } from "react-icons/fi";
 
 const languages = [
-  { code: "en", label: "English", flag: "🇺🇸" },
-  { code: "hi", label: "हिंदी", flag: "🇮🇳" },
-  { code: "ta", label: "தமிழ்", flag: "🇮🇳" },
-  { code: "te", label: "తెలుగు", flag: "🇮🇳" },
-  { code: "mr", label: "मराठी", flag: "🇮🇳" },
-  { code: "gu", label: "ગુજરાતી", flag: "🇮🇳" },
-  { code: "pa", label: "ਪੰਜਾਬੀ", flag: "🇮🇳" },
+  { code: "en", label: "English", flag: "" },
+  { code: "hi", label: "हिंदी", flag: "" },
+  { code: "ta", label: "தமிழ்", flag: "" },
+  { code: "te", label: "తెలుగు", flag: "" },
+  { code: "mr", label: "मराठी", flag: "" },
+  { code: "gu", label: "ગુજરાતી", flag: "" },
+  { code: "pa", label: "ਪੰਜਾਬੀ", flag: "" },
 ];
 
 const LanguageSelector = () => {
@@ -28,7 +28,7 @@ const LanguageSelector = () => {
   return (
     <div className="relative">
       <button
-        className="flex items-center py-2 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 transition-all duration-200 group"
+        className="flex items-center py-2 px-1 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 transition-all duration-200 group"
         onClick={() => setIsOpen(!isOpen)}
       >
         <MdOutlineLanguage size={20} className="text-gray-700 group-hover:text-red-600 mr-2" />

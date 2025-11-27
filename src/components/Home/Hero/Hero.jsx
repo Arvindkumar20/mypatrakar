@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 // import User from "../../NewsPortal/AdminDashbord/shared/User";
 export default function Hero() {
   const { t } = useTranslation();
-  const logoUrl = "https://mypatrakar.com/assets/LG2-CcMgpPb7.svg";
+  // const logoUrl = "https://mypatrakar.com/assets/LG2-CcMgpPb7.svg";
 
   const buttons = [
     {
@@ -48,7 +48,7 @@ export default function Hero() {
           property="og:description"
           content="Create your own journalism website with MyPatrakar."
         />
-        <meta property="og:image" content={logoUrl} />
+        {/* <meta property="og:image" content={logoUrl} /> */}
         <meta property="og:url" content="https://mypatrakar.com" />
         <meta property="og:type" content="website" />
 
@@ -62,7 +62,7 @@ export default function Hero() {
           name="twitter:description"
           content="Create your own journalism website with MyPatrakar."
         />
-        <meta name="twitter:image" content={logoUrl} />
+        {/* <meta name="twitter:image" content={logoUrl} /> */}
 
         {/* Schema.org JSON-LD for Google Logo Display */}
         <script type="application/ld+json">
@@ -71,7 +71,7 @@ export default function Hero() {
             "@type": "Organization",
             name: "MyPatrakar",
             url: "https://mypatrakar.com",
-            logo: logoUrl, // Updated absolute URL
+            // logo: logoUrl, // Updated absolute URL
           })}
         </script>
       </Helmet>

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiUser, FiMail, FiPhone } from "react-icons/fi";
+import { FiUser, FiMail, FiPhone, FiAlertCircle } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import Description from "./Description";

@@ -1,7 +1,7 @@
 .realistic-mobile-frame {
   position: relative;
   margin: 30px auto;
-  border: 12px solid var(--frame-color);
+  border: 6px solid var(--frame-color);
   border-radius: 50px;
   background: var(--frame-color);
   box-shadow: 

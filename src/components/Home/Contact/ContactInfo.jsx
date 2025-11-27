@@ -350,6 +350,7 @@ const ContactInfo = ({ setAddress }) => {
       setLoading(true);
       setError(null);
       const res = await ContactDetails();
+      console.log(res);
       if (res.data?.data) {
         setContactInfoData(res.data.data);
         const addressStr = [
@@ -509,7 +510,7 @@ const ContactInfo = ({ setAddress }) => {
             </div>
 
             {/* Social Icons */}
-            {contactInfoData.socialMediaLinks?.length > 0 && (
+            {contactInfoData?.socialMediaLinks?.length > 0 && (
               <>
                 <div className="mt-10 mb-6 border-t border-red-400/30 pt-8">
                   <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
@@ -529,22 +530,22 @@ const ContactInfo = ({ setAddress }) => {
                     </svg>
                     Connect With Us
                   </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {contactInfoData.socialMediaLinks.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.link}
+                  <div className="flex flex-wrap gap-2">
+                    {contactInfoData?.socialMediaLinks?.map((item) => (
+                      <a
+                        key={item?.name}
+                        href={item?.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group bg-red-500/20 hover:bg-red-500/30 p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1"
-                        aria-label={item.name}
+                        className="cursor-pointer bg-red-500/20 hover:scale-105 hover:bg-red-500/30 p-2 rounded-full transition-all duration-300 transform hover:-translate-y-1"
+                        aria-label={item?.name}
                       >
-                        {socialIcons[item.name] || (
+                        {socialIcons[item?.name] || (
                           <span className="text-white text-lg">
-                            {item.name.charAt(0)}
+                            {item?.name?.charAt(0)}
                           </span>
                         )}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>

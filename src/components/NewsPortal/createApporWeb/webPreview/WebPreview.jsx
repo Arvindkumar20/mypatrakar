@@ -17,7 +17,7 @@ import LoginCard from "./LoginCard";
 const Header = ({ bgColor, color, logo }) => {
   // console.log(bgColor,color)
   return (
-    <header className="w-full    flex flex-col">
+    <header className="w-full flex flex-col">
       {/* Top language/social bar */}
       <div className=" px-4 py-1" style={{ background: bgColor, color: color }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 text-xs">
@@ -155,7 +155,7 @@ const MainContent = () => {
           <div className="space-y-6">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="space-y-2">
-                <Skeleton className="w-full h-18 rounded-md" />
+                <Skeleton className="w-full h-28 rounded-md" />
                 <Skeleton className="w-5/6 h-2" />
                 <Skeleton className="w-full h-2" />
               </div>

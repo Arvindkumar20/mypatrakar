@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-export default function ShortCard({ image, title, description }) {
+export default function ShortCard({ generatedShort }) {
   const [expanded, setExpanded] = useState(false);
   const truncatedLength = 200;
-console.log(image)
+  // console.log(generatedShort)
+const {image,title,description}=JSON.parse(generatedShort)
   const toggleRead = () => setExpanded(prev => !prev);
 
   return (
@@ -11,7 +12,7 @@ console.log(image)
       {/* Image */}
       <div className="h-[266px] w-full rounded-xl overflow-hidden mb-4">
         <img
-          src={image || "https://via.placeholder.com/512x266?text=Short+Image"}
+          src={generatedShort?.image|| "https://picsum.photos/200/300"}
           alt={title}
           className="w-full h-full object-cover rounded-xl"
         />
@@ -35,7 +36,7 @@ console.log(image)
       {description?.length > truncatedLength && (
         <button
           onClick={toggleRead}
-          className="mt-2 text-[#16274E] font-semibold text-sm hover:underline"
+          className="mt-2 text-[#1354eb] font-semibold text-sm font-sans hover:underline"
         >
           {expanded ? "Read Less" : "Read More"}
         </button>

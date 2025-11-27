@@ -314,7 +314,7 @@ export default function OrderSummary() {
     user_id: "",
   });
   const [packageDetail, setPackageDetail] = useState(null);
-
+   console.log(packageDetail)
   useEffect(() => {
     const decryptParams = async () => {
       try {
@@ -406,6 +406,7 @@ export default function OrderSummary() {
   };
 
   const PriceRow = ({ label, value, isDiscount = false, isTotal = false }) => {
+ 
     const currency = packageDetail?.plan_details?.region !== "1" ? "₹" : "$";
     return (
       <div
@@ -505,7 +506,7 @@ export default function OrderSummary() {
                 <div className="flex justify-between">
                   <span className="text-green-600">Discount</span>
                   <span className="font-medium text-green-600">
-                    -{packageDetail?.plan_details?.region !== "1" ? "₹" : "$"}
+                    - {packageDetail?.plan_details?.region !== "1" ? "₹" : "$"}
                     {packageDetail?.discount_amount}
                   </span>
                 </div>
@@ -514,7 +515,7 @@ export default function OrderSummary() {
               <div className="flex justify-between">
                 <span className="text-gray-600">Tax</span>
                 <span className="font-medium">
-                  {packageDetail?.plan_details?.region !== "1" ? "₹" : "$"}
+             <span className="font-semibold">   + </span> {packageDetail?.plan_details?.region !== "1" ? "₹" : "$"}
                   {packageDetail?.gst_amount ?? "0"}
                 </span>
               </div>
@@ -522,7 +523,7 @@ export default function OrderSummary() {
               <div className="border-t border-gray-200 pt-3 mt-2">
                 <div className="flex justify-between">
                   <span className="font-bold text-gray-800">Total Amount</span>
-                  <span className="text-xl font-bold text-red-600">
+                  <span className="text-xl font-bold text-green-600">
                     {packageDetail?.plan_details?.region !== "1" ? "₹" : "$"}
                     {packageDetail?.payable_amount}
                   </span>
@@ -551,7 +552,7 @@ export default function OrderSummary() {
         {/* Payment Section */}
         {packageDetail && (
           <div className="border border-gray-200 rounded-lg p-5 bg-white">
-            <h2 className="text-lg font-bold text-gray-800 mb-4">Payment Method</h2>
+            {/* <h2 className="text-lg font-bold text-gray-800 mb-4">Payment Method</h2> */}
             <PaymentPage
               amount={packageDetail.payable_amount}
               setError={setError}
@@ -575,7 +576,7 @@ export default function OrderSummary() {
             <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
               <div className="flex justify-between items-center">
                 <span className="font-bold text-gray-700">Amount to Pay:</span>
-                <span className="text-2xl font-bold text-red-600">
+                <span className="text-2xl font-bold text-green-600">
                   {packageDetail?.plan_details?.region !== "1" ? "₹" : "$"}
                   {packageDetail?.payable_amount}
                 </span>

@@ -72,12 +72,34 @@ const FooterColorPicker = ({
           className="w-6 h-6 rounded-full border border-gray-200"
           style={{ backgroundColor: footerText }}
         />
-        <div className="flex-1">
+        {/* <div className="flex-1">
           <div className="text-sm font-medium text-gray-700">Text Color</div>
           <div className="text-xs text-gray-500">
             {footerText.toUpperCase()}
           </div>
-        </div>
+        </div> */}
+   {/* Font Selector */}
+              <div>
+                <label className="block text-xs text-gray-500 mb-1">Font</label>
+                <div className="flex items-center gap-2">
+                  <select
+                    value={"fontFamily"}
+                    // onChange={(e) => setFontFamily(e.target.value)}
+                    onChange={(e) => console.log("object")
+                    }
+                    className="text-sm bg-white border border-gray-200 rounded px-2 py-1 w-full"
+                    style={{ fontFamily:"fontFamily" }}
+                  >
+                    <option value="Poppins">Poppins</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Inter">Inter</option>
+                    <option value="Open Sans">Open Sans</option>
+                    <option value="Lato">Lato</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Nunito">Nunito</option>
+                  </select>
+                </div>
+              </div>
       </div>
      </div>
     </div>

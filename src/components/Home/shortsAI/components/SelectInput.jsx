@@ -11,10 +11,10 @@ export default function SelectInput({
   disabled = false,
 }) {
   return (
-    <div className="w-full bg-[#F1F5F9">
+    <div className="w-full">
       {/* Label */}
       {label && (
-        <label className="block text-[#1E293B] text-[14px] font-sans font-medium mb-1">
+        <label className="block text-gray-900  text-sm sm:text-base font-medium mb-1">
           {label} {required && <span className="text-red-500">*</span>}
         </label>
       )}
@@ -24,8 +24,11 @@ export default function SelectInput({
         value={value}
         onChange={onChange}
         disabled={disabled}
-        className={`w-full border rounded-md px-3 py-2.5 text-sm bg-[#F1F5F9] font-sans outline-none transition
-          ${disabled ? "bg-[#F1F5F9] text-gray-400 cursor-not-allowed" : "focus:ring-2 focus:ring-[#16274E]   focus:border-[#16274E"}
+        className={`md:w-full w-11/12 border rounded-md px-3 py-2 text-sm sm:text-base bg-gray-100  font-sans outline-none transition
+          ${disabled 
+            ? "bg-gray-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed" 
+            : "focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-400"
+          }
         `}
       >
         <option value="">
@@ -34,7 +37,7 @@ export default function SelectInput({
 
         {options.length > 0 ? (
           options.map((opt, idx) => (
-            <option key={idx} value={opt} className="text-green-700">
+            <option key={idx} value={opt} className="text-gray-900 dark:text-gray-100">
               {opt}
             </option>
           ))
@@ -45,7 +48,7 @@ export default function SelectInput({
 
       {/* Description */}
       {description && (
-        <p className="text-[#64748B] mt-1 text-[13.5px] font-sans font-light">
+        <p className="text-gray-500 dark:text-gray-400 mt-1 text-xs sm:text-sm font-light">
           {description}
         </p>
       )}

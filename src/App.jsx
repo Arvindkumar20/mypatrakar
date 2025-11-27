@@ -147,7 +147,7 @@ function AppContent() {
   const hideNavBarAndFooterRoutes =
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
-    location.pathname==="/try-mypatrakar-ai"||
+ 
     location.pathname.startsWith("/blog") ||
     location.pathname.startsWith("/b") ||
     location.pathname.startsWith("/portal") ||

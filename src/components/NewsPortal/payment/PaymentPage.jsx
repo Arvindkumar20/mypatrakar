@@ -12,7 +12,7 @@ const PaymentPage = ({ amount, region, user_id, purchaseId }) => {
     mobile: "",
     wallet: "",
   });
-  console.log(user_id)
+  console.log(region);
   const userId=user_id.includes(":") 
         ? user_id.split(":")[1] 
         : user_id
@@ -56,7 +56,7 @@ const PaymentPage = ({ amount, region, user_id, purchaseId }) => {
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Your test/live key
         amount: amount * 100, // Paise
-        currency: region == 0 ? "INR" : "USD",
+        currency: region == "0"||region==undefined||region==null ?"INR"  : "USD",
         name: "MyPtrakar",
         description: "Payment for services",
         handler: async function (response) {

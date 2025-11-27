@@ -194,7 +194,7 @@ export default function FooterBottom() {
             </div>
           </div>
 
-          {/* Subscription Form */}
+          {/* Subscription Form
           <div>
             <section className=" flex items-center justify-end text-end mb-10">
               <div className="text-center">
@@ -242,7 +242,7 @@ export default function FooterBottom() {
                 </p>
               )}
             </form>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer */}

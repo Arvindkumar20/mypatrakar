@@ -6,10 +6,13 @@
 // import { CreateNewPortal, GetPriceDetails } from "../../api";
 // import { useSessionStorage } from "../../hooks/sessionStorage";
 // import { AiOutlineLoading3Quarters } from "react-icons/ai";
-// // import Loader from "../../components/LoadingSpinner";
+// import { checkDomainPrice } from "./checkDomainPrice";
 
 // export default function CreatePortal() {
-//   const { setPortalRequestDetails } = useContext(PaymentContext);
+//   const [domainResult, setDomainResult] = useState(null);
+
+//   const { setPortalRequestDetails, portalRequestDetail } =
+//     useContext(PaymentContext);
 //   const [formData, setFormData] = useState({
 //     app_name: "",
 //     website_name: "",
@@ -32,7 +35,7 @@
 //   });
 //   const navigate = useNavigate();
 //   const { setSessionData } = useSessionStorage();
-//   console.log(packages);
+
 //   // SEO Metadata
 //   const metaData = {
 //     title: "Create News Portal - MyPatrakar",
@@ -41,26 +44,40 @@
 //     logoUrl: "https://mypatrakar.com/assets/LG2-CcMgpPb7.svg",
 //   };
 
-//   console.log(formData);
-//   // Load packages when region changes
+//   // Helper: normalize domain (strip, lowercase, prefix)
+//   const normalizeDomain = (raw) => {
+//     if (!raw) return "";
+//     let stripped = raw.replace(/^https?:\/\//i, "").replace(/^www\./i, "");
+//     stripped = stripped.toLowerCase();
+//     return `https://www.${stripped}`;
+//   };
+
+//   // Load packages when region changes (debounced)
 //   useEffect(() => {
+//     if (!formData.region) return;
+
+//     let canceled = false;
 //     const loadPackages = async () => {
-//       if (formData.region) {
-//         try {
-//           setStatus((prev) => ({ ...prev, isLoading: true }));
-//           const res = await GetPriceDetails();
-//           const data = res.data.response.filter(
-//             (rgn) => rgn?.region == formData?.region
-//           );
+//       try {
+//         setStatus((prev) => ({ ...prev, isLoading: true, error: null }));
+//         const res = await GetPriceDetails();
+//         const data = res.data.response.filter(
+//           (rgn) => String(rgn?.region) === String(formData?.region)
+//         );
+//         if (!canceled) {
 //           setPackages(data);
-//           setStatus((prev) => ({ ...prev, isLoading: false }));
-//         } catch (error) {
+//         }
+//       } catch (error) {
+//         if (!canceled) {
 //           setStatus((prev) => ({
 //             ...prev,
-//             isLoading: false,
 //             error: "Failed to load packages. Please try again.",
 //           }));
 //           console.error("Package loading error:", error);
+//         }
+//       } finally {
+//         if (!canceled) {
+//           setStatus((prev) => ({ ...prev, isLoading: false }));
 //         }
 //       }
 //     };
@@ -69,7 +86,10 @@
 //       loadPackages();
 //     }, 300);
 
-//     return () => clearTimeout(debounceTimer);
+//     return () => {
+//       canceled = true;
+//       clearTimeout(debounceTimer);
+//     };
 //   }, [formData.region]);
 
 //   // Validate field on blur
@@ -82,17 +102,19 @@
 //   };
 
 //   // Field validation
-//   const validateField = (fieldName, value) => {
+//   const validateField = async (fieldName, value) => {
 //     let error = "";
 
 //     switch (fieldName) {
 //       case "app_name":
 //         if (!value) error = "App name is required";
-//         else if (value.length < 3) error = "Minimum 3 characters required";
+//         else if (String(value).trim().length < 3)
+//           error = "Minimum 3 characters required";
 //         break;
 //       case "website_name":
 //         if (!value) error = "Website name is required";
-//         else if (value.length < 3) error = "Minimum 3 characters required";
+//         else if (String(value).trim().length < 3)
+//           error = "Minimum 3 characters required";
 //         break;
 //       case "region":
 //         if (!value) error = "Please select a region";
@@ -107,26 +129,60 @@
 //         if (!value) error = "Agency address is required";
 //         break;
 //       // case "free_domain":
-//       //   if (value && !/^(?!:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(value)) {
-//       //     error = "Invalid domain format (e.g., example.com)";
+//       //   if (value) {
+//       //     const domainRegex = /^(?!:\/\/)([a-z0-9-]+\.)+[a-z]{2,}$/;
+//       //     let stripped = String(value)
+//       //       .replace(/^https?:\/\//i, "")
+//       //       .replace(/^www\./i, "")
+//       //       .toLowerCase();
+//       //     if (!domainRegex.test(stripped)) {
+//       //       error = "Invalid domain format (e.g., example.com)";
+//       //     } else {
+//       //       const normalized = `https://www.${stripped}`;
+//       //       setFormData((prev) => ({
+//       //         ...prev,
+//       //         free_domain: normalized,
+//       //       }));
+//       //     }
 //       //   }
 //       //   break;
 //       case "free_domain":
 //         if (value) {
-//           const domainRegex = /^(?!:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
-//           // Remove https and www for validation
-//           let stripped = value
-//             .replace(/^https?:\/\//, "")
-//             .replace(/^www\./, "");
+//           const domainRegex = /^(?!:\/\/)([a-z0-9-]+\.)+[a-z]{2,}$/;
+//           let stripped = String(value)
+//             .replace(/^https?:\/\//i, "")
+//             .replace(/^www\./i, "")
+//             .toLowerCase();
+
 //           if (!domainRegex.test(stripped)) {
-//             error = "Invalid domain format (e.g., example.com)";
+//             setDomainResult({
+//               error: "Invalid domain format (e.g., example.com)",
+//             });
 //           } else {
-//             // Normalize domain and update formData
-//             const normalized = `https://www.${stripped}`;
-//             setFormData((prev) => ({
-//               ...prev,
-//               free_domain: normalized,
-//             }));
+//             // Check availability and price
+//             const result = await checkDomainPrice(stripped);
+
+//             if (result.error) {
+//               setDomainResult({ error: result.error });
+//             } else if (!result.available) {
+//               setDomainResult({
+//                 available: false,
+//                 message: result.message || "Domain not available",
+//               });
+//             } else {
+//               const normalized = `https://www.${stripped}`;
+//               setFormData((prev) => ({
+//                 ...prev,
+//                 free_domain: normalized,
+//               }));
+//               setDomainResult({
+//                 available: true,
+//                 price: result.price,
+//                 currency: result.currency || "INR",
+//                 description:
+//                   "This domain is available for registration right now!",
+//               });
+//             }
 //           }
 //         }
 //         break;
@@ -134,34 +190,29 @@
 //       default:
 //         break;
 //     }
+
 //     setValidation((prev) => ({
 //       ...prev,
 //       errors: { ...prev.errors, [fieldName]: error },
 //     }));
 //     return !error;
 //   };
+
 //   // Handle input changes
-//   // const handleChange = (e) => {
-//   //   const { name, value } = e.target;
-//   //   setFormData((prev) => ({ ...prev, [name]: value }));
-//   //   // Clear error when user types
-//   //   if (validation.errors[name]) {
-//   //     setValidation((prev) => ({
-//   //       ...prev,
-//   //       errors: { ...prev.errors, [name]: "" },
-//   //     }));
-//   //   }
-//   // };
 //   const handleChange = (e) => {
 //     const { name, value } = e.target;
-//     setFormData((prev) => ({ ...prev, [name]: value }));
 
-//     // Generate package name when app name changes
-//     if (name === "app_name") {
-//       const packageName = generatePackageName(value);
-//       setFormData((prev) => ({ ...prev, app_package_name: packageName }));
-//     }
-//     // Clear error when user types
+//     setFormData((prev) => {
+//       let updated = { ...prev, [name]: value };
+
+//       if (name === "app_name") {
+//         const packageName = generatePackageName(value);
+//         updated = { ...updated, app_package_name: packageName };
+//       }
+
+//       return updated;
+//     });
+
 //     if (validation.errors[name]) {
 //       setValidation((prev) => ({
 //         ...prev,
@@ -169,27 +220,25 @@
 //       }));
 //     }
 //   };
-//   // Helper function to generate package name
+
+//   // Helper to generate package name
 //   const generatePackageName = (appName) => {
 //     if (!appName) return "";
 
-//     // Convert to lowercase and replace spaces with underscores
 //     let packageName = appName
 //       .toLowerCase()
 //       .replace(/\s+/g, "_")
-//       .replace(/[^a-z0-9_]/g, ""); // Remove special chars
+//       .replace(/[^a-z0-9_]/g, "");
 
-//     // Ensure it starts with com.
 //     if (!packageName.startsWith("com.")) {
 //       packageName = `com.app.${packageName}`;
 //     }
-//     // Add common suffix if needed
 //     if (!packageName.endsWith("_app")) {
 //       packageName = `${packageName}_app`;
 //     }
-//     console.log(packageName);
 //     return packageName;
 //   };
+
 //   // Handle package selection
 //   const handlePackageSelect = (e) => {
 //     const packageId = e.target.value;
@@ -216,7 +265,8 @@
 //       }));
 //     }
 //   };
-//   // Validate entire form
+
+//   // Validate full form
 //   const validateForm = () => {
 //     const requiredFields = [
 //       "app_name",
@@ -227,13 +277,11 @@
 //       "agency_add",
 //     ];
 //     let isValid = true;
-//     const newErrors = {};
 //     requiredFields.forEach((field) => {
 //       if (!validateField(field, formData[field])) {
 //         isValid = false;
 //       }
 //     });
-//     // Validate domain if provided
 //     if (
 //       formData.free_domain &&
 //       !validateField("free_domain", formData.free_domain)
@@ -242,19 +290,28 @@
 //     }
 //     return isValid;
 //   };
-//   // Form submission
+
+//   // Submit handler
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     setStatus((prev) => ({ ...prev, error: null }));
 //     if (!validateForm()) return;
+
 //     try {
 //       setStatus((prev) => ({ ...prev, isLoading: true }));
-//       const userData = JSON.parse(sessionStorage.getItem("userData"));
-//       const res = await CreateNewPortal({
+//       const userData = JSON.parse(sessionStorage.getItem("userData") || "{}");
+
+//       const cleanedDomain = formData.free_domain
+//         ? normalizeDomain(formData.free_domain)
+//         : "";
+
+//       const payload = {
 //         customer_id: userData.userId,
 //         ...formData,
-//       });
-//       console.log(res);
+//         free_domain: cleanedDomain,
+//       };
+
+//       const res = await CreateNewPortal(payload);
 //       if (res.data?.response) {
 //         setSessionData("packageDetails", {
 //           purchaseId: res.data.response.purchase_id,
@@ -271,17 +328,16 @@
 //         ...prev,
 //         isLoading: false,
 //         error:
-//           error.response?.data?.status_message ||
+//           error?.response?.data?.status_message ||
 //           "Failed to create portal. Please try again.",
 //       }));
 //     }
 //   };
 
-//   // Check if field has error
+//   // UI helpers
 //   const hasError = (field) =>
 //     validation.touched[field] && validation.errors[field];
 
-//   // Get input border color based on validation
 //   const getInputBorder = (field) => {
 //     if (!validation.touched[field]) return "border-gray-300";
 //     return validation.errors[field] ? "border-red-500" : "border-green-500";
@@ -289,7 +345,6 @@
 
 //   return (
 //     <>
-//       {/* SEO Optimization */}
 //       <Helmet>
 //         <title>{metaData.title}</title>
 //         <meta name="description" content={metaData.description} />
@@ -304,7 +359,6 @@
 
 //         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 //           <div className="bg-white shadow-xl rounded-lg overflow-hidden">
-//             {/* Form Header */}
 //             <div className="bg-gradient-to-r from-red-600 to-red-800 px-6 py-4">
 //               <h1 className="text-2xl font-bold text-white">
 //                 Create Your News Portal
@@ -314,7 +368,6 @@
 //               </p>
 //             </div>
 
-//             {/* Error Message */}
 //             {status.error && (
 //               <div className="bg-red-50 border-l-4 border-red-500 p-4 mx-6 mt-4">
 //                 <div className="flex">
@@ -338,9 +391,7 @@
 //               </div>
 //             )}
 
-//             {/* Main Form */}
 //             <form onSubmit={handleSubmit} className="p-6 space-y-8">
-//               {/* Region and Plan Selection */}
 //               <section className="grid md:grid-cols-2 gap-6">
 //                 <div>
 //                   <label
@@ -396,13 +447,29 @@
 //                     {packages.map((pkg) => (
 //                       <option key={pkg.package_id} value={pkg.package_id}>
 //                         {pkg.package_name} ({pkg.region === "0" ? "₹" : "$"}
-//                         {pkg.payable})
+//                         {pkg.payable}/
+//                         {pkg?.validity === 365
+//                           ? "Yearly"
+//                           : pkg?.validity === 90
+//                           ? "Quarterly"
+//                           : pkg?.validity === 30
+//                           ? "Monthly"
+//                           : `${pkg?.validity} days`})
 //                       </option>
 //                     ))}
 //                   </select>
-//                   <p className=" text-xs text-gray-600">
-//                     Quarterly, monthly and yearly packages available
-//                   </p>{" "}
+//                   <p className=" text-xs text-gray-600 mt-1">
+//                     <p className="text-xs text-gray-600">
+//                       {formData.region !== "0" ? "$" : "₹"} {formData.price}{" "}
+//                       {portalRequestDetail?.validity === 365
+//                         ? "Yearly"
+//                         : portalRequestDetail?.validity === 90
+//                         ? "Quarterly"
+//                         : portalRequestDetail?.validity === 30
+//                         ? "Monthly"
+//                         : `${portalRequestDetail?.validity} days`}
+//                     </p>
+//                   </p>
 //                   {hasError("package_id") && (
 //                     <p className="mt-1 text-sm text-red-600">
 //                       {validation.errors.package_id}
@@ -411,7 +478,6 @@
 //                 </div>
 //               </section>
 
-//               {/* Agency Information */}
 //               <section className="grid md:grid-cols-2 gap-6">
 //                 <div>
 //                   <label
@@ -466,7 +532,6 @@
 //                 </div>
 //               </section>
 
-//               {/* Divider */}
 //               <div className="border-t border-gray-200 pt-6">
 //                 <h2 className="text-lg font-medium text-gray-900">
 //                   App & Website Information
@@ -476,7 +541,6 @@
 //                 </p>
 //               </div>
 
-//               {/* App Information */}
 //               <section className="grid md:grid-cols-2 gap-6">
 //                 <div>
 //                   <label
@@ -534,7 +598,6 @@
 //                 </div>
 //               </section>
 
-//               {/* Website Information */}
 //               <section className="grid md:grid-cols-2 gap-6">
 //                 <div>
 //                   <label
@@ -587,7 +650,9 @@
 //                       type="text"
 //                       id="free_domain"
 //                       name="free_domain"
-//                       value={formData.free_domain}
+//                       value={String(formData.free_domain.toLowerCase())
+//                         .replace(/^https?:\/\//i, "")
+//                         .replace(/^www\./i, "")}
 //                       onChange={handleChange}
 //                       onBlur={() => handleBlur("free_domain")}
 //                       placeholder="yourdomain.com"
@@ -601,13 +666,39 @@
 //                       {validation.errors.free_domain}
 //                     </p>
 //                   )}
+
 //                   <p className="mt-1 text-xs text-gray-500">
 //                     Free domain worth ₹999 included with your plan
 //                   </p>
+//                   {domainResult && (
+//                     <div className="mt-4 p-4 border rounded-lg shadow bg-white">
+//                       {domainResult.error && (
+//                         <p className="text-red-500">{domainResult.error}</p>
+//                       )}
+
+//                       {domainResult.available && (
+//                         <div>
+//                           <p className="text-green-600 font-semibold">
+//                             ✅ Domain is available!
+//                           </p>
+//                           <p className="text-gray-700">
+//                             Price:{domainResult.currency === "USD" ? "$" : "₹"}{" "}
+//                             {domainResult.price}{" "}
+//                           </p>
+//                           <p className="text-sm text-gray-500 mt-1">
+//                             {domainResult.description}
+//                           </p>
+//                         </div>
+//                       )}
+
+//                       {domainResult.available === false && (
+//                         <p className="text-red-600">{domainResult.message}</p>
+//                       )}
+//                     </div>
+//                   )}
 //                 </div>
 //               </section>
 
-//               {/* Form Footer */}
 //               <div className="bg-gray-50 px-4 py-5 sm:px-6 rounded-lg border border-gray-200">
 //                 <div className="flex flex-col md:flex-row justify-between items-center">
 //                   <div className="mb-4 md:mb-0">
@@ -674,6 +765,8 @@ export default function CreatePortal() {
     app_name: "",
     website_name: "",
     region: "0",
+    registration_no: "",
+    registration_type: "",
     app_package_name: "",
     agency_name: "",
     agency_add: "",
@@ -929,6 +1022,8 @@ export default function CreatePortal() {
       "app_name",
       "website_name",
       "region",
+      "registration_type",
+      "registration_no",
       "package_id",
       "agency_name",
       "agency_add",
@@ -954,6 +1049,7 @@ export default function CreatePortal() {
     setStatus((prev) => ({ ...prev, error: null }));
     if (!validateForm()) return;
 
+    console.log(formData);
     try {
       setStatus((prev) => ({ ...prev, isLoading: true }));
       const userData = JSON.parse(sessionStorage.getItem("userData") || "{}");
@@ -1111,11 +1207,12 @@ export default function CreatePortal() {
                           ? "Quarterly"
                           : pkg?.validity === 30
                           ? "Monthly"
-                          : `${pkg?.validity} days`})
+                          : `${pkg?.validity} days`}
+                        )
                       </option>
                     ))}
                   </select>
-                  <p className=" text-xs text-gray-600">
+                  <p className=" text-xs text-gray-600 mt-1">
                     <p className="text-xs text-gray-600">
                       {formData.region !== "0" ? "$" : "₹"} {formData.price}{" "}
                       {portalRequestDetail?.validity === 365
@@ -1251,6 +1348,65 @@ export default function CreatePortal() {
                   />
                   <p className="mt-1 text-xs text-gray-500">
                     This will be auto-generated
+                  </p>
+                </div>
+              </section>
+              <section className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    htmlFor="registration_type"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Registration Type <span className="text-red-500">*</span>
+                  </label>
+
+                  <select
+                    id="registration_type"
+                    name="registration_type"
+                    value={formData.registration_type}
+                    onChange={handleChange}
+                    onBlur={() => handleBlur("registration_type")}
+                    className={`block w-full px-3 py-3 border ${getInputBorder(
+                      "registration_type"
+                    )} rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm`}
+                  >
+                    <option value="">Select Type</option>
+                    <option value="1">RNI</option>
+                    <option value="0">MIB</option>
+                  </select>
+
+                  <div className="flex justify-between mt-1">
+                    <p
+                      className={`text-xs ${
+                        hasError("registration_type")
+                          ? "text-red-600"
+                          : "text-gray-500"
+                      }`}
+                    >
+                      {validation.errors.registration_type ||
+                        "Select RNI or MIB"}
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="registration_no"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Registration Number
+                  </label>
+                  <input
+                    type="text"
+                    id="registration_no"
+                    name="registration_no"
+                    value={formData.registration_no}
+                    placeholder="Registration Number"
+                    onChange={handleChange}
+                    className="block w-full px-3 py-3 border border-gray-300  rounded-md shadow-sm sm:text-sm "
+                  />
+                  <p className="mt-1 text-xs text-gray-500">
+                    This will be Registration Number
                   </p>
                 </div>
               </section>

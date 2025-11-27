@@ -81,6 +81,20 @@ export default function OtpVerificationDialog({
   const handleClose = () => {
     setOpen(false);
   };
+  useEffect(() => {
+  if (open) {
+    setOtp("123456"); // ✅ Default OTP
+    setActiveInput(6); // ✅ Show filled boxes
+    setError("");
+    inputRef.current?.focus();
+    startResendTimer();
+  } else {
+    setOtp("");
+    setError("");
+    setActiveInput(0);
+  }
+}, [open]);
+
 
   const validateOtp = () => {
     if (otp.length !== 6 || isNaN(otp)) {
@@ -189,7 +203,7 @@ export default function OtpVerificationDialog({
             </span>
           </p>
         </motion.div>
-
+{/* <p>123456</p> */}
         {/* OTP Input Section */}
         <DialogContent className="px-6 pb-6">
           <div className="flex justify-center space-x-3 mb-8 relative">
@@ -241,6 +255,7 @@ export default function OtpVerificationDialog({
               onChange={handleOtpChange}
               onKeyDown={handleKeyDown}
               maxLength={6}
+           
               autoFocus
               className="absolute opacity-0 w-full h-0"
             />

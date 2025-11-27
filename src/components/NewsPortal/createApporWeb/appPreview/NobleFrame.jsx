@@ -1,7 +1,7 @@
 import React from 'react';
 import './NobelFrame.css';
 
-const NobleFrame = ({ children, width = 375, height = 812, color = 'black' }) => {
+const NobleFrame = ({ children, width = 330, height = 700, color = 'black' }) => {
   // Color variants
   const colorStyles = {
     black: {
