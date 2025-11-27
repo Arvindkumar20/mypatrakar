@@ -154,10 +154,10 @@ export default function FooterTop() {
           </div>
 
           {/* CONTACT FORM */}
-          <div className="w-full md:w-1/2 bg-gray-800 rounded-2xl shadow-xl p-4 border border-gray-700">
-            <div className="text-center mb-2">
+          <div className="w-full md:w-1/2 bg-gray-800 rounded-2xl shadow-xl p-3.5 border border-gray-700">
+            <div className="text-center mb-3">
               <MyPatrakar />
-              <h2 className="text-2xl font-bold text-white my-1">
+              <h2 className="text-2xl font-bold text-white my-2">
                 {t("footer.top.form.heading")}
               </h2>
             </div>

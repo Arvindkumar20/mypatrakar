@@ -7,7 +7,7 @@ export const MyPatrakar = () => {
       src="https://lottie.host/30493058-6193-407d-83f7-661ba9899685/TPn13Wc10R.lottie"
       loop
       autoplay
-      className="w-24 h-24 mx-auto" // Tailwind classes for width, height, and centering
+      className="w-28 h-28 mx-auto" // Tailwind classes for width, height, and centering
     />
   );
 };
