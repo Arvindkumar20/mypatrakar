@@ -4,6 +4,7 @@ import "../../../i18n"; // Import i18n config
 import MyPatrakarThumbNail from "../../../assets/My Patrakar Thumbnail Image.png";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 // import logo from "../../../assets/LG2.svg";
 // import User from "../../NewsPortal/AdminDashbord/shared/User";
 export default function Hero() {
@@ -75,13 +76,21 @@ export default function Hero() {
           })}
         </script>
       </Helmet>
-      <div className="screen-max-w-2xl md:flex flex-row-reverse  md:items-start items-center lg:justify-start sm:justify-center justify-center md:py-5 md:mt-24 lg:mt-24 sm:mt-24 mt-24  md:px-10 select-none">
+      <div
+        
+        className="screen-max-w-2xl md:flex flex-row-reverse  md:items-start items-center lg:justify-start sm:justify-center justify-center md:py-5 md:mt-24 lg:mt-24 sm:mt-24 mt-24  md:px-10 select-none"
+      >
         {/* Left Section: Text & Images */}
         <div
           className="md:col-4 sm:col-3 
       rounded-xl lg:w-2/5 md:2/3 sm:w-1/2 xs:w-1/2 w-5/6 flex items-center justify-center mx-auto   lg:px-0 px-3 "
         >
-          <img src={MyPatrakarThumbNail} alt="" className="rounded-xl" loading="lazy"/>
+          <img
+            src={MyPatrakarThumbNail}
+            alt=""
+            className="rounded-xl"
+            loading="lazy"
+          />
         </div>
         <div className="flex flex-col items-start md:justify-start xl:w-5/6  lg:w-5/6 md:5/6 w-full px-4 lg:px-6 space-y-6 md:mx-0 mx-auto">
           {/* Hero Text Image */}

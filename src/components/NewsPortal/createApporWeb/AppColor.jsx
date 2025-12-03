@@ -333,10 +333,6 @@
 
 // export default AppColor;
 
-
-
-
-
 import { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { SketchPicker } from "react-color";
@@ -414,7 +410,7 @@ const AppColor = ({ setUserRequest, logo }) => {
   }, [color, textColor, fontFamily, setUserRequest]);
 
   return (
-    <div className="container mx-auto bg-white p-6 my-6 rounded-lg shadow-sm border border-gray-100">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg border border-gray-100 my-6 md:my-12 transition-all duration-300 hover:shadow-xl">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -442,9 +438,10 @@ const AppColor = ({ setUserRequest, logo }) => {
         </button> */}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-20 items-start justify-center">
+      <div className="flex flex-col mx-auto lg:flex-row gap-20 items-start justify-center">
         {/* 🎨 Color Picker Section */}
-        <div className="w-full lg:w-1/4 space-y-6">
+
+        <div className="md:w-1/2 lg:w-1/4 mx-auto space-y-6">
           <div className="flex border-b border-gray-200">
             <button
               className={`px-4 py-2 font-medium text-sm ${
@@ -612,7 +609,7 @@ const AppColor = ({ setUserRequest, logo }) => {
 
         {/* 📱 App Preview Section */}
         <div className="w-full lg:w-1/2">
-          <div className="mb-4">
+          <div className="mb-0 sm:mb-4">
             <h2 className="text-lg font-medium text-gray-700 my-2">
               Live Preview
             </h2>
@@ -621,18 +618,18 @@ const AppColor = ({ setUserRequest, logo }) => {
             </p>
           </div>
           <div className="flex justify-center">
-            <NobleFrame width={300} height={650} color="black">
-              <PreviewApp
-                backgroundColor="#ffffff"
-                headerColor={color}
-                textColor={textColor}
-                fontFamily={fontFamily}
-                activeColor={"#f3122c"}
-                inactiveColor={contrastWarning ? "#4b5563" : "#6b7280"}
-                logo={logo}
-                font={fontFamily}
-              />
-            </NobleFrame>
+            {/* <NobleFrame width={300} height={650} color="black"> */}
+            <PreviewApp
+              backgroundColor="#ffffff"
+              headerColor={color}
+              textColor={textColor}
+              fontFamily={fontFamily}
+              activeColor={"#f3122c"}
+              inactiveColor={contrastWarning ? "#4b5563" : "#6b7280"}
+              logo={logo}
+              font={fontFamily}
+            />
+            {/* </NobleFrame> */}
           </div>
         </div>
       </div>

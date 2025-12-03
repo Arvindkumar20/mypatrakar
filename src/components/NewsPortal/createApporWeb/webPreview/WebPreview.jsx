@@ -12,12 +12,19 @@ import LanguageSelector from "../../../NavigationBar/LanguageSelector";
 import { PreViewContext } from "../../../../context/PreViewContext";
 import FooterFaceBook from "./FooterFaceBook";
 import LoginCard from "./LoginCard";
-
 // Header Component
-const Header = ({ bgColor, color, logo }) => {
-  // console.log(bgColor,color)
+const Header = ({ bgColor, color, logo, footerColor }) => {
+  const { webPreview } = useContext(PreViewContext);
+  const hoverColor = `hover:bg-[${footerColor}]`;
+
+  console.log(footerColor);
   return (
-    <header className="w-full flex flex-col">
+    <header
+      className="w-full flex flex-col"
+      style={{
+        fontFamily: webPreview.font_top,
+      }}
+    >
       {/* Top language/social bar */}
       <div className=" px-4 py-1" style={{ background: bgColor, color: color }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 text-xs">
@@ -87,22 +94,22 @@ const Header = ({ bgColor, color, logo }) => {
           {/* Navigation (hidden on mobile, shown on desktop) */}
           <nav className="hidden sm:flex ">
             <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-sm">
-              <div className="cursor-pointer px-3 py-2 hover:bg-red-700 rounded">
+              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
                 देश
               </div>
-              <div className="cursor-pointer px-3 py-2 hover:bg-red-700 rounded">
+              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
                 न्यूज़
               </div>
-              <div className="cursor-pointer px-3 py-2 hover:bg-red-700 rounded">
+              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
                 उत्तर प्रदेश
               </div>
-              <div className="cursor-pointer px-3 py-2 hover:bg-red-700 rounded">
+              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
                 मध्य प्रदेश
               </div>
-              <div className="cursor-pointer px-3 py-2 hover:bg-red-700 rounded">
+              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
                 मनोरंजन
               </div>
-              <div className="cursor-pointer px-3 py-2 hover:bg-red-700 rounded">
+              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
                 विविध
               </div>
             </div>
@@ -168,19 +175,30 @@ const MainContent = () => {
 };
 
 // Footer with social links and navigation
-const Footer = ({ socialLinks = {}, footerColor, color, logo }) => {
-  console.log(socialLinks);
+const Footer = ({ socialLinks = {}, footerColor, footerText, logo }) => {
+  const { webPreview } = useContext(PreViewContext);
+  // console.log(webPreview.font_bottom)
+  // console.log(socialLinks);
+  console.log(footerText);
   return (
     <footer
-      className="bg-[#0f2347] mt-2"
+      className="bg-[#0f2347] mt-2 "
       style={{
         background: footerColor,
-        color: color,
+        color: footerText,
+        fontFamily: webPreview.font_bottom,
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-3 grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-6 py-3 grid grid-cols-1 md:grid-cols-4  gap-3 sm:gap-12">
         <div className="space-y-2">
-          <h3 className="font-semibold text-md text-yellow-300">Navigation</h3>
+          <h3
+            className="font-semibold text-md "
+            style={{
+              fontFamily: webPreview.font_bottom,
+            }}
+          >
+            Navigation
+          </h3>
           {[
             "Home",
             "About Us",
@@ -191,29 +209,48 @@ const Footer = ({ socialLinks = {}, footerColor, color, logo }) => {
             <div key={idx} className="text-sm">
               <a
                 href={item.href}
-                className="hover:underline cursor-pointer hover:text-yellow-200"
+                className="hover:underline cursor-pointer "
+                style={{
+                  fontFamily: webPreview.font_bottom,
+                  color: footerText,
+                }}
               >
                 {item}
               </a>
             </div>
           ))}
         </div>
-        <div className="">
-          <FooterFaceBook url={socialLinks.fb_link}/>
+        <div
+          className="hidden md:block"
+          style={{
+            fontFamily: webPreview.font_bottom,
+          }}
+        >
+          <FooterFaceBook url={socialLinks.fb_link} />
         </div>
-        <div className="relative space-y-2">
+        <div className="relative space-y-2 hidden md:block">
           <div>
             {/* Yellow connecting line */}
 
-            <h3 className="font-semibold text-md text-yellow-300 relative">
+            <h3
+              className="font-semibold text-md  relative"
+              style={{
+                fontFamily: webPreview.font_bottom,
+              }}
+            >
               #BS_EXCLUSIVE
             </h3>
 
-            <ul className="space-y-1 text-xs leading-snug ">
+            <ul
+              className="space-y-1 text-xs leading-snug "
+              style={{
+                fontFamily: webPreview.font_bottom,
+              }}
+            >
               <li className="relative group cursor-pointer">
                 <div className="absolute group-hover:bg-yellow-300 -left-[12.4px] bottom- h-16 w-[1.5px] bg-gray-50"></div>
                 <span className="absolute -left-4 bg-gray-50 group-hover:bg-yellow-400 h-2 w-2 rounded-full"></span>
-                <span className="group-hover:text-yellow-300">
+                <span className="group-hover:">
                   {" "}
                   Russian President Vladimir Putin is confirmed to ...{" "}
                 </span>
@@ -221,7 +258,7 @@ const Footer = ({ socialLinks = {}, footerColor, color, logo }) => {
               <li className="relative group cursor-pointer">
                 <div className="absolute group-hover:bg-yellow-300 -left-[12.4px] bottom- h-12 w-[1.5px] bg-gray-50"></div>
                 <span className="absolute -left-4 bg-gray-50 group-hover:bg-yellow-400 h-2 w-2 rounded-full"></span>
-                <span className="group-hover:text-yellow-300">
+                <span className="group-hover:">
                   In a milestone for indigenous defense two stealth ...{" "}
                 </span>
               </li>
@@ -302,23 +339,32 @@ const Footer = ({ socialLinks = {}, footerColor, color, logo }) => {
 };
 
 // Full Page Wrapper
-const WebPreview = ({ bgColor, color, footerColor, footerText }) => {
+const WebPreview = ({
+  bgColor,
+  color,
+  footerColor,
+  footerText,
+  fontTop,
+  fontBottom,
+}) => {
   const { webPreview, appPreview } = useContext(PreViewContext);
   // console.log(webPreview)
   // console.log(webPreview.socialMedia);
-
   return (
     <div className="flex flex-col ">
       <Header
         logo={webPreview.logo}
         bgColor={webPreview.backgroundColor || bgColor}
         color={webPreview.color || color}
+        fontTop={fontTop}
+        footerColor={footerColor}
       />
       <MainContent />
       <Footer
+        fontBottom={fontBottom}
         socialLinks={webPreview.socialMedia}
         footerColor={footerColor}
-        color={footerText}
+        color={webPreview.color || color}
         logo={appPreview.logo}
       />
     </div>

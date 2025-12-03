@@ -219,12 +219,12 @@ export default function BlogHome() {
         <main className="flex-grow transition-opacity duration-300">
           <div className=" mx-auto px-4 py-8">
             {/* Featured Banner */}
-            <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-6 mb-10 text-white shadow-xl">
+            {/* <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-6 mb-10 text-white shadow-xl">
               <h1 className="text-3xl md:text-4xl font-bold mb-3">MyPatrakar Blog</h1>
               <p className="text-lg max-w-2xl opacity-90">
                 Insights, trends and expert opinions on journalism and digital media
               </p>
-            </div>
+            </div> */}
             
             {/* Content Grid */}
             <div className="flex flex-col lg:flex-row gap-8">

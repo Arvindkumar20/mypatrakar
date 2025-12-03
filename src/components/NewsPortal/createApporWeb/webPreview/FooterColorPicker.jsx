@@ -8,6 +8,7 @@ const FooterColorPicker = ({
   calculateTextColor,
   footerText,
   setFooterText,
+  setFontBottom
 }) => {
   const [currentColor, setCurrentColor] = useState(initialColor);
   const handleColorChange = useCallback(
@@ -85,7 +86,7 @@ const FooterColorPicker = ({
                   <select
                     value={"fontFamily"}
                     // onChange={(e) => setFontFamily(e.target.value)}
-                    onChange={(e) => console.log("object")
+                    onChange={(e) => setFontBottom(e.target.value)
                     }
                     className="text-sm bg-white border border-gray-200 rounded px-2 py-1 w-full"
                     style={{ fontFamily:"fontFamily" }}

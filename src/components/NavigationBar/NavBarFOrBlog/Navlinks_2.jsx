@@ -1,72 +1,69 @@
-import { useContext, useState } from "react";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { VscThreeBars } from "react-icons/vsc";
 import { IoClose } from "react-icons/io5";
+import { FaFolder } from "react-icons/fa";
 import { BlogContext } from "../../../context/BlogContext";
-import { Link, useNavigate } from "react-router-dom";
-import { FaHome, FaRegLightbulb } from "react-icons/fa"; // Added some icons
+import { BlogCategoryId } from "../../../api";
+import { Link } from "react-router-dom";
 
-export default function ResponsiveNav() {
-  const navigate = useNavigate();
+const ResponsiveNav = () => {
+  const { setBlog, setCategory, activeCategory } = useContext(BlogContext);
+  const [categories, setCategories] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const style = {
-    fontFamily: "Times New Roman",
-    fontSize: "15px",
+  const style = { fontFamily: "Times New Roman", fontSize: "15px" };
+
+  // Fetch categories from API
+  const fetchCategories = async () => {
+    try {
+      const res = await BlogCategoryId();
+      setCategories(res.data.response);
+    } catch (err) {
+      console.error("Error fetching categories:", err);
+    }
   };
 
-  const {
-    blogS,
-    setBlog,
-  } = useContext(BlogContext);
-console.log(blogS)
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
-  const handleNavigate = (blog, blog_category, blog_slug) => {
-    setBlog(blog);
+  const handleMenuToggle = () => setIsMenuOpen(!isMenuOpen);
 
-    navigate(`/blog/category/${blog_category}/${blog_slug}`);
-    setIsMenuOpen(false);
-
-    // return <HtmlToPlainText htmlContent={blog.blog_content} />;
+  // Handle category selection (no navigation, just update context)
+  const handleSelectCategory = (categoryId, categoryName) => {
+    setCategory(categoryName);
+    window.scrollBy({
+      top: 400, // 200px down
+      behavior: "smooth",
+    });
+    setBlog((prev) => ({ ...prev, blog_category_id: categoryId }));
+    setIsMenuOpen(false); // close mobile menu if open
   };
 
   return (
     <>
+      {/* Desktop Navigation */}
       <nav className="mx-auto max-w-7xl px-4 lg:px-6">
-        <section className="flex items-center justify-between py-4">
-          <div className="flex items-center gap-6">
-            {/* Desktop Navigation Links */}
-            <ul className="hidden lg:flex gap-6 items-center text-lg">
-              <li>
-                <Link
+        <div className="flex items-center justify-between py-4">
+          <ul className="hidden lg:flex gap-6 items-center text-lg">
+            {categories.map((cat) => (
+              <li key={cat.category_id}>
+                <div
                   style={style}
-                  to={"/blog-page"}
-                  className="border-b-2 text-gray-800 hover:text-red-500 font-semibold flex items-center gap-2 py-2 px-4 hover:border-b-2 hover:border-red-500 hover:no-underline"
+                  className={`cursor-pointer flex items-center gap-2 py-2 px-4 font-semibold border-b-2 transition-colors ${
+                    activeCategory === cat.category_id
+                      ? "text-red-500 border-red-500"
+                      : "text-gray-700 hover:text-red-500 hover:border-red-500"
+                  }`}
+                  onClick={() =>
+                    handleSelectCategory(cat.category_id, cat.category)
+                  }
                 >
-                  <FaHome />
-                  Home
-                </Link>
+                  {cat.category}
+                </div>
               </li>
-              {blogS.length > 0 &&
-                blogS.map((blog, index) => (
-                  <li key={index}>
-                    <div
-                      style={style}
-                      className="cursor-pointer border-b-2 hover:no-underline text-gray-500 hover:text-red-500 font-semibold flex items-center gap-2 py-2 px-4 hover:border-b-2 hover:border-red-500"
-                      onClick={() =>
-                        handleNavigate(blog, blog.blog_category, blog.blog_slug)
-                      }
-                    >
-                      {blog.blog_category}
-                      {/* <FaRegLightbulb /> {blog.blog_category} */}
-                    </div>
-                  </li>
-                ))}
-            </ul>
-          </div>
+            ))}
+          </ul>
 
           {/* Mobile Menu Icon */}
           <div
@@ -75,14 +72,14 @@ console.log(blogS)
           >
             <VscThreeBars size={24} />
           </div>
-        </section>
+        </div>
       </nav>
 
       {/* Mobile Side Menu */}
       <div
-        className={`lg:hidden fixed inset-y-0 left-0 z-50 w-full bg-white p-6 shadow-lg transition-transform transform ${
+        className={`lg:hidden fixed inset-y-0 left-0 z-50 w-full bg-white p-6 shadow-lg transform transition-transform ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"
-        } transition-all duration-300 ease-in-out rounded-md`}
+        } duration-300 ease-in-out rounded-md`}
       >
         {/* Close Button */}
         <div
@@ -92,49 +89,37 @@ console.log(blogS)
           <IoClose size={24} />
         </div>
 
-        {/* Navigation Links */}
-        <ul className="text-start space-y-6 flex flex-col items-start justify-center">
-          <li>
-            <div
-              style={style}
-              className="cursor-pointer text-gray-700 font-semibold hover:text-white py-2 px-4 rounded hover:bg-red-600"
-              onClick={handleMenuToggle}
-            >
-              <Link
-                to="/blog-page"
-                className="hover:no-underline focus:no-underline"
+        {/* Mobile Navigation Links */}
+        <ul className="flex flex-col gap-4 text-start">
+          {categories.map((cat) => (
+            <li key={cat.category_id}>
+              <div
+                style={style}
+                className={`cursor-pointer py-2 px-4 rounded font-semibold flex items-center gap-2 transition-colors ${
+                  activeCategory === cat.category_id
+                    ? "text-red-500 bg-red-100"
+                    : "text-gray-700 hover:text-red-500 hover:bg-red-100"
+                }`}
+                onClick={() =>
+                  handleSelectCategory(cat.category_id, cat.category)
+                }
               >
-                <FaHome className="inline-block mr-2" />
-                Home
-              </Link>
-            </div>
-          </li>
-
-          {blogS.length > 0 &&
-            blogS.map((blog, index) => (
-              <li key={index}>
-                <div
-                  style={style}
-                  className="cursor-pointer  hover:no-underline text-gray-500 hover:text-red-500 font-semibold flex items-center gap-2 py-2 px-4 hover:border-b-2 hover:border-red-500"
-                  onClick={() =>
-                    handleNavigate(blog.blog_category, blog.blog_slug)
-                  }
-                >
-                  <FaRegLightbulb /> {blog.blog_tags}
-                </div>
-              </li>
-            ))}
-          {/* Add More Links if Needed */}
+                <FaFolder /> {cat.category}
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Background Overlay */}
+      {/* Overlay */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40"
           onClick={handleMenuToggle}
-        ></div>
+        />
       )}
     </>
   );
-}
+};
+
+export default ResponsiveNav;

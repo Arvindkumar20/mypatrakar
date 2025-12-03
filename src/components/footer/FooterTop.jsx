@@ -107,24 +107,29 @@ export default function FooterTop() {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const getInTouch = [
-    {
-      icon: <AiOutlinePhone className="text-red-500 text-xl rotate-90" />,
-      text: "+91 7905320279",
-    },
-    {
-      icon: <AiOutlinePhone className="text-red-500 text-xl rotate-90" />,
-      text: "0522-4343-194",
-    },
-    {
-      icon: <AiOutlineEnvironment className="text-red-500 text-xl" />,
-      text: t("footer.top.address"),
-    },
-    {
-      icon: <AiOutlineMail className="text-red-500 text-xl" />,
-      text: "sales@mypatrakar.com",
-    },
-  ];
+const getInTouch = [
+  {
+    icon: <AiOutlinePhone className="text-red-500 text-xl rotate-90" />,
+    text: "+91 7905320279",
+    link: "tel:+917905320279",
+  },
+  {
+    icon: <AiOutlinePhone className="text-red-500 text-xl rotate-90" />,
+    text: "0522-4343-194",
+    link: "tel:05224343194",
+  },
+  {
+    icon: <AiOutlineEnvironment className="text-red-500 text-xl" />,
+    text: t("footer.top.address"),
+    link: "https://www.google.com/maps/search/?api=1&query=Building No 10/703, Ground Floor, near Arvindo Park Road, Sector 10, Indira Nagar, Lucknow, Uttar Pradesh 226016",
+  },
+  {
+    icon: <AiOutlineMail className="text-red-500 text-xl" />,
+    text: "sales@mypatrakar.com",
+    link: "mailto:sales@mypatrakar.com",
+  },
+];
+
 
   return (
     <div className="w-full bg-gradient-to-br py-4 px-4 sm:px-6 lg:px-10">

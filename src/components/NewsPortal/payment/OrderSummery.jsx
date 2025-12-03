@@ -566,8 +566,8 @@ export default function OrderSummary() {
               <FiInfo className="text-blue-500 mt-0.5 flex-shrink-0" />
               <p className="text-xs text-gray-600">
                 By completing your purchase, you agree to our{" "}
-                <a href="/terms" className="text-blue-600 hover:underline">Terms</a> and{" "}
-                <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>.
+                <a href="/terms-and-conditions" className="text-blue-600 hover:underline">Terms</a> and{" "}
+                <a href="/privacy-policy" className="text-blue-600 hover:underline">Privacy Policy</a>.
                 Your subscription will automatically renew unless canceled.
               </p>
             </div>

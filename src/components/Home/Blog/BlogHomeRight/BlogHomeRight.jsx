@@ -12,7 +12,7 @@ export default function BlogHomeRight() {
       <div className=" ">
         <CategoriesSection />
         <BlogSection />
-        <BlogTags />
+        {/* <BlogTags /> */}
       </div>
     </div>
   );

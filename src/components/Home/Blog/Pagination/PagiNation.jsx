@@ -1,60 +1,78 @@
-import React, { useState } from "react";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai"; // Importing icons for navigation buttons
+import React from "react";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
-const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    if (onPageChange) onPageChange(page);
-  };
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
   const handleNext = () => {
-    if (currentPage < totalPages) {
-      handlePageChange(currentPage + 1);
-    }
+    if (currentPage < totalPages) onPageChange(currentPage + 1);
   };
 
   const handlePrev = () => {
-    if (currentPage > 1) {
-      handlePageChange(currentPage - 1);
-    }
+    if (currentPage > 1) onPageChange(currentPage - 1);
   };
 
-  const renderPageNumbers = () => {
-    const pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(
-        <button
-          key={i}
-          onClick={() => handlePageChange(i)}
-          className={`page-btn p-3 bg-red-700 text-white rounded-lg hover:bg-red-500 focus:outline-none ${i === currentPage ? "bg-red-500" : ""}`}
-        >
-          {i}
-        </button>
-      );
+  // Generate page numbers with ellipsis (...)
+  const generatePages = () => {
+    let pages = [];
+
+    if (totalPages <= 6) {
+      // Show all pages if pages <= 6
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      // Large pagination logic
+      if (currentPage <= 3) {
+        pages = [1, 2, 3, 4, "...", totalPages];
+      } else if (currentPage >= totalPages - 2) {
+        pages = [1, "...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+      } else {
+        pages = [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
+      }
     }
+
     return pages;
   };
 
   return (
-    <div className="pagination flex items-center justify-center gap-4 my-6">
+    <div className="flex items-center justify-center gap-3 my-8">
+
+      {/* Previous Button */}
       <button
         onClick={handlePrev}
         disabled={currentPage === 1}
-        className="bg-red-600 py-3 px-6 rounded-lg text-white font-medium disabled:opacity-50 hover:bg-red-700 focus:outline-none flex items-center justify-center gap-2"
+        className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg 
+                   disabled:opacity-50 hover:bg-red-700 transition-all"
       >
-        <AiOutlineLeft /> Previous
+        <AiOutlineLeft /> Prev
       </button>
 
-      {renderPageNumbers()}
+      {/* Page Numbers */}
+      <div className="flex items-center gap-2">
+        {generatePages().map((pg, index) =>
+          pg === "..." ? (
+            <span key={index} className="px-3 py-2 text-gray-500">...</span>
+          ) : (
+            <button
+              key={pg}
+              onClick={() => onPageChange(pg)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all 
+                ${
+                  currentPage === pg
+                    ? "bg-red-600 text-white"
+                    : "bg-red-200 text-red-700 hover:bg-red-300"
+                }`}
+            >
+              {pg}
+            </button>
+          )
+        )}
+      </div>
 
+      {/* Next Button */}
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className="bg-red-600 py-3 px-6 rounded-lg text-white font-medium disabled:opacity-50 hover:bg-red-700 focus:outline-none flex items-center justify-center gap-2"
+        className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg 
+                   disabled:opacity-50 hover:bg-red-700 transition-all"
       >
         Next <AiOutlineRight />
       </button>

@@ -1144,7 +1144,7 @@ export default function CreatePortal() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-8">
+            <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <section className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -1231,7 +1231,6 @@ export default function CreatePortal() {
                   )}
                 </div>
               </section>
-
               <section className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -1285,7 +1284,6 @@ export default function CreatePortal() {
                   )}
                 </div>
               </section>
-
               <div className="border-t border-gray-200 pt-6">
                 <h2 className="text-lg font-medium text-gray-900">
                   App & Website Information
@@ -1294,7 +1292,6 @@ export default function CreatePortal() {
                   Provide details about your digital platform
                 </p>
               </div>
-
               <section className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -1360,20 +1357,47 @@ export default function CreatePortal() {
                     Registration Type <span className="text-red-500">*</span>
                   </label>
 
-                  <select
-                    id="registration_type"
-                    name="registration_type"
-                    value={formData.registration_type}
-                    onChange={handleChange}
-                    onBlur={() => handleBlur("registration_type")}
-                    className={`block w-full px-3 py-3 border ${getInputBorder(
-                      "registration_type"
-                    )} rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm`}
+                  <div
+                    className={`
+      flex flex-col gap-3 px-3 py-2 border
+      ${getInputBorder("registration_type")}
+      rounded-md shadow-sm bg-white
+    `}
                   >
-                    <option value="">Select Type</option>
-                    <option value="1">RNI</option>
-                    <option value="0">MIB</option>
-                  </select>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                      {/* RNI */}
+                      <label className="flex items-start gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="registration_type"
+                          value="1"
+                          checked={formData.registration_type === "1"}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("registration_type")}
+                          className="h-4 w-4 text-red-500 focus:ring-red-500 border-gray-300 mt-0.5"
+                        />
+                        <span className="text-xs text-gray-700 font-medium leading-tight">
+                          RNI (Registrar of Newspapers for India)
+                        </span>
+                      </label>
+
+                      {/* MIB */}
+                      <label className="flex items-start gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="registration_type"
+                          value="0"
+                          checked={formData.registration_type === "0"}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("registration_type")}
+                          className="h-4 w-4 text-red-500 focus:ring-red-500 border-gray-300 mt-0.5"
+                        />
+                        <span className="text-xs text-gray-700 font-medium leading-tight">
+                          MIB (Ministry of Information and Broadcasting)
+                        </span>
+                      </label>
+                    </div>
+                  </div>
 
                   <div className="flex justify-between mt-1">
                     <p
@@ -1410,7 +1434,6 @@ export default function CreatePortal() {
                   </p>
                 </div>
               </section>
-
               <section className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -1511,7 +1534,6 @@ export default function CreatePortal() {
                   )}
                 </div>
               </section>
-
               <div className="bg-gray-50 px-4 py-5 sm:px-6 rounded-lg border border-gray-200">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                   <div className="mb-4 md:mb-0">

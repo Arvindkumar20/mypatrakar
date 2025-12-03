@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {motion} from "framer-motion";
 import {
   faFileAlt,
   faQuestionCircle,
@@ -52,7 +53,10 @@ export default function UseFullLinks() {
 
       <ul className="space-y-3">
         {links.map((item, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            
+          >
             <Link
               to={item.href}
               className="flex items-center gap-2 text-white hover:text-red-500 transition"
@@ -63,36 +67,35 @@ export default function UseFullLinks() {
           </li>
         ))}
       </ul>
-   <div className="mt-4 flex flex-col  items-start md:items-start justify-between gap-6">
+      <div className="mt-4 flex flex-col  items-start md:items-start justify-between gap-6">
+        {/* Powered by OpenAI */}
+        <div className="flex flex-col gap-2">
+          <p className="text-white font-bold">Powered By OpenAI</p>
 
-  {/* Powered by OpenAI */}
-  <div className="flex flex-col gap-2">
-    <p className="text-white font-bold">Powered By OpenAI</p>
+          <div className="bg-white w-40 sm:w-48 h-14 sm:h-14 rounded-lg overflow-hidden shadow-md">
+            <img
+              src={OpenAi}
+              alt="Powered By OpenAI"
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
 
-    <div className="bg-white w-40 sm:w-48 h-14 sm:h-14 rounded-lg overflow-hidden shadow-md">
-      <img
-        src={OpenAi}
-        alt="Powered By OpenAI"
-        className="w-full h-full object-contain"
-      />
-    </div>
-  </div>
+        {/* Approved By Ministry of Finance */}
+        <div className="flex flex-col gap-2">
+          <p className="text-white font-bold">
+            Approved by Ministry of Finance
+          </p>
 
-  {/* Approved By Ministry of Finance */}
-  <div className="flex flex-col gap-2">
-    <p className="text-white font-bold">Approved by Ministry of Finance</p>
-
-    <div className="bg-white w-40 sm:w-48 h-14 sm:h-14 rounded-lg overflow-hidden shadow-md">
-      <img
-        src={finance}
-        alt="Approved by Ministry of Finance"
-        className="w-full h-full object-contain p-2"
-      />
-    </div>
-  </div>
-
-</div>
-
+          <div className="bg-white w-40 sm:w-48 h-14 sm:h-14 rounded-lg overflow-hidden shadow-md">
+            <img
+              src={finance}
+              alt="Approved by Ministry of Finance"
+              className="w-full h-full object-contain p-2"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

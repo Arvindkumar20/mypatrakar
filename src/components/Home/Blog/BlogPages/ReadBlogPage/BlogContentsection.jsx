@@ -12,6 +12,7 @@ import { BlogContext } from "../../../../../context/BlogContext";
 
 const BlogContentsection = () => {
   const { blog } = useContext(BlogContext);
+  console.log(blog)
   return (
     <section className="mb-10 xs:mx-2 xl:mx-12 lg:mx-12 md:mx-10 sm:mx-5  ">
       <div className=" mx-auto ">

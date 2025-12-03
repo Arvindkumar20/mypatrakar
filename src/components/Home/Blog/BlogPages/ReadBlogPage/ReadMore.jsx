@@ -33,6 +33,7 @@ import BlogHomeRight from "../../BlogHomeRight/BlogHomeRight";
 import { FaArrowUp } from "react-icons/fa";
 import Footer from "../../../../footer/Footer";
 import BlogFooter from "../../BlogFooter";
+import BlogHomeLeft from "../../BlogHomeLeft/BlogHomeLeft";
 
 export default function ReadMore() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -84,7 +85,7 @@ export default function ReadMore() {
             </div>
             
             {/* Author section */}
-            <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+            {/* <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
               <div className="flex items-center">
                 <div className="bg-gray-200 border-2 border-dashed rounded-full w-16 h-16" />
                 <div className="ml-4">
@@ -104,10 +105,10 @@ export default function ReadMore() {
                   View Profile
                 </button>
               </div>
-            </div>
+            </div> */}
             
             {/* Related articles */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
+            {/* <div className="bg-white rounded-xl shadow-lg p-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b-2 border-indigo-100">Related Articles</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[1, 2, 3, 4].map((item) => (
@@ -126,7 +127,8 @@ export default function ReadMore() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
+            <BlogHomeLeft/>
           </div>
           
           {/* Sidebar section */}
