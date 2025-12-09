@@ -8,7 +8,7 @@ export default function Home({ children }) {
     <div className="flex h-screen ">
       {/* Sidebar */}
 
-      {close && <Sidebar isOpen={close} setIsOpen={setClose} />}
+      {/* {close && <Sidebar isOpen={close} setIsOpen={setClose} />} */}
 
 
       {/* Main Content Area */}

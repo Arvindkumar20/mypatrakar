@@ -4,13 +4,13 @@ import { IoClose } from "react-icons/io5";
 import { FaFolder } from "react-icons/fa";
 import { BlogContext } from "../../../context/BlogContext";
 import { BlogCategoryId } from "../../../api";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ResponsiveNav = () => {
   const { setBlog, setCategory, activeCategory } = useContext(BlogContext);
   const [categories, setCategories] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const style = { fontFamily: "Times New Roman", fontSize: "15px" };
 
   // Fetch categories from API
@@ -38,6 +38,7 @@ const ResponsiveNav = () => {
     });
     setBlog((prev) => ({ ...prev, blog_category_id: categoryId }));
     setIsMenuOpen(false); // close mobile menu if open
+    navigate("/blog-page");
   };
 
   return (

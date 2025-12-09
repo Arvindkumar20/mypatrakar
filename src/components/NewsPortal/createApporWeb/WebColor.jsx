@@ -11,10 +11,10 @@ import { Palette } from "lucide-react";
 const WebColor = ({ setUserRequest }) => {
   const [color, setColor] = useState("#3b82f6");
   const [footerColor, setFooteColor] = useState("#3b82f6");
-  const [footerText, setFooterText] = useState("");
+  const [footerText, setFooterText] = useState("#fff");
   const [textColor, setTextColor] = useState("#ffffff");
-  const [fontBottom, setFontBottom] = useState();
-  const [fontTop, setFontTop] = useState();
+  const [fontBottom, setFontBottom] = useState("Roboto");
+  const [fontTop, setFontTop] = useState("Roboto");
   const { webPreview, updateWebPreview } = useContext(PreViewContext);
   // Calculate optimal text color
   const calculateTextColor = useCallback((rgb) => {
@@ -34,32 +34,40 @@ const WebColor = ({ setUserRequest }) => {
     [calculateTextColor]
   );
 
-useEffect(() => {
-  setUserRequest((prev) => ({
-    ...prev,
-    web_color: {
-      primary: color,
-      text: textColor,
+  useEffect(() => {
+    setUserRequest((prev) => ({
+      ...prev,
+      web_color: {
+        primary: color,
+        text: textColor,
+        font_top: fontTop,
+        font_bottom: fontBottom,
+      },
+      web_footer_color: {
+        primary: footerColor,
+        text: "",
+        font_bottom: fontBottom,
+      },
+    }));
+
+    updateWebPreview({
+      backgroundColor: color,
+      color: textColor,
+      web_footer_color: footerColor,
       font_top: fontTop,
       font_bottom: fontBottom,
-    },
-    web_footer_color: {
-      primary: footerColor,
-      text: "",
-      font_bottom: fontBottom,
-    },
-  }));
+    });
+  }, [
+    color,
+    footerColor,
+    textColor,
+    fontTop,
+    fontBottom,
+    setUserRequest,
+    updateWebPreview,
+  ]);
 
-  updateWebPreview({
-    backgroundColor: color,
-    color: textColor,
-    web_footer_color: footerColor,
-    font_top: fontTop,
-    font_bottom: fontBottom,
-  });
-}, [color, footerColor, textColor, fontTop, fontBottom, setUserRequest, updateWebPreview]);
-
-// console.log(fontBottom,fontTop)
+  // console.log(fontBottom,fontTop)
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg border border-gray-100 my-6 md:my-12 transition-all duration-300 hover:shadow-xl">
       <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start">
@@ -146,7 +154,8 @@ useEffect(() => {
               <div className="flex-1 min-w-[120px]">
                 <label className="block text-xs text-gray-500 mb-1">Font</label>
                 <select
-                  value={"fontFamily"}
+                  value={fontTop}
+                  name="fontFamily"
                   onChange={(e) => setFontTop(e.target.value)}
                   className="text-sm bg-white border border-gray-300 rounded px-2 py-1 w-full"
                 >
@@ -169,6 +178,7 @@ useEffect(() => {
             footerText={footerText}
             setFooterText={setFooterText}
             setFontBottom={setFontBottom}
+            fontBottom={fontBottom}
           />
         </div>
 
@@ -191,7 +201,6 @@ useEffect(() => {
               footerText={footerText}
               fontTop={fontTop}
               fontBottom={fontBottom}
-
               navigationLinks={["Home", "About Us", "Terms And Condition"]}
             />
           </div>

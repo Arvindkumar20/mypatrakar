@@ -55,32 +55,31 @@
 //       </div>
 //     </div>
 //   );
-// }
-import { useEffect, useState, useMemo } from "react";
+// }import { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
-export default function FooterFaceBook({ url }) {
-  console.log(url)
+function FooterFaceBookComponent({ url }) {
   const [facebookPageUrl, setFacebookPageUrl] = useState(
     "https://www.facebook.com/HindtechLucknow"
   );
-
+console.log(url)
   useEffect(() => {
     if (!url) return;
 
     try {
       let cleanedUrl = url.trim();
 
-      // Agar sirf username diya hai, full URL bana do
+      // Only username given → make full URL
       if (!cleanedUrl.includes("facebook.com")) {
         cleanedUrl = `https://www.facebook.com/${cleanedUrl}`;
       }
 
-      // Agar "http" missing hai to add karo
+      // Add https if missing
       if (!cleanedUrl.startsWith("http")) {
         cleanedUrl = `https://${cleanedUrl}`;
       }
 
-      // Valid URL check
+      // Validate URL
       const fbUrl = new URL(cleanedUrl);
       setFacebookPageUrl(fbUrl.href);
     } catch (err) {
@@ -89,7 +88,6 @@ export default function FooterFaceBook({ url }) {
     }
   }, [url]);
 
-  // Fixed width & height (Facebook ke requirement)
   const pluginWidth = 170;
   const pluginHeight = 200;
 
@@ -115,3 +113,6 @@ export default function FooterFaceBook({ url }) {
     </div>
   );
 }
+
+// ✅ Wrap with React.memo
+export default React.memo(FooterFaceBookComponent);

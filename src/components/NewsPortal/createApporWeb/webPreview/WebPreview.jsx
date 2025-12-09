@@ -12,12 +12,14 @@ import LanguageSelector from "../../../NavigationBar/LanguageSelector";
 import { PreViewContext } from "../../../../context/PreViewContext";
 import FooterFaceBook from "./FooterFaceBook";
 import LoginCard from "./LoginCard";
+import { useTranslation } from "react-i18next";
 // Header Component
 const Header = ({ bgColor, color, logo, footerColor }) => {
   const { webPreview } = useContext(PreViewContext);
   const hoverColor = `hover:bg-[${footerColor}]`;
+  const { t } = useTranslation();
 
-  console.log(footerColor);
+  // console.log(footerColor);
   return (
     <header
       className="w-full flex flex-col"
@@ -29,9 +31,9 @@ const Header = ({ bgColor, color, logo, footerColor }) => {
       <div className=" px-4 py-1" style={{ background: bgColor, color: color }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 text-xs">
           <LanguageSelector />
-          <button className="bg-white text-gray-950 py-2 px-3 rounded">
+          <button className="bg-white text-gray-950 py-2 px-2 rounded">
             {" "}
-            Advertise with us
+            {t("webPreview.header.advertise")}
           </button>
         </div>
       </div>
@@ -41,22 +43,36 @@ const Header = ({ bgColor, color, logo, footerColor }) => {
         <div className="max-w-7xl mx-auto w-full px-4 flex flex-col items-center">
           {/* Logo */}
           <div className="w-full flex justify-center items-center gap-5">
-            <div className=" text-2xl font-bold flex items-center justify-between">
+            {/* <div className=" text-2xl font-bold flex items-center justify-between">
               <img
                 src={logo}
                 alt="Website logo"
                 className="h-12 md:h-16 w-auto object-contain"
               />
+            </div> */}
+
+            <div className="w-80 h-28 rounded overflow-hidden flex items-center justify-center bg-gray-200">
+              {webPreview.logo ? (
+                // If logo uploaded → show image
+                <img
+                  src={webPreview.logo}
+                  alt="Logo"
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                // Default → show text
+                <span className="text-xs font-bold text-gray-700">LOGO</span>
+              )}
             </div>
 
             <div className="w-full h-28 bg-gray-100 flex items-center justify-center rounded-md border border-dashed border-gray-300">
-              <div className="text-gray-400">ADVERTISEMENT</div>
+              <div className="text-gray-400"> {t("webPreview.mainContent.advertisement")}</div>
             </div>
           </div>
         </div>
         {/* Combined Navigation, Search and Video Button */}
         <div
-          className="w-full flex  md:flex-row items-center justify-between px-3  mt-2 "
+          className="w-full flex  md:flex-row items-center justify-between px-2  mt-2 "
           style={{
             background: bgColor,
             color: color,
@@ -94,23 +110,23 @@ const Header = ({ bgColor, color, logo, footerColor }) => {
           {/* Navigation (hidden on mobile, shown on desktop) */}
           <nav className="hidden sm:flex ">
             <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-sm">
-              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
-                देश
+              <div className={`cursor-pointer px-2 py-2 ${hoverColor} rounded`}>
+                {t("webPreview.header.navigation.desh")}
               </div>
-              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
-                न्यूज़
+              <div className={`cursor-pointer px-2 py-2 ${hoverColor} rounded`}>
+                {t("webPreview.header.navigation.news")}
               </div>
-              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
-                उत्तर प्रदेश
+              <div className={`cursor-pointer px-2 py-2 ${hoverColor} rounded`}>
+                {t("webPreview.header.navigation.uttar_pradesh")}
               </div>
-              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
-                मध्य प्रदेश
+              <div className={`cursor-pointer px-2 py-2 ${hoverColor} rounded`}>
+                {t("webPreview.header.navigation.madhya_pradesh")}
               </div>
-              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
-                मनोरंजन
+              <div className={`cursor-pointer px-2 py-2 ${hoverColor} rounded`}>
+                {t("webPreview.header.navigation.entertainment")}
               </div>
-              <div className={`cursor-pointer px-3 py-2 ${hoverColor} rounded`}>
-                विविध
+              <div className={`cursor-pointer px-2 py-2 ${hoverColor} rounded`}>
+                {t("webPreview.header.navigation.misc")}
               </div>
             </div>
           </nav>
@@ -132,12 +148,15 @@ const Skeleton = ({ className }) => (
 
 // Main Content Placeholder
 const MainContent = () => {
+  const { t } = useTranslation();
   return (
     <main className="flex-1 bg-white py-2">
       <div className="max-w-7xl mx-auto px-4 space-y-4">
         {/* Advertisement Banner */}
         <div className="w-full h-28 bg-gray-100 flex items-center justify-center rounded-md border border-dashed border-gray-300">
-          <div className="text-gray-400">ADVERTISEMENT</div>
+          <div className="text-gray-400">
+            {t("webPreview.mainContent.advertisement")}
+          </div>
         </div>
 
         {/* Top big section */}
@@ -177,9 +196,10 @@ const MainContent = () => {
 // Footer with social links and navigation
 const Footer = ({ socialLinks = {}, footerColor, footerText, logo }) => {
   const { webPreview } = useContext(PreViewContext);
+  const { t } = useTranslation();
   // console.log(webPreview.font_bottom)
   // console.log(socialLinks);
-  console.log(footerText);
+  // console.log(footerText);
   return (
     <footer
       className="bg-[#0f2347] mt-2 "
@@ -200,11 +220,16 @@ const Footer = ({ socialLinks = {}, footerColor, footerText, logo }) => {
             Navigation
           </h3>
           {[
-            "Home",
-            "About Us",
-            "Terms & Condition",
-            "Privacy & Policy",
-            "Contact Us",
+            t("webPreview.footer.navigation.home"),
+            t("webPreview.footer.navigation.about"),
+            t("webPreview.footer.navigation.terms"),
+            t("webPreview.footer.navigation.privacy"),
+            t("webPreview.footer.navigation.contact"),
+
+            // "About Us",
+            // "Terms & Condition",
+            // "Privacy & Policy",
+            // "Contact Us",
           ].map((item, idx) => (
             <div key={idx} className="text-sm">
               <a
@@ -270,9 +295,9 @@ const Footer = ({ socialLinks = {}, footerColor, footerText, logo }) => {
           <LoginCard logo={logo} />
         </div>
       </div>
-      <div className="flex items-center justify-between px-3 border-t border-gray-700 text-center py-2 text-[10px]">
+      <div className="flex items-center justify-between px-2 border-t border-gray-700 text-center py-2 text-[10px]">
         <div className="text-xs">
-          © {new Date().getFullYear()} My Patrakar. All rights reserved.
+          © {new Date().getFullYear()} {t("webPreview.footer.copyright")}
         </div>
         <div className="flex gap-2">
           {socialLinks.fb_link && (
@@ -332,7 +357,7 @@ const Footer = ({ socialLinks = {}, footerColor, footerText, logo }) => {
             </a>
           )}
         </div>
-        <div className="">Powered & Developed by MyPatrakar</div>
+        <div className="">{t("webPreview.footer.powered")}</div>
       </div>
     </footer>
   );
@@ -366,6 +391,7 @@ const WebPreview = ({
         footerColor={footerColor}
         color={webPreview.color || color}
         logo={appPreview.logo}
+        footerText={footerText}
       />
     </div>
   );

@@ -3,7 +3,7 @@ import MyPatrakarlog from "../../../assets/MyPatrakarLogo.png";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { CustomerProfile, Logout } from "../../../api/index.js";
 import { useAuthContext } from "../../../context/AuthContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdLocalPhone } from "react-icons/md";
 
@@ -75,6 +75,8 @@ export default function Header({ close, setClose }) {
         </button>
 
         {/* Logo */}
+       <Link to={"/"}>
+       
         <img
           src={MyPatrakarlog}
           alt="My Patrakar logo"
@@ -82,6 +84,7 @@ export default function Header({ close, setClose }) {
           loading="lazy"
           onClick={handleClose}
         />
+       </Link>
 
         {/* Profile Avatar & Dropdown */}
         <div className="relative">

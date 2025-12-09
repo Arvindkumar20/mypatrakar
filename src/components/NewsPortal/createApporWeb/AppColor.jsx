@@ -343,7 +343,7 @@ import NobleFrame from "./appPreview/NobleFrame";
 const AppColor = ({ setUserRequest, logo }) => {
   const [color, setColor] = useState("#3b82f6");
   const [textColor, setTextColor] = useState("#ffffff");
-  const [fontFamily, setFontFamily] = useState("Poppins");
+  const [fontFamily, setFontFamily] = useState("Roboto");
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [contrastWarning, setContrastWarning] = useState(false);
   const [activeTab, setActiveTab] = useState("primary");

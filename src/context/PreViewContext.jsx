@@ -7,7 +7,8 @@ const defaultAppPreview = {
   color: "#4F46E5",
   backgroundColor: "#FFFFFF",
   logo: "",
-  owner_profile_pic: myPtrakarLogo,
+  language:"",
+  owner_profile_pic: "",
   socialMedia: {
     fb_link: "",
     insta_link: "",
@@ -25,7 +26,7 @@ const defaultWebPreview = {
   themeColor: "",
   color: "",
   backgroundColor: "",
-  logo: myPtrakarLogo2,
+  logo: "",
   metaDescription: "This is my amazing website",
   font_top: "",
   font_bottom: "",
@@ -52,7 +53,7 @@ export const PreviewProvider = ({ children }) => {
   };
 
   const updateWebPreview = (newSettings) => {
-    console.log(newSettings);
+    // console.log(newSettings);
     setWebPreview((prev) => ({ ...prev, ...newSettings }));
   };
 

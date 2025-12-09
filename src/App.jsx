@@ -74,6 +74,7 @@ import PrivateRoute from "./route/PrivateRoute.jsx";
 import B from "./components/Home/Blog/B.jsx";
 import { PreviewProvider } from "./context/PreViewContext.jsx";
 import ShortGenerator from "./components/Home/shortsAI/pages/ShortGenerator.jsx";
+import PaymentReceiptScreen from "./components/NewsPortal/payment/PaymentReceiptScreen.jsx";
 
 // import Table from "./components/NewsPortal/AdminDashbord/shared/Table.jsx";
 
@@ -147,7 +148,6 @@ function AppContent() {
   const hideNavBarAndFooterRoutes =
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
- 
     location.pathname.startsWith("/blog") ||
     location.pathname.startsWith("/b") ||
     location.pathname.startsWith("/portal") ||
@@ -215,7 +215,10 @@ function AppContent() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/signup" element={<SignUp />} />
-                    <Route path="/try-mypatrakar-ai" element={<ShortGenerator />} />
+                    <Route
+                      path="/try-mypatrakar-ai"
+                      element={<ShortGenerator />}
+                    />
                     <Route
                       path="/dashboard"
                       element={
@@ -257,6 +260,7 @@ function AppContent() {
                       path="/resources-in-my-patrakar"
                       element={<Resources />}
                     />
+                    {/* /portal/payment-reciept */}
                     <Route
                       path="/portal/payment/:package_id/:purchase_id/:user_id"
                       element={<Payment />}
@@ -271,6 +275,14 @@ function AppContent() {
                       element={
                         <PrivateRoute>
                           <UserPortal />
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/portal/payment-reciept"
+                      element={
+                        <PrivateRoute>
+                          <PaymentReceiptScreen />
                         </PrivateRoute>
                       }
                     />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CustomerProfile, makePayment } from "../../../api";
+import { Weight } from "lucide-react";
 
 const PaymentPage = ({ amount, region, user_id, purchaseId }) => {
   const [loading, setLoading] = useState(false);
@@ -13,11 +14,8 @@ const PaymentPage = ({ amount, region, user_id, purchaseId }) => {
     wallet: "",
   });
   console.log(region);
-  const userId=user_id.includes(":") 
-        ? user_id.split(":")[1] 
-        : user_id
+  const userId = user_id.includes(":") ? user_id.split(":")[1] : user_id;
   const getProfile = async () => {
-  
     try {
       // const userId = JSON.parse(sessionStorage.getItem("userData"));
       const res = await CustomerProfile({ customer_id: userId });
@@ -56,15 +54,18 @@ const PaymentPage = ({ amount, region, user_id, purchaseId }) => {
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Your test/live key
         amount: amount * 100, // Paise
-        currency: region == "0"||region==undefined||region==null ?"INR"  : "USD",
+        currency:
+          region == "0" || region == undefined || region == null
+            ? "INR"
+            : "USD",
         name: "MyPtrakar",
         description: "Payment for services",
         handler: async function (response) {
           console.log("Payment success:", response);
           console.log(response);
-         const purchase_id = purchaseId.includes(":")
-          ? purchaseId.replace(":", "")
-          : purchaseId;
+          const purchase_id = purchaseId.includes(":")
+            ? purchaseId.replace(":", "")
+            : purchaseId;
 
           try {
             const res = await makePayment({
@@ -72,7 +73,7 @@ const PaymentPage = ({ amount, region, user_id, purchaseId }) => {
               transection_id: response.razorpay_payment_id,
             });
             console.log(res);
-            navigate("/portal/createApporWeb");
+            navigate("/portal/payment-reciept");
           } catch (error) {
             console.log(error);
           }
@@ -101,56 +102,68 @@ const PaymentPage = ({ amount, region, user_id, purchaseId }) => {
   };
 
   return (
-    <div style={styles.container}>
-      {/* <h2>
-        {" "}
-        {region == "0" ? "₹" : "$"} <span> {amount}</span>
-      </h2> */}
-
-      {error && <div style={styles.error}>{error}</div>}
+    <div style={styles.wrapper}>
+      {error && <div style={styles.errorBox}>{error}</div>}
 
       <button
         onClick={handlePayment}
         disabled={loading}
         style={loading ? styles.buttonDisabled : styles.button}
       >
-        {loading ? "Processing..." : "Pay Now"}
+        {loading ? (
+          <span style={{ opacity: 0.7 }}>Processing Payment...</span>
+        ) : (
+          "Pay Securely"
+        )}
       </button>
     </div>
   );
 };
 
 const styles = {
-  container: {
-    maxWidth: "400px",
-    margin: "2rem auto",
-    padding: "1.5rem",
-    // border: "1px solid #ddd",
+  wrapper: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "2rem 1rem",
+  },
+  errorBox: {
+    color: "#b91c1c",
+    background: "#fee2e2",
+    padding: "10px",
     borderRadius: "8px",
-    textAlign: "center",
+    fontSize: "14px",
+    marginBottom: "1rem",
+    border: "1px solid #fecaca",
   },
-  error: {
-    color: "red",
-    margin: "1rem 0",
-  },
+
   button: {
-    background: "red",
+    width: "100%",
+    background: "#ef4444",
     color: "white",
-    padding: "12px 24px",
+    padding: "14px 20px",
     border: "none",
-    borderRadius: "4px",
-    fontSize: "16px",
+    borderRadius: "10px",
+    fontSize: "17px",
+    fontWeight: "600",
     cursor: "pointer",
+    transition: "0.2s ease",
+    boxShadow: "0 3px 10px rgba(255,0,0,0.2)",
   },
+
   buttonDisabled: {
-    background: "#ccc",
-    color: "white",
-    padding: "12px 24px",
+    width: "100%",
+    background: "#d1d5db",
+    color: "#fff",
+    padding: "14px 20px",
     border: "none",
-    borderRadius: "4px",
-    fontSize: "16px",
+    borderRadius: "10px",
+    fontSize: "17px",
+    fontWeight: "600",
     cursor: "not-allowed",
   },
+
+ 
 };
 
 export default PaymentPage;

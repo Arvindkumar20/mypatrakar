@@ -1,295 +1,342 @@
 {
-    "menu": {
-        "home": "Home",
-        "schedule_demo": "Schedule Demo",
-        "contact": "Contact",
-        "mypatrakar_ai": "Try MyPatrakar AI",
-        "price": "Pricing",
-        "resources": "Resources",
-        "blog": "Blog",
-        "signupForFree": "Sign Up For Free",
-        "signin": "Sign In",
-        "product": {
-            "product": "Products",
-            "website": "Website",
-            "app": "App-Mypatrakar v1"
-        }
-    },
-    "hero": "Only-Stop Solution for complete News Portal Development",
-    "heroDesc": "Create an online presence of your news agency with a quick and easy news portal setup within 48 hours at affordable pricing.",
-    "heroButtons": {
-        "android": "Demo Android App",
-        "ios": "Demo iOS App",
-        "website": "Demo Website",
-        "admin": "Demo Admin Pannel"
-    },
-    "heroButtonsFree": "Try It Free Today!",
-    "reportersSec": "More than 150+ Reporters use My Patrakar",
-    "instructions": {
-        "mainHeading": "What is the need for news portal development?",
-        "mainHeadingDesc": "Create your own news portal to reach a global audience, build your brand, and create a valuable platform for content and ads. Harness its potential for content distribution, advertising, and establishing your brand among the leading names in news.",
-        "mainSubheading": "Fully functional Website & App",
-        "mainSubheadingDesc": "has state-of-the-art knowledge and fruitful experience in developing and launching alluring and eye-catching news portals.",
-        "instructionHeadings": {
-            "operate": "Easy to Operate",
-            "operateDesc": "Even without expertise in website and app development, you can still contribute to our developed news portals without needing coding skills.",
-            "pricing": "Affordable Pricing",
-            "pricingDesc": "We guarantee a fully professional news portal developed within your budget, prioritizing your needs and incorporating top-notch features.",
-            "support": "24x7 Hour Call Support",
-            "supportDesc": "Feel free to reach out to us between 10am and 8pm from Monday to Saturday with any queries, issues, or assistance needs. We're here to help and will be glad to assist you."
-        }
-    },
-    "appOrWebViewOnHome": {
-        "heading": "Build your News App & Website with MyPatrakar"
-    },
-    "functionality": {
-        "mainHeading": "Why choose My Patrakar for your News Portal Development",
-        "button": "Download Brochure",
-        "functions": {
-            "Vote": "Empower People’s Voice",
-            "voteDesc": "Create Exit Polls and Social Voting on Current Issues with your News Portal",
-            "reporter": "Enhanced Reporting",
-            "reporterDesc": "Separate Reporter Panel in the Admin Panel for Streamlined News Publishing      – Empower Your Editorial Team with Efficiency!",
-            "audience": "Engage Your Audience",
-            "audienceDesc": "Integrate Your YouTube Channel with App and Website on Your News Portal"
-        }
-    },
-    "features": {
-        "mainHeading": "What features MyPatrakar will provide in your News Portal Development?"
-    },
-    "pricing": "Simple and Economical pricing so every News channel could afford",
-    "india": "India",
-    "other": "Outside of India",
-    "cardTaxText": "All prices are exclusive of applicable taxes",
-    "packageFeatureText": "Everything in plan",
-    "purchaseBtn": "Purchase Now",
-    "enterPriseRepaiText": "AMC is applicable from 2nd year: ₹7,500.00 AMCs are subject to change.",
-    "basicDesc": "Best for new businesses and startups or entrepreneurs",
-    "premiumDesc": "Best for small-medium businesses and multivendor platforms",
-    "enterpriseDesc": "Ideal for startups, growing businesses, and retail expansion success.",
-    "footer": {
-        "top": {
-            "mainHeading": "Looking for an excellent News Portal Design?",
-            "mainHeadingDesc": "Give us a call or drop a message anytime, we answer inquiries within 24 hours on business days.",
-            "getInTouch": "Get In Touch",
-            "address": "Building No 10/703, Ground Floor, near Arvindo Park Road, Sector 10, Indira Nagar, Lucknow, Uttar Pradesh 226016",
-            "form": {
-                "heading": "Get Started",
-                "subheading":"",
-                "phone": "Phone Number",
-                "message": "Message",
-                "button1": "Request Call",
-                "button2": "Request Call Success",
-                "phonePlaceholder":"Enter your phone number",
-                "messagePlaceholder":"Enter your message"
-            },
-            "modal":{
-                "title":"Success",
-                "description":"Your request submit successfully",
-                "button":"Ok"
-            }
-        },
-        "bottom": {
-            "heading1": "Useful Links",
-            "termsAndConditions": "Terms & Condition",
-            "privacyPolicy": "Privacy Policy",
-            "navigation": "Navigation",
-            "heading2": "Get Started Now",
-            "headingDesc": "Register your news channel in just 2 minutes.",
-            "copyRight": "Copyright Hindtech It Solutions. All Rights Reserved"
-        }
-    },
-    "website": {
-        "feature1": {
-            "heading": "# Feature 1",
-            "subHeading": "Categories wise News Sections",
-            "desc": "User can easily navigate through different categories of news, including politics, entertainment, technology, sports, and more.",
-            "features": {
-                "feature1": "Special Reports.",
-                "feature2": "Editor's Picks .",
-                "feature3": "Option to create unlimited categories & sub-categories."
-            }
-        },
-        "feature2": {
-            "heading": "#Feature 2",
-            "subHeading": "Listen to News Articles on the Go!",
-            "desc": "Text-to-Speech feature. With just a click of a button, user can listen to news articles instead of reading them.",
-            "features": {
-                "feature1": "The system converts the text into clear, natural-sounding speech.",
-                "feature2": "Enhance your news reading.",
-                "feature3": "Text-to-Speech (TTS) button alongside articles."
-            }
-        },
-        "feature3": {
-            "heading": "# Feature 3",
-            "subHeading": "Personalised experience with the Content Filtering.",
-            "desc": "Users can now tailor their news feed to their preferences by filtering content based on categories such as politics, technology, entertainment, and more. With this feature, staying updated on the latest news has never been easier or more customisable.",
-            "features": {
-                "feature1": "Access relevant news and stay up-to-date with current events.",
-                "feature2": "Selecting specific categories of interest.",
-                "feature3": "More convenient and personalised."
-            }
-        },
-        "feature4": {
-            "heading": "# Feature 4",
-            "subHeading": "Social Media Integration",
-            "desc": "Seamlessly integrate platforms like Facebook, Twitter, Instagram, and more to access personalised news feeds, share articles with your users, and engage with the community",
-            "features": {
-                "feature1": "Enhance your social media experience by integrating it with Your News.",
-                "feature2": "Seamlessly integrate all your social media accounts into Your News Portal.",
-                "feature3": "Access and share news across platforms seamlessly."
-            }
-        },
-        "feature5": {
-            "heading": "# Feature 5",
-            "subHeading": "YouTube Channel Live Feature in News Portal",
-            "desc": "This feature allows for the effortless embedding of YouTube channels directly into our news portal. With this integration, users can now access video content alongside articles, enriching their news consumption experience.",
-            "features": {
-                "feature1": "Enhance user engagement with multimedia content.",
-                "feature2": "Strengthen online presence with shared multimedia content.",
-                "feature3": "Expand content variety with embedded videos."
-            }
-        },
-        "feature6": {
-            "heading": "# Feature 6",
-            "subHeading": "Exit Polls and Public Quizzes",
-            "desc": "Featuring real-time exit polls providing insights into voter sentiment and predictions for the outcome.",
-            "features": {
-                "feature1": "Stay informed with our comprehensive exit polls coverage.",
-                "feature2": "Explore the latest election updates.",
-                "feature3": "Data-driven analysis and interactive quizzes."
-            }
-        },
-        "feature7": {
-            "heading": "# Feature 7",
-            "subHeading": "Public Ad Showcase",
-            "desc": "This feature Give your audience a platform to showcase their products, services, or events to a wider audience while generating revenue for your news portal.",
-            "features": {
-                "feature1": "Diversify content.",
-                "feature2": "Revenue generation.",
-                "feature3": "Engage your audience."
-            }
-        },
-        "feature8": {
-            "heading": "# Feature 8",
-            "subHeading": "Enhanced In-App Features: Live Stock, Sports.",
-            "desc": "Stay updated on live stock updates, sports news, and your daily horoscope Download your ID card directly through the app.",
-            "features": {
-                "feature1": "Live Stock,Sports, Horoscope.",
-                "feature2": "Reporters Detail.",
-                "feature3": "Apply ID Card/Download ID Card."
-            }
-        },
-        "viewHeading": "Launch your own news portal website",
-        "viewDesc": "Dynamic and versatile solution designed to empower news agencies. With its robust features and user-friendly interface, it provides an efficient platform for delivering captivating news experiences to audiences worldwide.",
-        "vewFeature": "Try out the demo website available on demo links!",
-        "btn1": "Demo Website",
-        "btn2": "Demo Admin Pannel"
-    },
-    "app": {
-        "feature1": {
-            "heading": "# Feature 1",
-            "subHeading": "Categories Wise News Sections",
-            "desc": "Users can easily navigate through different categories of news, including politics, entertainment, technology, sports, and more.",
-            "features": {
-                "feature1": "Special Reports.",
-                "feature2": "Editor's Picks .",
-                "feature3": "Option to create unlimited categories & sub-categories."
-            }
-        },
-        "feature2": {
-            "heading": "#Feature 2",
-            "subHeading": "Listen to News Articles on the Go!",
-            "desc": "Text-to-Speech feature. With just a click of a button, user can listen to news articles instead of reading them.",
-            "features": {
-                "feature1": "The system converts the text into clear, natural-sounding speech.",
-                "feature2": "Enhance your news reading.",
-                "feature3": "Text-to-Speech (TTS) button alongside articles."
-            }
-        },
-        "feature3": {
-            "heading": "# Feature 3",
-            "subHeading": "Personalised experience with the Content Filtering.",
-            "desc": "Users can now tailor their news feed to their preferences by filtering content based on categories such as politics, technology, entertainment, and more. With this feature, staying updated on the latest news has never been easier or more customisable.",
-            "features": {
-                "feature1": "Access relevant news and stay up-to-date with current events.",
-                "feature2": "Selecting specific categories of interest.",
-                "feature3": "More convenient and personalised."
-            }
-        },
-        "feature4": {
-            "heading": "# Feature 4",
-            "subHeading": "News in Shorts: Quick Summaries for Busy Readers",
-            "desc": "This feature designed for readers who are short on time but want to stay informed. Each summary contains only the headline and key facts of the news story.",
-            "features": {
-                "feature1": "Focus on Facts.",
-                "feature2": "Headline Focus.",
-                "feature3": "Stay Informed"
-            }
-        },
-        "feature5": {
-            "heading": "# Feature 5",
-            "subHeading": "YouTube Channel Live Feature in News Portal",
-            "desc": "This feature allows for the effortless embedding of YouTube channels directly into our news portal. With this integration, users can now access video content alongside articles, enriching their news consumption experience.",
-            "features": {
-                "feature1": "Enhance user engagement with multimedia content.",
-                "feature2": "Strengthen online presence with shared multimedia content.",
-                "feature3": "Expand content variety with embedded videos."
-            }
-        },
-        "feature6": {
-            "heading": "# Feature 6",
-            "subHeading": "Exit Polls and Public Quizzes",
-            "desc": "Featuring real-time exit polls providing insights into voter sentiment and predictions for the outcome.",
-            "features": {
-                "feature1": "Stay informed with our comprehensive exit polls coverage.",
-                "feature2": "Explore the latest election updates.",
-                "feature3": "Data-driven analysis and interactive quizzes."
-            }
-        },
-        "feature7": {
-            "heading": "# Feature 7",
-            "subHeading": "Public Ad Showcase",
-            "desc": "This feature Give your audience a platform to showcase their products, services, or events to a wider audience while generating revenue for your news portal.",
-            "features": {
-                "feature1": "Diversify content.",
-                "feature2": "Revenue generation.",
-                "feature3": "Engage your audience."
-            }
-        },
-        "feature8": {
-            "heading": "# Feature 8",
-            "subHeading": "Enhanced In-App Features: Live Stock, Sports.",
-            "desc": "Stay updated on live stock updates, sports news, and your daily horoscope Download your ID card directly through the app.",
-            "features": {
-                "feature1": "Live Stock,Sports, Horoscope.",
-                "feature2": "Reporters Detail.",
-                "feature3": "Apply ID Card/Download ID Card."
-            }
-        },
-        "viewHeading": "Launch your own news portal mobile app",
-        "viewDesc": "Take your news agency online by creating a no-code news portal app (Android) in 48 hours at affordable pricing",
-        "viewFeature": "Try out the demo app available on store"
-    },
-    "contact": {
-        "topHeading": "Need help in getting started with MyPatrakar?",
-        "topHeadingDesc": "Schedule a demo call or request a callback",
-        "exploreBtn": "Explore resources",
-        "visionHeading": "Vision",
-        "visionDesc": "To empower small and independent journalists with a digital-first platform that provides them with their own news app, website, and publishing tools—ensuring their voices reach a wider audience in the fastest and most impactful way.",
-        "missionHeading": "Mission",
-        "missionDesc": "We aim to revolutionize local journalism by offering an easy-to-use SaaS platform that enables small journalists to launch their own news app, website, and digital newsroom within 48 hours. By providing powerful tools, monetization options, and audience engagement features, we help journalists establish their brand, grow their reach, and deliver trustworthy news to the world.",
-        "contactUs": "Contact us"
-    },
-    "signIn": {
-        "signInDesc": "Helping news agencies launch their own news portal app & website",
-        "featureHeading1": "Trusted by hundreds of news agencies",
-        "featureDesc1": "My Partaker is trusted by hundreds of businesses and startups",
-        "featureHeading2": "Trusted by hundreds of news agencies",
-        "featureDesc2": "My Partaker is trusted by hundreds of businesses and startups",
-        "featureHeading3": "Trusted by hundreds of news agencies",
-        "featureDesc3": "My Partaker is trusted by hundreds of businesses and startups",
-        "featureHeading4": "Launch your own app & website within a week",
-        "featureDesc4": "You can launch your app & website within a week and start news portal"
+  "menu": {
+    "home": "Home",
+    "schedule_demo": "Schedule Demo",
+    "contact": "Contact",
+    "mypatrakar_ai": "Try MyPatrakar AI",
+    "price": "Pricing",
+    "resources": "Resources",
+    "blog": "Blog",
+    "signupForFree": "Sign Up For Free",
+    "signin": "Sign In",
+    "product": {
+      "product": "Products",
+      "website": "Website",
+      "app": "App-Mypatrakar v1"
     }
+  },
+  "hero": "Only-Stop Solution for complete News Portal Development",
+  "heroDesc": "Create an online presence of your news agency with a quick and easy news portal setup within 48 hours at affordable pricing.",
+  "heroButtons": {
+    "android": "Demo Android App",
+    "ios": "Demo iOS App",
+    "website": "Demo Website",
+    "admin": "Demo Admin Pannel"
+  },
+  "heroButtonsFree": "Try It Free Today!",
+  "reportersSec": "More than 150+ Reporters use My Patrakar",
+  "instructions": {
+    "mainHeading": "What is the need for news portal development?",
+    "mainHeadingDesc": "Create your own news portal to reach a global audience, build your brand, and create a valuable platform for content and ads. Harness its potential for content distribution, advertising, and establishing your brand among the leading names in news.",
+    "mainSubheading": "Fully functional Website & App",
+    "mainSubheadingDesc": "has state-of-the-art knowledge and fruitful experience in developing and launching alluring and eye-catching news portals.",
+    "instructionHeadings": {
+      "operate": "Easy to Operate",
+      "operateDesc": "Even without expertise in website and app development, you can still contribute to our developed news portals without needing coding skills.",
+      "pricing": "Affordable Pricing",
+      "pricingDesc": "We guarantee a fully professional news portal developed within your budget, prioritizing your needs and incorporating top-notch features.",
+      "support": "24x7 Hour Call Support",
+      "supportDesc": "Feel free to reach out to us between 10am and 8pm from Monday to Saturday with any queries, issues, or assistance needs. We're here to help and will be glad to assist you."
+    }
+  },
+  "appOrWebViewOnHome": {
+    "heading": "Build your News App & Website with MyPatrakar"
+  },
+  "functionality": {
+    "mainHeading": "Why choose My Patrakar for your News Portal Development",
+    "button": "Download Brochure",
+    "functions": {
+      "Vote": "Empower People’s Voice",
+      "voteDesc": "Create Exit Polls and Social Voting on Current Issues with your News Portal",
+      "reporter": "Enhanced Reporting",
+      "reporterDesc": "Separate Reporter Panel in the Admin Panel for Streamlined News Publishing      – Empower Your Editorial Team with Efficiency!",
+      "audience": "Engage Your Audience",
+      "audienceDesc": "Integrate Your YouTube Channel with App and Website on Your News Portal"
+    }
+  },
+  "features": {
+    "mainHeading": "What features MyPatrakar will provide in your News Portal Development?"
+  },
+  "pricing": "Simple and Economical pricing so every News channel could afford",
+  "india": "India",
+  "other": "Outside of India",
+  "cardTaxText": "All prices are exclusive of applicable taxes",
+  "packageFeatureText": "Everything in plan",
+  "purchaseBtn": "Purchase Now",
+  "enterPriseRepaiText": "AMC is applicable from 2nd year: ₹7,500.00 AMCs are subject to change.",
+  "basicDesc": "Best for new businesses and startups or entrepreneurs",
+  "premiumDesc": "Best for small-medium businesses and multivendor platforms",
+  "enterpriseDesc": "Ideal for startups, growing businesses, and retail expansion success.",
+  "footer": {
+    "top": {
+      "mainHeading": "Looking for an excellent News Portal Design?",
+      "mainHeadingDesc": "Give us a call or drop a message anytime, we answer inquiries within 24 hours on business days.",
+      "getInTouch": "Get In Touch",
+      "address": "Building No./Flat No.: 41-A Road/Street: KRISHNA VIHAR Nearby Landmark: NEAR TAKROHI Locality/Sub Locality: Indira Nagar City/Town/Village: Lucknow District: Lucknow State: Uttar Pradesh and Services PIN Code: 226016",
+      "form": {
+        "heading": "Get Started",
+        "subheading": "",
+        "phone": "Phone Number",
+        "message": "Message",
+        "button1": "Request Call",
+        "button2": "Request Call Success",
+        "phonePlaceholder": "Enter your phone number",
+        "messagePlaceholder": "Enter your message"
+      },
+      "modal": {
+        "title": "Success",
+        "description": "Your request submit successfully",
+        "button": "Ok"
+      }
+    },
+    "bottom": {
+      "heading1": "Useful Links",
+      "termsAndConditions": "Terms & Condition",
+      "privacyPolicy": "Privacy Policy",
+      "navigation": "Navigation",
+      "heading2": "Get Started Now",
+      "headingDesc": "Register your news channel in just 2 minutes.",
+      "copyRight": "Copyright Hindtech It Solutions. All Rights Reserved"
+    }
+  },
+  "website": {
+    "feature1": {
+      "heading": "# Feature 1",
+      "subHeading": "Categories wise News Sections",
+      "desc": "User can easily navigate through different categories of news, including politics, entertainment, technology, sports, and more.",
+      "features": {
+        "feature1": "Special Reports.",
+        "feature2": "Editor's Picks .",
+        "feature3": "Option to create unlimited categories & sub-categories."
+      }
+    },
+    "feature2": {
+      "heading": "#Feature 2",
+      "subHeading": "Listen to News Articles on the Go!",
+      "desc": "Text-to-Speech feature. With just a click of a button, user can listen to news articles instead of reading them.",
+      "features": {
+        "feature1": "The system converts the text into clear, natural-sounding speech.",
+        "feature2": "Enhance your news reading.",
+        "feature3": "Text-to-Speech (TTS) button alongside articles."
+      }
+    },
+    "feature3": {
+      "heading": "# Feature 3",
+      "subHeading": "Personalised experience with the Content Filtering.",
+      "desc": "Users can now tailor their news feed to their preferences by filtering content based on categories such as politics, technology, entertainment, and more. With this feature, staying updated on the latest news has never been easier or more customisable.",
+      "features": {
+        "feature1": "Access relevant news and stay up-to-date with current events.",
+        "feature2": "Selecting specific categories of interest.",
+        "feature3": "More convenient and personalised."
+      }
+    },
+    "feature4": {
+      "heading": "# Feature 4",
+      "subHeading": "Social Media Integration",
+      "desc": "Seamlessly integrate platforms like Facebook, Twitter, Instagram, and more to access personalised news feeds, share articles with your users, and engage with the community",
+      "features": {
+        "feature1": "Enhance your social media experience by integrating it with Your News.",
+        "feature2": "Seamlessly integrate all your social media accounts into Your News Portal.",
+        "feature3": "Access and share news across platforms seamlessly."
+      }
+    },
+    "feature5": {
+      "heading": "# Feature 5",
+      "subHeading": "YouTube Channel Live Feature in News Portal",
+      "desc": "This feature allows for the effortless embedding of YouTube channels directly into our news portal. With this integration, users can now access video content alongside articles, enriching their news consumption experience.",
+      "features": {
+        "feature1": "Enhance user engagement with multimedia content.",
+        "feature2": "Strengthen online presence with shared multimedia content.",
+        "feature3": "Expand content variety with embedded videos."
+      }
+    },
+    "feature6": {
+      "heading": "# Feature 6",
+      "subHeading": "Exit Polls and Public Quizzes",
+      "desc": "Featuring real-time exit polls providing insights into voter sentiment and predictions for the outcome.",
+      "features": {
+        "feature1": "Stay informed with our comprehensive exit polls coverage.",
+        "feature2": "Explore the latest election updates.",
+        "feature3": "Data-driven analysis and interactive quizzes."
+      }
+    },
+    "feature7": {
+      "heading": "# Feature 7",
+      "subHeading": "Public Ad Showcase",
+      "desc": "This feature Give your audience a platform to showcase their products, services, or events to a wider audience while generating revenue for your news portal.",
+      "features": {
+        "feature1": "Diversify content.",
+        "feature2": "Revenue generation.",
+        "feature3": "Engage your audience."
+      }
+    },
+    "feature8": {
+      "heading": "# Feature 8",
+      "subHeading": "Enhanced In-App Features: Live Stock, Sports.",
+      "desc": "Stay updated on live stock updates, sports news, and your daily horoscope Download your ID card directly through the app.",
+      "features": {
+        "feature1": "Live Stock,Sports, Horoscope.",
+        "feature2": "Reporters Detail.",
+        "feature3": "Apply ID Card/Download ID Card."
+      }
+    },
+    "viewHeading": "Launch your own news portal website",
+    "viewDesc": "Dynamic and versatile solution designed to empower news agencies. With its robust features and user-friendly interface, it provides an efficient platform for delivering captivating news experiences to audiences worldwide.",
+    "vewFeature": "Try out the demo website available on demo links!",
+    "btn1": "Demo Website",
+    "btn2": "Demo Admin Pannel"
+  },
+  "app": {
+    "feature1": {
+      "heading": "# Feature 1",
+      "subHeading": "Categories Wise News Sections",
+      "desc": "Users can easily navigate through different categories of news, including politics, entertainment, technology, sports, and more.",
+      "features": {
+        "feature1": "Special Reports.",
+        "feature2": "Editor's Picks .",
+        "feature3": "Option to create unlimited categories & sub-categories."
+      }
+    },
+    "feature2": {
+      "heading": "#Feature 2",
+      "subHeading": "Listen to News Articles on the Go!",
+      "desc": "Text-to-Speech feature. With just a click of a button, user can listen to news articles instead of reading them.",
+      "features": {
+        "feature1": "The system converts the text into clear, natural-sounding speech.",
+        "feature2": "Enhance your news reading.",
+        "feature3": "Text-to-Speech (TTS) button alongside articles."
+      }
+    },
+    "feature3": {
+      "heading": "# Feature 3",
+      "subHeading": "Personalised experience with the Content Filtering.",
+      "desc": "Users can now tailor their news feed to their preferences by filtering content based on categories such as politics, technology, entertainment, and more. With this feature, staying updated on the latest news has never been easier or more customisable.",
+      "features": {
+        "feature1": "Access relevant news and stay up-to-date with current events.",
+        "feature2": "Selecting specific categories of interest.",
+        "feature3": "More convenient and personalised."
+      }
+    },
+    "feature4": {
+      "heading": "# Feature 4",
+      "subHeading": "News in Shorts: Quick Summaries for Busy Readers",
+      "desc": "This feature designed for readers who are short on time but want to stay informed. Each summary contains only the headline and key facts of the news story.",
+      "features": {
+        "feature1": "Focus on Facts.",
+        "feature2": "Headline Focus.",
+        "feature3": "Stay Informed"
+      }
+    },
+    "feature5": {
+      "heading": "# Feature 5",
+      "subHeading": "YouTube Channel Live Feature in News Portal",
+      "desc": "This feature allows for the effortless embedding of YouTube channels directly into our news portal. With this integration, users can now access video content alongside articles, enriching their news consumption experience.",
+      "features": {
+        "feature1": "Enhance user engagement with multimedia content.",
+        "feature2": "Strengthen online presence with shared multimedia content.",
+        "feature3": "Expand content variety with embedded videos."
+      }
+    },
+    "feature6": {
+      "heading": "# Feature 6",
+      "subHeading": "Exit Polls and Public Quizzes",
+      "desc": "Featuring real-time exit polls providing insights into voter sentiment and predictions for the outcome.",
+      "features": {
+        "feature1": "Stay informed with our comprehensive exit polls coverage.",
+        "feature2": "Explore the latest election updates.",
+        "feature3": "Data-driven analysis and interactive quizzes."
+      }
+    },
+    "feature7": {
+      "heading": "# Feature 7",
+      "subHeading": "Public Ad Showcase",
+      "desc": "This feature Give your audience a platform to showcase their products, services, or events to a wider audience while generating revenue for your news portal.",
+      "features": {
+        "feature1": "Diversify content.",
+        "feature2": "Revenue generation.",
+        "feature3": "Engage your audience."
+      }
+    },
+    "feature8": {
+      "heading": "# Feature 8",
+      "subHeading": "Enhanced In-App Features: Live Stock, Sports.",
+      "desc": "Stay updated on live stock updates, sports news, and your daily horoscope Download your ID card directly through the app.",
+      "features": {
+        "feature1": "Live Stock,Sports, Horoscope.",
+        "feature2": "Reporters Detail.",
+        "feature3": "Apply ID Card/Download ID Card."
+      }
+    },
+    "viewHeading": "Launch your own news portal mobile app",
+    "viewDesc": "Take your news agency online by creating a no-code news portal app (Android) in 48 hours at affordable pricing",
+    "viewFeature": "Try out the demo app available on store"
+  },
+  "contact": {
+    "topHeading": "Need help in getting started with MyPatrakar?",
+    "topHeadingDesc": "Schedule a demo call or request a callback",
+    "exploreBtn": "Explore resources",
+    "visionHeading": "Vision",
+    "visionDesc": "To empower small and independent journalists with a digital-first platform that provides them with their own news app, website, and publishing tools—ensuring their voices reach a wider audience in the fastest and most impactful way.",
+    "missionHeading": "Mission",
+    "missionDesc": "We aim to revolutionize local journalism by offering an easy-to-use SaaS platform that enables small journalists to launch their own news app, website, and digital newsroom within 48 hours. By providing powerful tools, monetization options, and audience engagement features, we help journalists establish their brand, grow their reach, and deliver trustworthy news to the world.",
+    "contactUs": "Contact us"
+  },
+  "signIn": {
+    "signInDesc": "Helping news agencies launch their own news portal app & website",
+    "featureHeading1": "Trusted by hundreds of news agencies",
+    "featureDesc1": "My Partaker is trusted by hundreds of businesses and startups",
+    "featureHeading2": "Trusted by hundreds of news agencies",
+    "featureDesc2": "My Partaker is trusted by hundreds of businesses and startups",
+    "featureHeading3": "Trusted by hundreds of news agencies",
+    "featureDesc3": "My Partaker is trusted by hundreds of businesses and startups",
+    "featureHeading4": "Launch your own app & website within a week",
+    "featureDesc4": "You can launch your app & website within a week and start news portal"
+  },
+  "appPreview": {
+    "dailyNewsLive": "Daily News Live",
+    "topStories": "Top Stories",
+    "explore": "Explore",
+    "shorts": "Shorts",
+    "youtube": "Youtube",
+    "polls": "Polls",
+    "topNews": "Top News",
+    "trending": "Trending",
+    "politics": "Politics",
+    "sports": "Sports"
+  },
+  "webPreview": {
+    "header": {
+      "advertise": "Advertise with us",
+      "navigation": {
+        "desh": "Country",
+        "news": "News",
+        "uttar_pradesh": "Uttar Pradesh",
+        "madhya_pradesh": "Madhya Pradesh",
+        "entertainment": "Entertainment",
+        "misc": "Miscellaneous"
+      }
+    },
+    "footer": {
+      "navigation": {
+        "home": "Home",
+        "about": "About Us",
+        "terms": "Terms & Condition",
+        "privacy": "Privacy & Policy",
+        "contact": "Contact Us"
+      },
+      "exclusive": "#BS_EXCLUSIVE",
+      "copyright": "My Patrakar. All rights reserved.",
+      "powered": "Powered & Developed by MyPatrakar"
+    },
+    "mainContent": {
+      "advertisement": "ADVERTISEMENT",
+      "loading": "Loading..."
+    },
+    "loginCard": {
+      "login": "Login",
+      "signup": "Sign Up",
+      "welcome": "Welcome Back",
+      "desc": "Sign in to continue to your account"
+    }
+  }
 }

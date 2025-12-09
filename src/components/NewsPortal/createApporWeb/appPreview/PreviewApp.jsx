@@ -207,17 +207,226 @@
 // export default PreviewApp;
 
 
+// import React, { useContext, useState } from "react";
+// import { Home, Search, Video, BarChart2, Megaphone } from "lucide-react";
+// import { PreViewContext } from "../../../../context/PreViewContext";
+// import { useTranslation } from "react-i18next";
+
+
+// const navItems = [
+//   { name: "Top Stories", icon: Home },
+//   { name: "Explore", icon: Search },
+//   { name: "Shorts", icon: Video },
+//   { name: "Youtube", icon: BarChart2 },
+//   { name: "Polls", icon: Megaphone },
+// ];
+
+// const PreviewApp = ({
+//   backgroundColor = "#f3f4f6",
+//   headerColor = "#2563eb", 
+//   textColor = "#ffffff",
+//   activeColor = "#2563eb",
+//   inactiveColor = "#9ca3af",
+//   logo,
+//   font,
+// }) => {
+//   const [active, setActive] = useState("Top Stories");
+//   const { appPreview } = useContext(PreViewContext);
+//   const { t } = useTranslation();
+//   // console.log(appPreview)
+//   const isHexColor = (color) => /^#([0-9A-F]{3}){1,2}$/i.test(color);
+
+//   return (
+//     <div className="flex items-center justify-center h-auto sm:min-h-screen ">
+//       {/* Simple Phone Frame */}
+//       <div 
+//         className="w-[330px] h-[630px] rounded-3xl shadow-xl overflow-hidden flex flex-col border-8 border-gray-800"
+//         style={{
+//           backgroundColor: isHexColor(backgroundColor) ? backgroundColor : "",
+//           fontFamily: font
+//         }}
+//       >
+//         {/* Header */}
+//         <div
+//           className="flex items-center px-4 py-4"
+//           style={{
+//             backgroundColor: isHexColor(headerColor) ? headerColor : "",
+//           }}
+//         >
+//           {/* <div className="flex-1 flex items-center gap-3">
+//             <div className="">
+//               <div className="w-14 h-14 rounded-full  flex items-center justify-center text-xs font-bold" 
+//                    style={{ color: isHexColor(headerColor) ? headerColor : "" }}>
+//               <img src={appPreview.logo} alt="" className="w-full h-full object-contain rounded-full"/>
+//               </div>
+//             </div>
+//             <div
+//               className="text-xl font-bold"
+//               style={{ color: isHexColor(textColor) ? textColor : "" }}
+//             >
+//               Daily News Live
+//             </div>
+//           </div> */}
+
+
+// <div className="flex-1 flex items-center gap-3">
+
+//   <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-gray-200">
+//     {appPreview.logo ? (
+//       // If logo uploaded → show image
+//       <img
+//         src={appPreview.logo}
+//         alt="Logo"
+//         className="w-full h-full object-cover"
+//       />
+//     ) : (
+//       // Default → show text
+//       <span className="text-xs font-bold text-gray-700">LOGO</span>
+//     )}
+//   </div>
+
+//   <div
+//     className="text-xl font-bold"
+//     style={{ color: isHexColor(textColor) ? textColor : "" }}
+//   >
+//    {t("appPreview.dailyNewsLive")}
+//   </div>
+// </div>
+
+//         </div>
+
+//         {/* Top Tabs */}
+//         <div className="flex px-2 py-2 text-sm font-medium overflow-x-auto bg-white border- hide-scrollbar">
+//           {["Top News", "Shorts", "Trending", "Politics", "Sports"].map((tab) => (
+//             <button
+//               key={tab}
+//               onClick={() => setActive(tab)}
+//               className={`relative px-2 py-2 transition-all text-xs whitespace-nowrap mr- ${
+//                 active === tab ? "font-semibold" : "text-gray-600"
+//               }`}
+//               style={{
+//                 color: active === tab ? headerColor : ""
+//               }}
+//             >
+//               {t(`appPreview.${tab}`)}
+//               {active === tab && (
+//                 <span 
+//                   className="absolute left-0 top-[23px] w-full h-[3px] rounded-full"
+//                   style={{ backgroundColor: headerColor }}
+//                 />
+//               )}
+//             </button>
+//           ))}
+//         </div>
+
+//            {/* Content */}
+//        {/* <div className="flex-1 overflow-y-scroll hide-scrollbar px-4 py-3 space-y-4">
+//         <div className="w-full h-16 rounded-md bg-gray-200 animate-pulse" />
+//         <div className="w-full h-28 rounded-md bg-gray-200 animate-pulse" />
+//         <div className="w-3/5 h-4 rounded bg-gray-200 animate-pulse" />
+//         <div className="space-y-1">
+//           {Array.from({ length: 5 }).map((_, i) => (
+//             <div
+//               key={i}
+//               className="w-full h-3 rounded bg-gray-200 animate-pulse"
+//             />
+//           ))}
+//         </div>
+//         <div className="flex gap-4">
+//           <div className="w-16 h-16 rounded-md bg-gray-200 animate-pulse" />
+//           <div className="flex-1 space-y-1">
+//             <div className="w-4/5 h-3 rounded bg-gray-200 animate-pulse" />
+//             <div className="w-1/2 h-3 rounded bg-gray-200 animate-pulse" />
+//           </div>
+//         </div>
+//         <div className="flex gap-4">
+//           <div className="w-16 h-16 rounded-md bg-gray-200 animate-pulse" />
+//           <div className="flex-1 space-y-2">
+//             <div className="w-4/5 h-3 rounded bg-gray-200 animate-pulse" />
+//             <div className="w-1/2 h-3 rounded bg-gray-200 animate-pulse" />
+//           </div>
+//         </div>
+//       </div>  */}
+//       {/* 📰 News Card Skeleton */}
+//     <div className="overflow-y-scroll gap-2">
+//         {[1, 2,3,4].map((_,i) => {
+//        return (
+//          <div key={i} className="bg-white w-[295px] rounded-2xl shadow-md mx-auto   border my-2 border-gray-100 overflow-hidden p-2 space-y-3 animate-pulse">
+//           <div className="w-[270px] h-[150px] bg-gray-200 rounded-xl" />
+//           <div className="space-y-2">
+//             <div className="w-4/5 h-1.5 bg-gray-200 rounded-md" />
+//             <div className="w-2/3 h-1.5 bg-gray-200 rounded-md" />
+//           </div>
+//         </div>
+//        )
+//       })}
+//     </div>
+
+//         {/* Bottom Navigation */}
+//         <div className="border-t bg-white py-3 flex justify-between items-center px-2">
+//           {navItems.map((it) => {
+//             const Icon = it.icon;
+//             const isActive = active === it.name;
+//             return (
+//               <div
+//                 key={it.name}
+//                 className="flex flex-col items-center justify-center cursor-pointer select-none py-1 px-2 rounded-lg"
+//                 onClick={() => setActive(it.name)}
+//               >
+//                 <Icon
+//                   size={20}
+//                   style={{
+//                     color: isActive
+//                       ? isHexColor(headerColor)
+//                         ? headerColor
+//                         : ""
+//                       : isHexColor(inactiveColor)
+//                       ? inactiveColor
+//                       : "",
+//                   }}
+//                 />
+//                 <div
+//                   style={{
+//                     color: isActive
+//                       ? isHexColor(headerColor)
+//                         ? headerColor
+//                         : ""
+//                       : isHexColor(inactiveColor)
+//                       ? inactiveColor
+//                       : "",
+//                   }}
+//                   className="text-xs mt-1 font-medium"
+//                 >
+//                   {it.name}
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default PreviewApp;
+
+
+
+
 import React, { useContext, useState } from "react";
 import { Home, Search, Video, BarChart2, Megaphone } from "lucide-react";
 import { PreViewContext } from "../../../../context/PreViewContext";
+import { useTranslation } from "react-i18next";
 
 const navItems = [
-  { name: "Top Stories", icon: Home },
-  { name: "Explore", icon: Search },
-  { name: "Shorts", icon: Video },
-  { name: "Youtube", icon: BarChart2 },
-  { name: "Polls", icon: Megaphone },
+  { name: "topStories", icon: Home },
+  { name: "explore", icon: Search },
+  { name: "shorts", icon: Video },
+  { name: "youtube", icon: BarChart2 },
+  { name: "polls", icon: Megaphone },
 ];
+
+const topTabs = ["topNews", "shorts", "trending", "politics", "sports"];
 
 const PreviewApp = ({
   backgroundColor = "#f3f4f6",
@@ -228,14 +437,14 @@ const PreviewApp = ({
   logo,
   font,
 }) => {
-  const [active, setActive] = useState("Top Stories");
+  const [active, setActive] = useState("topNews");
   const { appPreview } = useContext(PreViewContext);
-  
+  const { t } = useTranslation();
+
   const isHexColor = (color) => /^#([0-9A-F]{3}){1,2}$/i.test(color);
 
   return (
-    <div className="flex items-center justify-center h-auto sm:min-h-screen ">
-      {/* Simple Phone Frame */}
+    <div className="flex items-center justify-center h-auto sm:min-h-screen">
       <div 
         className="w-[330px] h-[630px] rounded-3xl shadow-xl overflow-hidden flex flex-col border-8 border-gray-800"
         style={{
@@ -250,62 +459,39 @@ const PreviewApp = ({
             backgroundColor: isHexColor(headerColor) ? headerColor : "",
           }}
         >
-          {/* <div className="flex-1 flex items-center gap-3">
-            <div className="">
-              <div className="w-14 h-14 rounded-full  flex items-center justify-center text-xs font-bold" 
-                   style={{ color: isHexColor(headerColor) ? headerColor : "" }}>
-              <img src={appPreview.logo} alt="" className="w-full h-full object-contain rounded-full"/>
-              </div>
+          <div className="flex-1 flex items-center gap-3">
+            <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-gray-200">
+              {appPreview.logo ? (
+                <img src={appPreview.logo} className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-xs font-bold text-gray-700">LOGO</span>
+              )}
             </div>
+
             <div
               className="text-xl font-bold"
               style={{ color: isHexColor(textColor) ? textColor : "" }}
             >
-              Daily News Live
+              {t("appPreview.dailyNewsLive")}
             </div>
-          </div> */}
-
-
-<div className="flex-1 flex items-center gap-3">
-
-  <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-gray-200">
-    {appPreview.logo ? (
-      // If logo uploaded → show image
-      <img
-        src={appPreview.logo}
-        alt="Logo"
-        className="w-full h-full object-cover"
-      />
-    ) : (
-      // Default → show text
-      <span className="text-xs font-bold text-gray-700">LOGO</span>
-    )}
-  </div>
-
-  <div
-    className="text-xl font-bold"
-    style={{ color: isHexColor(textColor) ? textColor : "" }}
-  >
-    Daily News Live
-  </div>
-</div>
-
+          </div>
         </div>
 
         {/* Top Tabs */}
-        <div className="flex px-2 py-2 text-sm font-medium overflow-x-auto bg-white border- hide-scrollbar">
-          {["Top News", "Shorts", "Trending", "Politics", "Sports"].map((tab) => (
+        <div className="flex px-2 py-2 text-sm font-medium overflow-x-auto bg-white border hide-scrollbar">
+          {topTabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActive(tab)}
-              className={`relative px-2 py-2 transition-all text-xs whitespace-nowrap mr- ${
+              className={`relative px-3 py-2 transition-all text-xs whitespace-nowrap ${
                 active === tab ? "font-semibold" : "text-gray-600"
               }`}
               style={{
                 color: active === tab ? headerColor : ""
               }}
             >
-              {tab}
+              {t(`appPreview.${tab}`)}
+
               {active === tab && (
                 <span 
                   className="absolute left-0 top-[23px] w-full h-[3px] rounded-full"
@@ -316,48 +502,21 @@ const PreviewApp = ({
           ))}
         </div>
 
-           {/* Content */}
-       {/* <div className="flex-1 overflow-y-scroll hide-scrollbar px-4 py-3 space-y-4">
-        <div className="w-full h-16 rounded-md bg-gray-200 animate-pulse" />
-        <div className="w-full h-28 rounded-md bg-gray-200 animate-pulse" />
-        <div className="w-3/5 h-4 rounded bg-gray-200 animate-pulse" />
-        <div className="space-y-1">
-          {Array.from({ length: 5 }).map((_, i) => (
+        {/* Content skeleton */}
+        <div className="overflow-y-scroll gap-2">
+          {[1,2,3,4].map((i) => (
             <div
               key={i}
-              className="w-full h-3 rounded bg-gray-200 animate-pulse"
-            />
+              className="bg-white w-[295px] rounded-2xl shadow-md mx-auto border my-2 border-gray-100 overflow-hidden p-2 space-y-3 animate-pulse"
+            >
+              <div className="w-[270px] h-[150px] bg-gray-200 rounded-xl" />
+              <div className="space-y-2">
+                <div className="w-4/5 h-1.5 bg-gray-200 rounded-md" />
+                <div className="w-2/3 h-1.5 bg-gray-200 rounded-md" />
+              </div>
+            </div>
           ))}
         </div>
-        <div className="flex gap-4">
-          <div className="w-16 h-16 rounded-md bg-gray-200 animate-pulse" />
-          <div className="flex-1 space-y-1">
-            <div className="w-4/5 h-3 rounded bg-gray-200 animate-pulse" />
-            <div className="w-1/2 h-3 rounded bg-gray-200 animate-pulse" />
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <div className="w-16 h-16 rounded-md bg-gray-200 animate-pulse" />
-          <div className="flex-1 space-y-2">
-            <div className="w-4/5 h-3 rounded bg-gray-200 animate-pulse" />
-            <div className="w-1/2 h-3 rounded bg-gray-200 animate-pulse" />
-          </div>
-        </div>
-      </div>  */}
-      {/* 📰 News Card Skeleton */}
-    <div className="overflow-y-scroll gap-2">
-        {[1, 2,3,4].map((_,i) => {
-       return (
-         <div key={i} className="bg-white w-[295px] rounded-2xl shadow-md mx-auto   border my-2 border-gray-100 overflow-hidden p-2 space-y-3 animate-pulse">
-          <div className="w-[270px] h-[150px] bg-gray-200 rounded-xl" />
-          <div className="space-y-2">
-            <div className="w-4/5 h-1.5 bg-gray-200 rounded-md" />
-            <div className="w-2/3 h-1.5 bg-gray-200 rounded-md" />
-          </div>
-        </div>
-       )
-      })}
-    </div>
 
         {/* Bottom Navigation */}
         <div className="border-t bg-white py-3 flex justify-between items-center px-2">
@@ -367,34 +526,26 @@ const PreviewApp = ({
             return (
               <div
                 key={it.name}
-                className="flex flex-col items-center justify-center cursor-pointer select-none py-1 px-2 rounded-lg"
+                className="flex flex-col items-center justify-center cursor-pointer py-1 px-2 rounded-lg"
                 onClick={() => setActive(it.name)}
               >
                 <Icon
                   size={20}
                   style={{
                     color: isActive
-                      ? isHexColor(headerColor)
-                        ? headerColor
-                        : ""
-                      : isHexColor(inactiveColor)
-                      ? inactiveColor
-                      : "",
+                      ? headerColor
+                      : inactiveColor,
                   }}
                 />
                 <div
                   style={{
                     color: isActive
-                      ? isHexColor(headerColor)
-                        ? headerColor
-                        : ""
-                      : isHexColor(inactiveColor)
-                      ? inactiveColor
-                      : "",
+                      ? headerColor
+                      : inactiveColor,
                   }}
                   className="text-xs mt-1 font-medium"
                 >
-                  {it.name}
+                  {t(`appPreview.${it.name}`)}
                 </div>
               </div>
             );

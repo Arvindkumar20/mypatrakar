@@ -1,6 +1,6 @@
 import React from "react";
 
-import MyPatrakarLogo from "../../assets/LG1.svg";
+import MyPatrakarLogo from "../../assets/LG1.png";
 
 export default function Logo() {
   return (
