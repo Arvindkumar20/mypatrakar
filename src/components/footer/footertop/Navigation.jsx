@@ -92,11 +92,11 @@ export default function Navigation() {
      <div className="mt-4 flex flex-col items-start md:items-start gap-6">
   {/* AWS Block */}
   <div className="flex flex-col gap-2">
-    <p className="text-white font-bold">
+    <p className="text-white font-bold text-lg sm:text-base">
       Deployed on AWS
     </p>
 
-    <div className="bg-white w-48 h-14 sm:h-14 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+    <div className="bg-white w-60 sm:w-48 h-20 sm:h-14 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
       <img
         src={AWS}
         alt="AWS Logo"
@@ -107,11 +107,11 @@ export default function Navigation() {
 
   {/* OpenAI Block */}
   <div className="flex flex-col gap-2">
-    <p className="text-white font-bold">
+    <p className="text-white font-bold text-lg sm:text-base">
       Payment Powered By
     </p>
 
-    <div className="bg-white w-48 h-14 sm:h-14 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+    <div className="bg-white w-60 sm:w-48 h-20 sm:h-14 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
       <img
         src={razorpay}
         alt="OpenAI Logo"

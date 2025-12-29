@@ -16,7 +16,10 @@ export default function OtpVerificationDialog({
   open,
   setOpen,
   authToken,
+  setAuthToken, // ✅ ADD THIS
   countryCode,
+  sendOtpForSiup,
+  sendOtpForLogin,
   name,
   email,
   mobile,
@@ -30,8 +33,10 @@ export default function OtpVerificationDialog({
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [resendTimer, setResendTimer] = useState(30);
+  const [resendTimer, setResendTimer] = useState(60);
   const [activeInput, setActiveInput] = useState(0);
+  const [resendCount, setResendCount] = useState(0);
+  const MAX_RESEND = 3;
 
   const from =
     location.state?.from?.pathname === "/" ||
@@ -39,23 +44,43 @@ export default function OtpVerificationDialog({
       ? "/portal"
       : location.state?.from?.pathname || "/portal";
 
-  useEffect(() => {
-    if (open) {
-      inputRef.current?.focus();
-      startResendTimer();
-    } else {
-      setOtp("");
-      setError("");
-      setActiveInput(0);
-    }
-  }, [open]);
+  // useEffect(() => {
+  //   if (open) {
+  //     inputRef.current?.focus();
+  //     startResendTimer();
+  //   } else {
+  //     setOtp("");
+  //     setError("");
+  //     setActiveInput(0);
+  //   }
+  // }, [open]);
+
+  // const startResendTimer = useCallback(() => {
+  //   setResendTimer(60);
+  //   const timer = setInterval(() => {
+  //     setResendTimer((prev) => {
+  //       if (prev <= 1) {
+  //         clearInterval(timer);
+  //         return 0;
+  //       }
+  //       return prev - 1;
+  //     });
+  //   }, 1000);
+  // }, []);
+  const timerRef = useRef(null);
 
   const startResendTimer = useCallback(() => {
-    setResendTimer(30);
-    const timer = setInterval(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    setResendTimer(60);
+
+    timerRef.current = setInterval(() => {
       setResendTimer((prev) => {
         if (prev <= 1) {
-          clearInterval(timer);
+          clearInterval(timerRef.current);
+          timerRef.current = null;
           return 0;
         }
         return prev - 1;
@@ -82,19 +107,20 @@ export default function OtpVerificationDialog({
     setOpen(false);
   };
   useEffect(() => {
-  if (open) {
-    setOtp("123456"); // ✅ Default OTP
-    setActiveInput(6); // ✅ Show filled boxes
-    setError("");
-    inputRef.current?.focus();
-    startResendTimer();
-  } else {
-    setOtp("");
-    setError("");
-    setActiveInput(0);
-  }
-}, [open]);
-
+    if (open) {
+      // setOtp("123456"); // ✅ Default OTP
+      setResendCount(0);
+      setActiveInput(6); // ✅ Show filled boxes
+      setError("");
+      inputRef.current?.focus();
+      startResendTimer();
+    } else {
+      setOtp("");
+      setError("");
+      setActiveInput(0);
+      setResendCount(0);
+    }
+  }, [open]);
 
   const validateOtp = () => {
     if (otp.length !== 6 || isNaN(otp)) {
@@ -104,10 +130,40 @@ export default function OtpVerificationDialog({
     return true;
   };
 
-  const handleResendOtp = () => {
-    // Implement actual resend logic if needed
-    startResendTimer();
-    setError("");
+  const handleResendOtp = async () => {
+    if (resendCount >= MAX_RESEND) {
+      setError("You have reached the maximum OTP resend limit.");
+      return;
+    }
+    try {
+      setLoading(true);
+      setError("");
+
+      if (location.pathname === "/login" && sendOtpForLogin) {
+        sendOtpForLogin();
+      }
+
+      if (location.pathname !== "/login" && sendOtpForSiup) {
+        await sendOtpForSiup();
+      }
+      setResendCount((prev) => prev + 1);
+      // ✅ If backend sends new auth token
+      // if (res?.data?.response) {
+      //   setAuthToken(res.data.response);
+      // }
+
+      // ✅ Reset OTP UI
+      setOtp("");
+      setActiveInput(0);
+      inputRef.current?.focus();
+
+      // ✅ Restart timer
+      startResendTimer();
+    } catch (err) {
+      setError("Failed to resend OTP. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleFormSubmit = async () => {
@@ -203,7 +259,7 @@ export default function OtpVerificationDialog({
             </span>
           </p>
         </motion.div>
-{/* <p>123456</p> */}
+        {/* <p>123456</p> */}
         {/* OTP Input Section */}
         <DialogContent className="px-6 pb-6">
           <div className="flex justify-center space-x-3 mb-8 relative">
@@ -255,7 +311,6 @@ export default function OtpVerificationDialog({
               onChange={handleOtpChange}
               onKeyDown={handleKeyDown}
               maxLength={6}
-           
               autoFocus
               className="absolute opacity-0 w-full h-0"
             />
@@ -287,7 +342,7 @@ export default function OtpVerificationDialog({
                   : "text-red-600 hover:text-red-700"
               } transition-colors`}
               onClick={handleResendOtp}
-              disabled={resendTimer > 0}
+              disabled={resendTimer > 0 || resendCount >= MAX_RESEND}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -305,6 +360,8 @@ export default function OtpVerificationDialog({
               </svg>
               {resendTimer > 0
                 ? `Resend code in ${resendTimer}s`
+                : resendCount >= MAX_RESEND
+                ? "Resend limit reached"
                 : "Resend verification code"}
             </button>
           </div>

@@ -81,7 +81,7 @@ const FooterColorPicker = ({
           </div>
         </div> */}
           {/* Font Selector */}
-          <div>
+          {/* <div>
             <label className="block text-xs text-gray-500 mb-1">Font</label>
             <div className="flex items-center gap-2">
               <select
@@ -103,7 +103,7 @@ const FooterColorPicker = ({
                 <option value="Nunito">Nunito</option>
               </select>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

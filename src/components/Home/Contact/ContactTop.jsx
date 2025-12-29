@@ -1,12 +1,13 @@
 import React from "react";
-import contactImage from '../../../assets/MPContactImage.png';
+import contactImage from "../../../assets/MPContactImage.png";
+import { FiPlay } from "react-icons/fi";
+import { FiBookOpen } from "react-icons/fi";
+
 // import { FcVideoCall } from "react-icons/fc";
-import { IoMdVideocam } from "react-icons/io";
 import { Link } from "react-router-dom";
-import DemoCallCard from "../ScheduleDemo/DemoCallCard";
 import { useTranslation } from "react-i18next";
 export default function ContactTop() {
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   return (
     <div>
       <div className="flex flex-col md:flex-row-reverse  items-center md:items-center md:justify-center mt-20 ">
@@ -15,38 +16,61 @@ export default function ContactTop() {
             src={contactImage}
             alt="MyPatrakar Contact"
             className="max-h-[500px] object-cover"
-            loading="lazy"
+            // loading="lazy"
           />
         </div>
         <div className="w-full lg:w-1/2 p-4 md:float-left float-none">
           <h1 className="text-4xl font-semibold text-black font-sans mb-4 leading-relaxed">
             {t("contact.topHeading")}
           </h1>
-          <p className="text-lg mb-8 mt-2">
-            {t("contact.topHeadingDesc")}
+          <p className="text-lg mb-8 mt-2">{t("contact.topHeadingDesc")}</p>
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+  {/* Schedule Demo */}
+  <button
+    className="
+      w-full sm:w-auto
+      flex items-center justify-center gap-3
+      bg-red-600 hover:bg-red-700
+      text-white
+      px-6 sm:px-8 py-4
+      rounded-2xl
+      shadow-lg
+      font-semibold
+      transition
+    "
+  >
+    <FiPlay className="w-6 h-6 stroke-[2.5]" />
+    <span className="whitespace-nowrap">Schedule Demo</span>
+  </button>
 
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button className=" md:w-auto bg-red-600 hover:bg-red-700 text-gray-200 py-1 px-6 rounded-lg shadow-xl flex items-center justify-center gap-2 font-medium">
-              <IoMdVideocam className="w-5 h-5" />{" "}
-              <span>
-                <DemoCallCard />
-              </span>
-            </button>
-            <Link to={"/resources-in-my-patrakar"}>
-              <button className="w-full md:w-auto    bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-6 rounded-lg shadow-xl">
-               {t("contact.exploreBtn")}...
-              </button>
-            </Link>
-          </div>
+  {/* Explore Resources */}
+  <Link to="/resources-in-my-patrakar" className="w-full sm:w-auto underline-none hover:no-underline">
+    <button
+      className="
+        w-full sm:w-auto
+        flex items-center justify-center gap-3
+        bg-white hover:bg-gray-100
+        text-gray-800
+        px-6 sm:px-8 py-4
+        rounded-2xl
+        shadow-md
+        border border-gray-200
+        font-semibold
+        transition
+      "
+    >
+      <FiBookOpen className="w-6 h-6 stroke-[2.2]" />
+      <span className="whitespace-nowrap">
+        {t("contact.exploreBtn")}
+      </span>
+    </button>
+  </Link>
+</div>
         </div>
       </div>
     </div>
   );
 }
-
-
-
 
 // import React from "react";
 // import contactImage from '../../../assets/MPContactImage.png';
@@ -57,13 +81,13 @@ export default function ContactTop() {
 
 // export default function ContactTop() {
 //   const { t } = useTranslation();
-  
+
 //   return (
 //     <div className="relative overflow-hidden -z-10">
 //       {/* Decorative elements */}
 //       {/* <div className="absolute -top-20 -right-20 w-72 h-72 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
 //       <div className="absolute -bottom-20 left-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div> */}
-      
+
 //       <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 lg:gap-16 py-12 px-4 sm:px-6 max-w-7xl mx-auto">
 //         {/* Image Section */}
 //         <div className="w-full md:w-1/2 flex justify-center mt-10">
@@ -77,7 +101,7 @@ export default function ContactTop() {
 //             />
 //           </div>
 //         </div>
-        
+
 //         {/* Content Section */}
 //         <div className="w-full md:w-1/2">
 //           <div className="max-w-xl">
@@ -86,11 +110,11 @@ export default function ContactTop() {
 //                 {t("contact.topHeading")}
 //               </span>
 //             </h1>
-            
+
 //             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
 //               {t("contact.topHeadingDesc")}
 //             </p>
-            
+
 //             <div className="flex flex-wrap gap-4">
 //               <div className="relative group">
 //                 <div className="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-red-700 rounded-lg blur opacity-75 group-hover:opacity-100 transition-all duration-300"></div>
@@ -99,7 +123,7 @@ export default function ContactTop() {
 //                   <DemoCallCard className="text-white font-medium" />
 //                 </button>
 //               </div>
-              
+
 //               <Link to={"/resources-in-my-patrakar"} className="group no-underline hover:no-underline">
 //                 <button className="w-full bg-white hover:bg-gray-50 text-gray-800 border-2 border-gray-200 hover:border-red-300 py-3 px-8 rounded-lg shadow-lg flex items-center justify-center gap-2 font-medium transform hover:-translate-y-1 transition-all duration-300">
 //                   {t("contact.exploreBtn")}...

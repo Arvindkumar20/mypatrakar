@@ -57,6 +57,7 @@
     "react-responsive": "^10.0.1",
     "react-router-dom": "^6.26.2",
     "react-select": "^5.10.2",
+    "react-snap": "^1.23.0",
     "react-timezone-select": "^3.2.8",
     "react-toastify": "^11.0.5",
     "rsuite": "^5.74.2",

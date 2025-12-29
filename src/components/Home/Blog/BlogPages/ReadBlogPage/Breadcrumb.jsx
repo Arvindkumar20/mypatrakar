@@ -35,13 +35,15 @@ export default function BreadcrumbComponent({ items = [] }) {
         {/* Home icon / first crumb (optional) */}
         <li className="flex items-center">
           <a
-            href={items[0]?.href || '#'}
+            href="/blog-page"
             className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800"
-            aria-current={items[0]?.current ? 'page' : undefined}
+            aria-current={items[0]?.current ? "page" : undefined}
           >
             {/* simple house SVG (inline for zero deps) */}
-            <FaHome/>
-            <span className="hidden sm:inline font-sans font-semibold text-gray-600">{items[0]?.label || 'Home'}</span>
+            <FaHome />
+            <span className="hidden sm:inline font-sans font-semibold text-gray-600">
+              {items[0]?.label || "Home"}
+            </span>
           </a>
         </li>
 
@@ -49,23 +51,27 @@ export default function BreadcrumbComponent({ items = [] }) {
         {items.slice(1).map((item, idx) => {
           const isLast = idx === items.slice(1).length - 1;
           return (
-            <li key={`${item.label}-${idx}`} className="flex  items-center font-sans font-semibold text-gray-600">
+            <li
+              key={`${item.label}-${idx}`}
+              className="flex  items-center font-sans font-semibold text-gray-600"
+            >
               {/* separator */}
               <span className="mx-2  " aria-hidden>
-                <IoIosArrowForward/>{/* you can replace with chevron or svg */}
+                <IoIosArrowForward />
+                {/* you can replace with chevron or svg */}
               </span>
 
               {item.current || isLast ? (
                 <span
                   className="max-w-xs sm:max-w-md font-sans truncate text-gray-900 font-bold"
-                  aria-current={item.current || isLast ? 'page' : undefined}
+                  aria-current={item.current || isLast ? "page" : undefined}
                   title={item.label}
                 >
                   {item.label}
                 </span>
               ) : (
                 <a
-                  href={item.href || '#'}
+                  href={item.href || "#"}
                   className="max-w-xs sm:max-w-md truncate text-gray-600 hover:text-gray-800"
                   title={item.label}
                 >

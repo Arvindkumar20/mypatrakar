@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { BlogCategoryId } from "../../../../api";
 import { BlogContext } from "../../../../context/BlogContext";
 import { FiFolder } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const CategoriesSection = () => {
   const [blog_categories, setCategories] = useState([]);
   const { setBlog, setCategory } = useContext(BlogContext);
   const [activeCategory, setActiveCategory] = useState(null);
-
+const navigate=useNavigate();
   const blogCategoryId = async () => {
     try {
       const res = await BlogCategoryId();
@@ -25,6 +26,7 @@ const CategoriesSection = () => {
     setCategory(categoryName);
     setActiveCategory(id);
     setBlog((pre) => ({ ...pre, blog_category_id: id }));
+    navigate("/blog-page")
   };
 
   return (

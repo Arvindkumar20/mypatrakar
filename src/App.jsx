@@ -7,8 +7,6 @@ import {
   Route,
   Routes,
   useLocation,
-  Navigate,
-  useParams,
 } from "react-router-dom";
 // import { useTranslation } from "react-i18next";
 import "./i18n.js";
@@ -75,6 +73,12 @@ import B from "./components/Home/Blog/B.jsx";
 import { PreviewProvider } from "./context/PreViewContext.jsx";
 import ShortGenerator from "./components/Home/shortsAI/pages/ShortGenerator.jsx";
 import PaymentReceiptScreen from "./components/NewsPortal/payment/PaymentReceiptScreen.jsx";
+import AnalyticsTracker from "./components/AnalyticsTracker.jsx";
+import useResponsiveFix from "./hooks/useResponsiveFix.js";
+import Invoice from "./components/NewsPortal/createPortal/Invoice.jsx";
+import PhoneFrame from "./components/pages/PhoneFrame.jsx";
+import AppDemoLanding from "./components/pages/AppdemoLanding.jsx";
+import WebDemoLanding from "./components/pages/WebDemoLanding.jsx";
 
 // import Table from "./components/NewsPortal/AdminDashbord/shared/Table.jsx";
 
@@ -115,6 +119,8 @@ function AppContent() {
     validity: "",
     package_name: "",
     region: "0",
+    fixedValidity: "",
+    domainOwned: false,
   });
   const [paymentData, setPaymentData] = useState({
     paymentMethod: "",
@@ -130,14 +136,26 @@ function AppContent() {
     zip: "",
   });
   // for blog
-  const [blog, setBlog] = useState({
-    blog_category: "",
-    blog_category_id: "",
-    blog_slug: "",
-    blog_content: "",
-    blog_image: "",
-    blog_tags: "",
-  });
+  // {
+  // blog_category: "",
+  // blog_category_id: "",
+  // blog_slug: "",
+  // blog_content: "",
+  // blog_image: "",
+  // blog_tags: "",
+  // }
+  const [blog, setBlog] = useState(
+    JSON.parse(localStorage.getItem("blog"))
+      ? JSON.parse(localStorage.getItem("blog"))
+      : {
+          blog_category: "",
+          blog_category_id: "",
+          blog_slug: "",
+          blog_content: "",
+          blog_image: "",
+          blog_tags: "",
+        }
+  );
   const [category_id, setCategoryId] = useState("");
   const [blog_category, setCategory] = useState();
   const [blogS, setBlogs] = useState([]);
@@ -203,6 +221,7 @@ function AppContent() {
                 }}
               >
                 <PreviewProvider>
+                  <AnalyticsTracker />
                   <Routes>
                     <Route path="/" element={<Home />} />
                     {/* <Route path="/*" element={<Home />} /> */}
@@ -215,6 +234,8 @@ function AppContent() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/signup" element={<SignUp />} />
+                    <Route path="/product/app-demo" element={<AppDemoLanding />} />
+                    <Route path="/product/web-demo" element={<WebDemoLanding />} />
                     <Route
                       path="/try-mypatrakar-ai"
                       element={<ShortGenerator />}
@@ -282,7 +303,8 @@ function AppContent() {
                       path="/portal/payment-reciept"
                       element={
                         <PrivateRoute>
-                          <PaymentReceiptScreen />
+                          {/* <PaymentReceiptScreen /> */}
+                          <Invoice />
                         </PrivateRoute>
                       }
                     />
@@ -351,6 +373,8 @@ function App() {
   const style = {
     fontFamily: "Times New Roman",
   };
+  const ready = useResponsiveFix();
+  if (!ready) return null;
 
   return (
     <Router>

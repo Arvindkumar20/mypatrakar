@@ -33,14 +33,16 @@ const BlogSection = () => {
   }, [blog, setBlog, category_id]);
 
   const handleBlogClick = (blog) => {
-    setBlog({
-      blog_category: blog.blog_category,
-      blog_category_id: blog.blog_category_id,
-      blog_slug: blog.blog_slug,
-      blog_content: blog.blog_content,
-      blog_image: blog.blog_image,
-      blog_tags: blog.blog_tags,
-    });
+    setBlog(blog);
+    localStorage.setItem("blog", JSON.stringify(blog));
+    // setBlog({
+    //   blog_category: blog.blog_category,
+    //   blog_category_id: blog.blog_category_id,
+    //   blog_slug: blog.blog_slug,
+    //   blog_content: blog.blog_content,
+    //   blog_image: blog.blog_image,
+    //   blog_tags: blog.blog_tags,
+    // });
     navigate(`/blog/${blog.blog_category}/${blog.blog_slug}`);
   };
 

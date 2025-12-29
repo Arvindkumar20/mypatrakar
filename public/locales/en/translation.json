@@ -9,6 +9,7 @@
     "blog": "Blog",
     "signupForFree": "Sign Up For Free",
     "signin": "Sign In",
+    "AI": "Try MyPatrakar AI",
     "product": {
       "product": "Products",
       "website": "Website",
@@ -18,8 +19,8 @@
   "hero": "Only-Stop Solution for complete News Portal Development",
   "heroDesc": "Create an online presence of your news agency with a quick and easy news portal setup within 48 hours at affordable pricing.",
   "heroButtons": {
-    "android": "Demo Android App",
-    "ios": "Demo iOS App",
+    "android": "Mobile App Demo (Android & iOS)",
+
     "website": "Demo Website",
     "admin": "Demo Admin Pannel"
   },
@@ -72,7 +73,7 @@
       "mainHeading": "Looking for an excellent News Portal Design?",
       "mainHeadingDesc": "Give us a call or drop a message anytime, we answer inquiries within 24 hours on business days.",
       "getInTouch": "Get In Touch",
-      "address": "Building No./Flat No.: 41-A Road/Street: KRISHNA VIHAR Nearby Landmark: NEAR TAKROHI Locality/Sub Locality: Indira Nagar City/Town/Village: Lucknow District: Lucknow State: Uttar Pradesh and Services PIN Code: 226016",
+      "address": "Building No 10/703, Ground Floor, near Arvindo Park Road, Sector 10, Indira Nagar, Lucknow, Uttar Pradesh 226016",
       "form": {
         "heading": "Get Started",
         "subheading": "",
@@ -102,12 +103,12 @@
   "website": {
     "feature1": {
       "heading": "# Feature 1",
-      "subHeading": "Categories wise News Sections",
-      "desc": "User can easily navigate through different categories of news, including politics, entertainment, technology, sports, and more.",
+      "subHeading": "Interest-Based Content Personalization",
+      "desc": "Allows users to select their preferred news topics during onboarding, enabling the platform to personalize the news feed and deliver more relevant, engaging content.",
       "features": {
-        "feature1": "Special Reports.",
-        "feature2": "Editor's Picks .",
-        "feature3": "Option to create unlimited categories & sub-categories."
+        "feature1": "Topic selection.",
+        "feature2": "Personalized feed.",
+        "feature3": "Preference saving."
       }
     },
     "feature2": {
@@ -189,82 +190,228 @@
   "app": {
     "feature1": {
       "heading": "# Feature 1",
-      "subHeading": "Categories Wise News Sections",
-      "desc": "Users can easily navigate through different categories of news, including politics, entertainment, technology, sports, and more.",
+      "subHeading": "Interest-Based Content Personalization",
+      "desc": "Allows users to select their preferred news topics during onboarding, enabling the platform to personalize the news feed and deliver more relevant, engaging content.",
       "features": {
-        "feature1": "Special Reports.",
-        "feature2": "Editor's Picks .",
-        "feature3": "Option to create unlimited categories & sub-categories."
+        "feature1": "Topic selection.",
+        "feature2": "Personalized feed.",
+        "feature3": "Preference saving."
       }
     },
     "feature2": {
       "heading": "#Feature 2",
-      "subHeading": "Listen to News Articles on the Go!",
-      "desc": "Text-to-Speech feature. With just a click of a button, user can listen to news articles instead of reading them.",
+      "subHeading": "Breaking News Feed with Category Highlights",
+      "desc": "Presents the latest and breaking news in a dynamic feed, combining top headlines with category-wise sections to ensure users stay updated in real time.",
       "features": {
-        "feature1": "The system converts the text into clear, natural-sounding speech.",
-        "feature2": "Enhance your news reading.",
-        "feature3": "Text-to-Speech (TTS) button alongside articles."
+        "feature1": "Real-time breaking news alerts displayed prominently.",
+        "feature2": "Category-wise news sections for easy browsing.",
+        "feature3": "Continuous scrolling news feed for seamless consumption."
       }
     },
     "feature3": {
-      "heading": "# Feature 3",
-      "subHeading": "Personalised experience with the Content Filtering.",
-      "desc": "Users can now tailor their news feed to their preferences by filtering content based on categories such as politics, technology, entertainment, and more. With this feature, staying updated on the latest news has never been easier or more customisable.",
+      "heading": "#Feature 3",
+      "subHeading": "Timeline-Based News Roadmap",
+      "desc": "Organizes category-specific news in a chronological roadmap format, helping users track how events and stories evolve over time with clear date and time markers.",
       "features": {
-        "feature1": "Access relevant news and stay up-to-date with current events.",
-        "feature2": "Selecting specific categories of interest.",
-        "feature3": "More convenient and personalised."
+        "feature1": "Chronological news timeline.",
+        "feature2": "Event progression tracking.",
+        "feature3": "Category-focused roadmap."
       }
     },
+
     "feature4": {
-      "heading": "# Feature 4",
-      "subHeading": "News in Shorts: Quick Summaries for Busy Readers",
-      "desc": "This feature designed for readers who are short on time but want to stay informed. Each summary contains only the headline and key facts of the news story.",
+      "heading": "#Feature 4",
+      "subHeading": "User Profile & App Navigation Menu",
+      "desc": "Provides users with a centralized side menu to manage their profile, preferences, and access key app sections such as bookmarks, interests, help, and additional news services.",
       "features": {
-        "feature1": "Focus on Facts.",
-        "feature2": "Headline Focus.",
-        "feature3": "Stay Informed"
+        "feature1": "User profile overview.",
+        "feature2": "Theme mode toggle.",
+        "feature3": "Quick navigation links."
       }
     },
     "feature5": {
-      "heading": "# Feature 5",
-      "subHeading": "YouTube Channel Live Feature in News Portal",
-      "desc": "This feature allows for the effortless embedding of YouTube channels directly into our news portal. With this integration, users can now access video content alongside articles, enriching their news consumption experience.",
+      "heading": "#Feature 5",
+      "subHeading": "Multi-Language News Experience",
+      "desc": "Enables users to change the app language seamlessly, allowing them to consume news in their preferred regional or global language for better accessibility and understanding.",
       "features": {
-        "feature1": "Enhance user engagement with multimedia content.",
-        "feature2": "Strengthen online presence with shared multimedia content.",
-        "feature3": "Expand content variety with embedded videos."
+        "feature1": "Multiple language options.",
+        "feature2": "One-tap language update.",
+        "feature3": "Localized news experience."
       }
     },
     "feature6": {
-      "heading": "# Feature 6",
-      "subHeading": "Exit Polls and Public Quizzes",
-      "desc": "Featuring real-time exit polls providing insights into voter sentiment and predictions for the outcome.",
+      "heading": "#Feature 6",
+      "subHeading": "Advanced News Discovery & Search",
+      "desc": "Allows users to explore news intelligently using search, voice input, filters, tags, and location-based options to quickly discover relevant and latest stories.",
       "features": {
-        "feature1": "Stay informed with our comprehensive exit polls coverage.",
-        "feature2": "Explore the latest election updates.",
-        "feature3": "Data-driven analysis and interactive quizzes."
+        "feature1": "Keyword and voice search.",
+        "feature2": "Category, sort, and location filters.",
+        "feature3": "Trending tags exploration."
       }
     },
     "feature7": {
-      "heading": "# Feature 7",
-      "subHeading": "Public Ad Showcase",
-      "desc": "This feature Give your audience a platform to showcase their products, services, or events to a wider audience while generating revenue for your news portal.",
+      "heading": "#Feature 7",
+      "subHeading": "Personalized Recommended News Feed",
+      "desc": "Shows a curated list of recommended news articles based on user interests and engagement, with support for video-only filtering and quick discovery through search.",
       "features": {
-        "feature1": "Diversify content.",
-        "feature2": "Revenue generation.",
-        "feature3": "Engage your audience."
+        "feature1": "Interest-based recommendations.",
+        "feature2": "Videos-only content filter.",
+        "feature3": "Integrated search access."
       }
     },
     "feature8": {
-      "heading": "# Feature 8",
-      "subHeading": "Enhanced In-App Features: Live Stock, Sports.",
-      "desc": "Stay updated on live stock updates, sports news, and your daily horoscope Download your ID card directly through the app.",
+      "heading": "#Feature 8",
+      "subHeading": "Detailed News Article View",
+      "desc": "Provides a clean and immersive news reading experience with a featured image, category tag, engagement metrics, author details, and full article content optimized for mobile users.",
       "features": {
-        "feature1": "Live Stock,Sports, Horoscope.",
-        "feature2": "Reporters Detail.",
-        "feature3": "Apply ID Card/Download ID Card."
+        "feature1": "Large featured image banner for strong visual impact.",
+        "feature2": "Category-wise labeling (e.g., Bollywood News).",
+        "feature3": "Engagement metrics including views and comments count.",
+        "feature4": "Author name and publish date visibility.",
+        "feature5": "Social sharing and report news options.",
+        "feature6": "Readable typography with distraction-free content layout.",
+        "feature7": "Support for comments and user interaction."
+      }
+    },
+    "feature9": {
+      "heading": "#Feature 9",
+      "subHeading": "News Article with Embedded Video & Source Options",
+      "desc": "Enables rich news storytelling by embedding official videos (such as trailers) directly within articles, along with source attribution and enhanced engagement controls.",
+      "features": {
+        "feature1": "Embedded YouTube video support inside news articles.",
+        "feature2": "One-tap option to view the video directly on YouTube.",
+        "feature3": "Visit source link for original content attribution."
+      }
+    },
+    "feature10": {
+      "heading": "#Feature 10",
+      "subHeading": "Layout with top-Notch & App-UI Feel",
+      "desc": "Displays the preview inside a real mobile-style frame including a notch, rounded corners, status bar spacing, and an app-like reading experience for product demo pages.",
+      "features": {
+        "feature1": "Top notch section for mobile appearance.",
+        "feature2": "Image auto-scaled to fit phone screen without distortion.",
+        "feature3": "App UI feel with black device frame and inner padding."
+      }
+    },
+    "feature11": {
+      "heading": "#Feature 11",
+      "subHeading": "Comment Panel with Engagement Controls",
+      "desc": "Shows comments inside a swipe-up bottom sheet modal news app, improving readability and interaction during product preview demos.",
+      "features": {
+        "feature1": "Slide-up bottom sheet modal for viewing comments.",
+        "feature2": "Close button (X) at top-right for quick dismiss.",
+        "feature3": "Comment count display at top of article."
+      }
+    },
+    "feature12": {
+      "heading": "#Feature 12",
+      "subHeading": "Interactive Panel with Likes, Replies & Scroll Support",
+      "desc": "Displays comments in a smooth bottom sheet overlay, matching the app UI preview style with engagement controls and a clean reading experience.",
+      "features": {
+        "feature1": "Swipe-up bottom sheet overlay for comments.",
+
+        "feature2": "User avatar, name, date & time display.",
+        "feature3": "Like, dislike and reply controls."
+      }
+    },
+    "feature13": {
+      "heading": "#Feature 13",
+      "subHeading": "Real-App Ratio, Top Bar, LIVE Badge & Action Controls",
+      "desc": "Renders the product preview inside a full LIVE-app style layout including top status bar spacing, LIVE indicator, share & refresh actions, channel header section, and content placeholders with proper app ratio.",
+      "features": {
+        "feature1": "Top status bar spacing matching real LIVE app UI.",
+        "feature2": "LIVE badge with dot indicator in header.",
+        "feature3": "Quick actions: refresh, share and back navigation."
+      }
+    },
+    "feature14": {
+      "heading": "#Feature 14",
+      "subHeading": "Channel Header, Action Icons & Engagement Footer",
+      "desc": "Renders the article preview with a top channel section, profile avatar, notification/menu/share actions, article heading, description text, location & audio buttons, and an engagement footer matching the app UI style.",
+      "features": {
+        "feature1": "Top channel header with back navigation and LIVE-style top bar spacing.",
+        "feature2": "Channel profile avatar with author name and published date.",
+        "feature3": "Quick action icons for share, location and audio assistance."
+      }
+    },
+    "feature15": {
+      "heading": "#Feature 15",
+      "subHeading": "Search Box, Location List & Apply Controls",
+      "desc": "Shows a location filter overlay with a search input, selectable location options, and quick action buttons to apply or clear the filter, matching the app preview design.",
+      "features": {
+        "feature1": "Header title 'Select Location' with close (X) button.",
+        "feature2": "Search input box with placeholder 'Search location…'.",
+        "feature3": "Selectable location list with radio buttons."
+      }
+    },
+    "feature16": {
+      "heading": "#Feature 16",
+      "subHeading": "Vote Stats with Party List & Status Footer",
+      "desc": "Displays poll results with party options, vote percentage bars, and poll status indicators in a clean preview layout.",
+      "features": {
+        "feature1": "Party-wise vote percentage progress bars.",
+        "feature2": "User poll status badges (Already voted, Expired, Expired timer).",
+        "feature3": "Footer actions for reporting and sharing poll."
+      }
+    },
+    "feature17": {
+      "heading": "#Featur17",
+      "subHeading": "Filter Polls by Date, Votes & Status",
+      "desc": "Allows users to filter election polls based on date, popularity, creator and vote participation status.",
+      "features": {
+        "feature1": "Filter by poll date (Active or Expired).",
+        "feature2": "Sort polls by votes (Most voted or Least voted).",
+        "feature3": "Filter by user vote status (All, Voted, Not voted)."
+      }
+    },
+    "feature18": {
+      "heading": "#Featur18",
+      "subHeading": "Election Poll Result Analytics Seat Count, Party Stats & Key Candidates",
+      "desc": "Shows election poll result with total seats, party-wise distribution chart, target seats, candidate results, and quick actions.",
+      "features": {
+        "feature1": "Total seat count with party-wise breakdown.",
+        "feature2": "Donut chart for seat distribution and target seat indicator.",
+        "feature3": "Key candidates list with win status and party symbols."
+      }
+    },
+    "feature19": {
+      "heading": "#Featur19",
+      "subHeading": "Marketplace Ads Corner Seller & Buyer Mode with Promoted Ads",
+      "desc": "Displays promoted marketplace ads with pricing, seller/buyer toggle, location tag, and support access.",
+      "features": {
+        "feature1": "Toggle between Seller and Buyer modes.",
+        "feature2": "Showcase promoted ads with price and sponsor details.",
+        "feature3": "Quick access to location-based ads and support."
+      }
+    },
+    "feature20": {
+      "heading": "#Featur20",
+      "subHeading": "HindTech IT Solutions Marketplace Ad Service Details & Contact Access",
+      "desc": "Showcases HindTech IT Solutions ad card with service overview, pricing, gallery preview, and multiple contact channels.",
+      "features": {
+        "feature1": "Service title and price display with business summary.",
+        "feature2": "Image gallery preview slider for ad showcase.",
+        "feature3": "Direct contact options including Phone, Email, Website, and WhatsApp."
+      }
+    },
+    "feature21": {
+      "heading": "#Featur21",
+      "subHeading": "Seller Query Form & Direct Contact",
+      "desc": "Lets sellers submit what they want to sell using a structured query form or connect instantly via WhatsApp.",
+      "features": {
+        "feature1": "Seller query input box with 100-character limit.",
+        "feature2": "Seller identity fields: Name and Contact Number.",
+        "feature3": "Product/Service description box with 200-character limit."
+      }
+    },
+    "feature22": {
+      "heading": "#Feature 22",
+      "subHeading": "Raise a Buyer Query Product Requirement Form & WhatsApp Support",
+      "desc": "Enables buyers to submit product purchase requirements using a structured query form or connect instantly via WhatsApp support.",
+      "features": {
+        "feature1": "Search query input box with 100 character limit.",
+        "feature2": "User identity fields including Name and Contact Number.",
+        "feature3": "Description box with 200 character limit for detailed requirements."
       }
     },
     "viewHeading": "Launch your own news portal mobile app",

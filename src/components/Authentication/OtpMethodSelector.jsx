@@ -11,7 +11,7 @@ const OtpMethodSelector = ({ setOtpMethod }) => {
     <div className="flex flex-col gap-3">
       <div className="flex gap-6">
         {/* WhatsApp Option */}
-        <label
+        {/* <label
           htmlFor="WhatsApp"
           className="flex items-center cursor-pointer space-x-2"
         >
@@ -25,7 +25,7 @@ const OtpMethodSelector = ({ setOtpMethod }) => {
           />
 
           <span className="text-gray-700 font-medium">WhatsApp</span>
-        </label>
+        </label> */}
 
         {/* SMS Option */}
         <label

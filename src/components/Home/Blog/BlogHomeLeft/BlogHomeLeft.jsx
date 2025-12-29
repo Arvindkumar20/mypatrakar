@@ -14,7 +14,7 @@ import HtmlToPlainText from "../BlogPages/HtmlToPlainText";
 
 export default function BlogHomeLeft() {
   const navigate = useNavigate();
-  const { blog, blogS, setBlogs, setBlog, category_id, blog_category } =
+  const { blog, blogS, setBlogs, setBlog, category_id } =
     useContext(BlogContext);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -46,6 +46,7 @@ export default function BlogHomeLeft() {
   // Handle blog card click
   const handleBlogClick = (blogData) => {
     setBlog(blogData);
+    localStorage.setItem("blog", JSON.stringify(blogData));
     navigate(`/blog/${blogData.blog_category}/${blogData.blog_slug}`);
   };
 
@@ -71,10 +72,14 @@ export default function BlogHomeLeft() {
       .map((_, index) => (
         <div
           key={index}
-          className="bg-white rounded-xl shadow-md overflow-hidden"
+          className="relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg cursor-pointer font-sans"
         >
           <div className="animate-pulse">
-            <div className="bg-gray-200 h-56 w-full" />
+            <div className=" relative bg-gray-200 w-full h-52 sm:h-64 " >
+              <span className="absolute top-4 left-4 bg-white text-[#d91313] text-xs sm:text-[14px] font-bold w-[100px] h-5 rounded-full shadow-md tracking-wide">
+                    
+                  </span>
+            </div>
             <div className="p-5 space-y-4">
               <div className="h-6 bg-gray-200 rounded w-3/4"></div>
               <div className="h-4 bg-gray-200 rounded w-full"></div>
@@ -97,13 +102,13 @@ export default function BlogHomeLeft() {
       <div className="mb-10 sm:mb-12 lg:mb-16 text-center px-2">
         {/* TOP SMALL HEADING */}
         <p className="text-[#d91313] font-sans text-sm font-bold tracking-wider">
-          OUR BLOG
+          {blogS[0]?.blog_category}
         </p>
 
         {/* MAIN HEADING - Adjusted font size for mobile */}
         <h2 className="font-[900] font-sans text-3xl sm:text-[40px] md:text-[48px] leading-tight mt-2">
           <span className="text-black">Latest</span>{" "}
-          <span className="bg-gradient-to-r from-[#db0505] to-[#ec7e47] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#010e54] to-[#f32c0e] bg-clip-text text-transparent">
             Insights
           </span>
         </h2>
@@ -118,7 +123,7 @@ export default function BlogHomeLeft() {
       {/* Blog Grid */}
       {isLoading ? (
         // Grid for skeletons - responsive adjustments
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 w-full">
           {renderSkeletons()}
         </div>
       ) : blogS?.length === 0 ? (

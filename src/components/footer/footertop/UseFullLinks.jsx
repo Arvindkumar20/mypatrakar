@@ -70,9 +70,9 @@ export default function UseFullLinks() {
       <div className="mt-4 flex flex-col  items-start md:items-start justify-between gap-6">
         {/* Powered by OpenAI */}
         <div className="flex flex-col gap-2">
-          <p className="text-white font-bold">Powered By OpenAI</p>
+          <p className="text-white font-bold text-lg sm:text-base">Powered By OpenAI</p>
 
-          <div className="bg-white w-40 sm:w-48 h-14 sm:h-14 rounded-lg overflow-hidden shadow-md">
+          <div className="bg-white w-60 sm:w-48 h-20 sm:h-14  rounded-lg overflow-hidden shadow-md">
             <img
               src={OpenAi}
               alt="Powered By OpenAI"
@@ -83,11 +83,11 @@ export default function UseFullLinks() {
 
         {/* Approved By Ministry of Finance */}
         <div className="flex flex-col gap-2">
-          <p className="text-white font-bold">
+          <p className="text-white font-bold text-lg sm:text-base">
             Approved by Ministry of Finance
           </p>
 
-          <div className="bg-white w-40 sm:w-48 h-14 sm:h-14 rounded-lg overflow-hidden shadow-md">
+          <div className="bg-white w-60 sm:w-48 h-20 sm:h-14 rounded-lg overflow-hidden shadow-md">
             <img
               src={finance}
               alt="Approved by Ministry of Finance"

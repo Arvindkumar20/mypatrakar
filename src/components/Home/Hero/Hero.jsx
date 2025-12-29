@@ -14,15 +14,15 @@ export default function Hero() {
   const buttons = [
     {
       text: "android",
-      href: "/product/app",
+      href: "/product/app-demo",
     },
-    {
-      text: "ios",
-      href: "/product/app",
-    },
+    // {
+    //   text: "ios",
+    //   href: "/product/app",
+    // },
     {
       text: "website",
-      href: "/product/website",
+      href: "/product/web-demo",
     },
     {
       text: "admin",

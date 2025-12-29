@@ -413,88 +413,236 @@
 
 
 
-import React, { useContext, useState } from "react";
-import { Home, Search, Video, BarChart2, Megaphone } from "lucide-react";
-import { PreViewContext } from "../../../../context/PreViewContext";
-import { useTranslation } from "react-i18next";
+// import React, { useContext, useState } from "react";
+// import { Home, Search, Video, BarChart2, Megaphone } from "lucide-react";
+// import { PreViewContext } from "../../../../context/PreViewContext";
+// import { useTranslation } from "react-i18next";
+
+// const navItems = [
+//   { name: "topStories", icon: Home },
+//   { name: "explore", icon: Search },
+//   { name: "shorts", icon: Video },
+//   { name: "youtube", icon: BarChart2 },
+//   { name: "polls", icon: Megaphone },
+// ];
+
+// const topTabs = ["topNews", "shorts", "trending", "politics", "sports"];
+
+// const PreviewApp = ({
+//   backgroundColor = "#f3f4f6",
+//   headerColor = "#2563eb", 
+//   textColor = "#ffffff",
+//   activeColor = "#2563eb",
+//   inactiveColor = "#9ca3af",
+//   logo,
+//   font,
+// }) => {
+//   const [active, setActive] = useState("topNews");
+//   const { appPreview } = useContext(PreViewContext);
+//   const { t } = useTranslation();
+
+//   const isHexColor = (color) => /^#([0-9A-F]{3}){1,2}$/i.test(color);
+
+//   return (
+//     <div className="flex items-center justify-center h-auto sm:min-h-screen">
+//       <div 
+//         className="w-[330px] h-[630px] rounded-3xl shadow-xl overflow-hidden flex flex-col border-8 border-gray-800"
+//         style={{
+//           backgroundColor: isHexColor(backgroundColor) ? backgroundColor : "",
+//           fontFamily: font
+//         }}
+//       >
+//         {/* Header */}
+//         <div
+//           className="flex items-center px-4 py-4"
+//           style={{
+//             backgroundColor: isHexColor(headerColor) ? headerColor : "",
+//           }}
+//         >
+//           <div className="flex-1 flex items-center gap-3">
+//             <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-gray-200">
+//               {appPreview.logo ? (
+//                 <img src={appPreview.logo} className="w-full h-full object-cover" />
+//               ) : (
+//                 <span className="text-xs font-bold text-gray-700">LOGO</span>
+//               )}
+//             </div>
+
+//             <div
+//               className="text-xl font-bold"
+//               style={{ color: isHexColor(textColor) ? textColor : "" }}
+//             >
+//               {t("appPreview.dailyNewsLive")}
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Top Tabs */}
+//         <div className="flex px-2 py-2 text-sm font-medium overflow-x-auto bg-white border hide-scrollbar">
+//           {topTabs.map((tab) => (
+//             <button
+//               key={tab}
+//               onClick={() => setActive(tab)}
+//               className={`relative px-3 py-2 transition-all text-xs whitespace-nowrap ${
+//                 active === tab ? "font-semibold" : "text-gray-600"
+//               }`}
+//               style={{
+//                 color: active === tab ? headerColor : ""
+//               }}
+//             >
+//               {t(`appPreview.${tab}`)}
+
+//               {active === tab && (
+//                 <span 
+//                   className="absolute left-0 top-[23px] w-full h-[3px] rounded-full"
+//                   style={{ backgroundColor: headerColor }}
+//                 />
+//               )}
+//             </button>
+//           ))}
+//         </div>
+
+//         {/* Content skeleton */}
+//         <div className="overflow-y-scroll gap-2">
+//           {[1,2,3,4].map((i) => (
+//             <div
+//               key={i}
+//               className="bg-white w-[295px] rounded-2xl shadow-md mx-auto border my-2 border-gray-100 overflow-hidden p-2 space-y-3 animate-pulse"
+//             >
+//               <div className="w-[270px] h-[150px] bg-gray-200 rounded-xl" />
+//               <div className="space-y-2">
+//                 <div className="w-4/5 h-1.5 bg-gray-200 rounded-md" />
+//                 <div className="w-2/3 h-1.5 bg-gray-200 rounded-md" />
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* Bottom Navigation */}
+//         <div className="border-t bg-white py-3 flex justify-between items-center px-2">
+//           {navItems.map((it) => {
+//             const Icon = it.icon;
+//             const isActive = active === it.name;
+//             return (
+//               <div
+//                 key={it.name}
+//                 className="flex flex-col items-center justify-center cursor-pointer py-1 px-2 rounded-lg"
+//                 onClick={() => setActive(it.name)}
+//               >
+//                 <Icon
+//                   size={20}
+//                   style={{
+//                     color: isActive
+//                       ? headerColor
+//                       : inactiveColor,
+//                   }}
+//                 />
+//                 <div
+//                   style={{
+//                     color: isActive
+//                       ? headerColor
+//                       : inactiveColor,
+//                   }}
+//                   className="text-xs mt-1 font-medium"
+//                 >
+//                   {t(`appPreview.${it.name}`)}
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default PreviewApp;
+
+
+
+import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
+import { SketchPicker } from "react-color";
+import { Info, Palette, Layout, Smartphone, Home, Search, Video, BarChart2, Megaphone } from "lucide-react";
 
 const navItems = [
-  { name: "topStories", icon: Home },
-  { name: "explore", icon: Search },
-  { name: "shorts", icon: Video },
-  { name: "youtube", icon: BarChart2 },
-  { name: "polls", icon: Megaphone },
+  { name: "Top Stories", icon: Home },
+  { name: "Explore", icon: Search },
+  { name: "Shorts", icon: Video },
+  { name: "YouTube", icon: BarChart2 },
+  { name: "Polls", icon: Megaphone },
 ];
 
-const topTabs = ["topNews", "shorts", "trending", "politics", "sports"];
+const topTabs = ["Top News", "Shorts", "Trending", "Politics", "Sports"];
 
+// Updated Preview Component with your specific logic
 const PreviewApp = ({
   backgroundColor = "#f3f4f6",
-  headerColor = "#2563eb", 
+  headerColor = "#2563eb",
   textColor = "#ffffff",
+  bottomBarColor = "#ffffff",
+  bottomTextColor = "#9ca3af",
   activeColor = "#2563eb",
   inactiveColor = "#9ca3af",
   logo,
-  font,
+  fontFamily,
 }) => {
-  const [active, setActive] = useState("topNews");
-  const { appPreview } = useContext(PreViewContext);
-  const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState("Top News");
+  const [activeNav, setActiveNav] = useState("Top Stories");
 
   const isHexColor = (color) => /^#([0-9A-F]{3}){1,2}$/i.test(color);
 
   return (
-    <div className="flex items-center justify-center h-auto sm:min-h-screen">
+    <div className="flex items-center justify-center py-4">
       <div 
-        className="w-[330px] h-[630px] rounded-3xl shadow-xl overflow-hidden flex flex-col border-8 border-gray-800"
+        className="w-[320px] h-[640px] rounded-[3rem] shadow-2xl overflow-hidden flex flex-col border-[8px] border-gray-800 relative bg-white"
         style={{
-          backgroundColor: isHexColor(backgroundColor) ? backgroundColor : "",
-          fontFamily: font
+          backgroundColor: isHexColor(backgroundColor) ? backgroundColor : "#f3f4f6",
+          fontFamily: fontFamily
         }}
       >
         {/* Header */}
         <div
-          className="flex items-center px-4 py-4"
+          className="flex items-center px-4 pt-8 pb-4 transition-colors duration-300"
           style={{
-            backgroundColor: isHexColor(headerColor) ? headerColor : "",
+            backgroundColor: isHexColor(headerColor) ? headerColor : "#2563eb",
           }}
         >
           <div className="flex-1 flex items-center gap-3">
-            <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center bg-gray-200">
-              {appPreview.logo ? (
-                <img src={appPreview.logo} className="w-full h-full object-cover" />
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center bg-white ">
+              {logo ? (
+                <img src={logo} className="w-full h-full object-cover" alt="logo" />
               ) : (
-                <span className="text-xs font-bold text-gray-700">LOGO</span>
+                <span className="text-[10px] font-bold text-white">LOGO</span>
               )}
             </div>
 
             <div
-              className="text-xl font-bold"
-              style={{ color: isHexColor(textColor) ? textColor : "" }}
+              className="text-lg font-bold truncate"
+              style={{ color: isHexColor(textColor) ? textColor : "#ffffff" }}
             >
-              {t("appPreview.dailyNewsLive")}
+              Daily News Live
             </div>
           </div>
         </div>
 
         {/* Top Tabs */}
-        <div className="flex px-2 py-2 text-sm font-medium overflow-x-auto bg-white border hide-scrollbar">
+        <div className="flex px-2 py-2 text-sm font-medium overflow-x-auto bg-white border-b hide-scrollbar">
           {topTabs.map((tab) => (
             <button
               key={tab}
-              onClick={() => setActive(tab)}
+              onClick={() => setActiveTab(tab)}
               className={`relative px-3 py-2 transition-all text-xs whitespace-nowrap ${
-                active === tab ? "font-semibold" : "text-gray-600"
+                activeTab === tab ? "font-bold" : "text-gray-500"
               }`}
               style={{
-                color: active === tab ? headerColor : ""
+                color: activeTab === tab ? headerColor : ""
               }}
             >
-              {t(`appPreview.${tab}`)}
-
-              {active === tab && (
+              {tab}
+              {activeTab === tab && (
                 <span 
-                  className="absolute left-0 top-[23px] w-full h-[3px] rounded-full"
+                  className="absolute left-0 bottom-0 w-full h-[3px] rounded-full"
                   style={{ backgroundColor: headerColor }}
                 />
               )}
@@ -503,49 +651,47 @@ const PreviewApp = ({
         </div>
 
         {/* Content skeleton */}
-        <div className="overflow-y-scroll gap-2">
-          {[1,2,3,4].map((i) => (
+        <div className="flex-1 overflow-y-auto p-3 space-y-4">
+          {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="bg-white w-[295px] rounded-2xl shadow-md mx-auto border my-2 border-gray-100 overflow-hidden p-2 space-y-3 animate-pulse"
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-2 space-y-3"
             >
-              <div className="w-[270px] h-[150px] bg-gray-200 rounded-xl" />
-              <div className="space-y-2">
-                <div className="w-4/5 h-1.5 bg-gray-200 rounded-md" />
-                <div className="w-2/3 h-1.5 bg-gray-200 rounded-md" />
+              <div className="w-full h-32 bg-gray-100 rounded-xl" />
+              <div className="space-y-2 px-1">
+                <div className="w-4/5 h-2 bg-gray-100 rounded-md" />
+                <div className="w-2/3 h-2 bg-gray-50 rounded-md" />
               </div>
             </div>
           ))}
         </div>
 
         {/* Bottom Navigation */}
-        <div className="border-t bg-white py-3 flex justify-between items-center px-2">
+        <div 
+          className="border-t py-3 flex justify-between items-center px-4 transition-colors duration-300"
+          style={{ backgroundColor: isHexColor(bottomBarColor) ? bottomBarColor : "#ffffff" }}
+        >
           {navItems.map((it) => {
             const Icon = it.icon;
-            const isActive = active === it.name;
+            const isActive = activeNav === it.name;
+            // Use headerColor for active state in bottom bar too, or sync with text color
+            const iconColor = isActive ? headerColor : bottomTextColor;
+
             return (
               <div
                 key={it.name}
-                className="flex flex-col items-center justify-center cursor-pointer py-1 px-2 rounded-lg"
-                onClick={() => setActive(it.name)}
+                className="flex flex-col items-center justify-center cursor-pointer"
+                onClick={() => setActiveNav(it.name)}
               >
                 <Icon
                   size={20}
-                  style={{
-                    color: isActive
-                      ? headerColor
-                      : inactiveColor,
-                  }}
+                  // style={{ color: iconColor }}
                 />
                 <div
-                  style={{
-                    color: isActive
-                      ? headerColor
-                      : inactiveColor,
-                  }}
-                  className="text-xs mt-1 font-medium"
+                  // style={{ color: iconColor }}
+                  className={`text-[10px] mt-1 ${isActive ? "font-bold" : "font-medium"}`}
                 >
-                  {t(`appPreview.${it.name}`)}
+                  {it.name}
                 </div>
               </div>
             );
@@ -556,4 +702,3 @@ const PreviewApp = ({
   );
 };
 
-export default PreviewApp;

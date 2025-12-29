@@ -24,6 +24,7 @@ export default function ShortGenerator() {
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = useCallback(async () => {
+    console.log("object");
     setLoading(true);
     // setGeneratedShort({
     //   image: "https://picsum.photos/512/266",
@@ -31,10 +32,9 @@ export default function ShortGenerator() {
     //   description:
     //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     // });
-    const { city, tone, category, country, state, topic } = formData;
-    console.log(city, tone, category, country, state, topic);
+
     const result =
-      await generateContent(`Write a short, verified, and up-to-date news article from ${city},  ${state}, ${country}, in the ${category} category, written in a ${tone} tone and topic ${topic}. 
+      await generateContent(`Write a short, verified, and up-to-date news article from ${formData.city},  ${formData.state}, ${formData.country}, in the ${formData.category} category, written in a ${formData.tone} tone and topic ${formData.topic}. 
 The article must reflect real developments from today or at most one day old. Consider the following topic, idea, or suggestion while generating the content:.
 Return the result strictly in JSON format with the following keys:
 {
@@ -42,8 +42,7 @@ Return the result strictly in JSON format with the following keys:
   "description": "A concise summary of exactly 59 words capturing the key points",
   "image": "A relevant and verified image URL from a real source"
 }
-Do not include any extra text, commentary, or markdown — only return valid JSON.
-`);
+Do not include any extra text, commentary, or markdown — only return valid JSON.`);
     console.log(result);
     setGeneratedShort(result);
     result !== "Error generating content." && toast.success("Short generated!");
@@ -75,7 +74,9 @@ Do not include any extra text, commentary, or markdown — only return valid JSO
         <FormSection
           formData={formData}
           setFormData={setFormData}
+          setGeneratedShort={setGeneratedShort}
           handleGenerate={handleGenerate}
+          setLoading={setLoading}
           loading={loading}
         />
         <PreviewSection generatedShort={generatedShort} loading={loading} />

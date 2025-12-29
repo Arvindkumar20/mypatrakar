@@ -52,4 +52,4 @@ const SocialIcons = () => {
   );
 };
 
-export default SocialIcons;
+export default React.memo(SocialIcons);

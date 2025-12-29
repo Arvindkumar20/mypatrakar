@@ -3,18 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { FiSmartphone, FiMail, FiArrowRight } from "react-icons/fi";
+import { FiSmartphone, FiArrowRight } from "react-icons/fi";
 
 // Component Imports
 import Description from "./Description";
 import SelectCountry from "./SelectCountry";
-import OtpMethodSelector from "./OtpMethodSelector";
+// import OtpMethodSelector from "./OtpMethodSelector";
 import OtpVerificationDialog from "./OtpVerificationDialog";
 import { LoginSendOtp } from "../../api";
 
 export default function Login() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [countryCode, setCountryCode] = useState("+91");
   const [otpMethod, setOtpMethod] = useState("");
@@ -36,6 +36,32 @@ export default function Login() {
     if (/^\d*$/.test(value)) {
       setLoginUserData({ ...loginUserData, mobileNumber: value });
       setError((prev) => ({ ...prev, mobileNumber: "" }));
+    }
+  };
+
+  const sendOtpForLogin = async () => {
+    const phone = loginUserData.mobileNumber.trim();
+    const newErrors = {
+      mobileNumber: "",
+      otpMethod: "",
+    };
+    try {
+      const res = await LoginSendOtp({ mobile: phone });
+      if (res?.data?.response) {
+        setAuthToken(res.data.response);
+        setOpen(true);
+      } else {
+        setError({
+          ...newErrors,
+          mobileNumber: "Unexpected response from server",
+        });
+      }
+    } catch (err) {
+      const errMsg =
+        err?.response?.data?.errors?.mobile?.[0] || "Failed to send OTP";
+      setError({ ...newErrors, mobileNumber: errMsg });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -61,10 +87,10 @@ export default function Login() {
       hasError = true;
     }
 
-    if (!otpMethod) {
-      newErrors.otpMethod = "Please select an OTP method";
-      hasError = true;
-    }
+    // if (!otpMethod) {
+    //   newErrors.otpMethod = "Please select an OTP method";
+    //   hasError = true;
+    // }
 
     if (hasError) {
       setError(newErrors);
@@ -72,21 +98,22 @@ export default function Login() {
       return;
     }
 
-    try {
-      const res = await LoginSendOtp({ mobile: phone });
-      if (res?.data?.response) {
-        setAuthToken(res.data.response);
-        setOpen(true);
-      } else {
-        setError({ ...newErrors, mobileNumber: "Unexpected response from server" });
-      }
-    } catch (err) {
-      const errMsg =
-        err?.response?.data?.errors?.mobile?.[0] || "Failed to send OTP";
-      setError({ ...newErrors, mobileNumber: errMsg });
-    } finally {
-      setIsSubmitting(false);
-    }
+    sendOtpForLogin();
+    // try {
+    //   const res = await LoginSendOtp({ mobile: phone });
+    //   if (res?.data?.response) {
+    //     setAuthToken(res.data.response);
+    //     setOpen(true);
+    //   } else {
+    //     setError({ ...newErrors, mobileNumber: "Unexpected response from server" });
+    //   }
+    // } catch (err) {
+    //   const errMsg =
+    //     err?.response?.data?.errors?.mobile?.[0] || "Failed to send OTP";
+    //   setError({ ...newErrors, mobileNumber: errMsg });
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
   // Animation variants
@@ -96,9 +123,9 @@ export default function Login() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        when: "beforeChildren"
-      }
-    }
+        when: "beforeChildren",
+      },
+    },
   };
 
   const itemVariants = {
@@ -109,9 +136,9 @@ export default function Login() {
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 10
-      }
-    }
+        damping: 10,
+      },
+    },
   };
 
   return (
@@ -131,7 +158,7 @@ export default function Login() {
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4 sm:p-6 lg:p-8">
         <div className="w-full max-w-6xl mx-auto">
-          <motion.div 
+          <motion.div
             className="flex flex-col lg:flex-row gap-0 lg:gap-8 bg-white rounded-3xl overflow-hidden shadow-2xl"
             initial="hidden"
             animate="visible"
@@ -139,21 +166,37 @@ export default function Login() {
           >
             {/* Description Panel */}
             <div className="hidden lg:flex lg:w-1/2">
-              <Description guid={[
-                { heading: t("signIn.featureHeading1"), para: t("signIn.featureDesc1") },
-                { heading: t("signIn.featureHeading2"), para: t("signIn.featureDesc2") },
-                { heading: t("signIn.featureHeading3"), para: t("signIn.featureDesc3") },
-              ]} />
+              <Description
+                guid={[
+                  {
+                    heading: t("signIn.featureHeading1"),
+                    para: t("signIn.featureDesc1"),
+                  },
+                  {
+                    heading: t("signIn.featureHeading2"),
+                    para: t("signIn.featureDesc2"),
+                  },
+                  {
+                    heading: t("signIn.featureHeading3"),
+                    para: t("signIn.featureDesc3"),
+                  },
+                ]}
+              />
             </div>
 
             {/* Form Section */}
-            <motion.div 
+            <motion.div
               className="w-full lg:w-1/2 p-8 sm:p-10"
               variants={containerVariants}
             >
               <div className="max-w-md mx-auto">
-                <motion.div variants={itemVariants} className="text-center mb-8">
-                  <h1 className="text-3xl font-bold text-gray-800">Welcome Back</h1>
+                <motion.div
+                  variants={itemVariants}
+                  className="text-center mb-8"
+                >
+                  <h1 className="text-3xl font-bold text-gray-800">
+                    Welcome Back
+                  </h1>
                   <p className="mt-2 text-gray-500">
                     Sign in to access your MyPatrakar dashboard
                   </p>
@@ -187,11 +230,13 @@ export default function Login() {
                       />
                     </div>
                     {error.mobileNumber && (
-                      <p className="text-sm text-red-500 mt-1">{error.mobileNumber}</p>
+                      <p className="text-sm text-red-500 mt-1">
+                        {error.mobileNumber}
+                      </p>
                     )}
                   </motion.div>
 
-                  <motion.div variants={itemVariants} className="space-y-1">
+                  {/* <motion.div variants={itemVariants} className="space-y-1">
                     <p className="text-sm font-medium text-gray-700 mb-2">
                       Verification Method
                     </p>
@@ -202,9 +247,11 @@ export default function Login() {
                       setError={setError}
                     />
                     {error.otpMethod && (
-                      <p className="text-sm text-red-500 mt-1">{error.otpMethod}</p>
+                      <p className="text-sm text-red-500 mt-1">
+                        {error.otpMethod}
+                      </p>
                     )}
-                  </motion.div>
+                  </motion.div> */}
 
                   <motion.div variants={itemVariants}>
                     <button
@@ -216,9 +263,25 @@ export default function Login() {
                     >
                       {isSubmitting ? (
                         <>
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Processing...
                         </>
@@ -230,7 +293,7 @@ export default function Login() {
                     </button>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     variants={itemVariants}
                     className="text-center text-sm text-gray-600 pt-4 border-t border-gray-100"
                   >
@@ -258,7 +321,7 @@ export default function Login() {
                         className="text-red-500 hover:underline"
                         target="_blank"
                       >
-                        Terms
+                        Terms & Conditions
                       </Link>
                     </p>
                   </motion.div>
@@ -268,6 +331,7 @@ export default function Login() {
                 {open && (
                   <OtpVerificationDialog
                     open={open}
+                    sendOtpForLogin={sendOtpForLogin}
                     otpMethod={otpMethod}
                     countryCode={countryCode}
                     setOpen={setOpen}

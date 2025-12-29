@@ -261,7 +261,7 @@ export default function ContactForm({ t, onSuccess }) {
                   setInfo({ ...info, mobileNumber: onlyNum });
                 }
               }}
-              placeholder="Enter your mobile number"
+              placeholder={t("footer.top.form.phonePlaceholder")}
               className="flex-1 bg-transparent text-white outline-none"
               maxLength={10}
             />

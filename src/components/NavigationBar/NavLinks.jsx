@@ -9,7 +9,7 @@ import Dropdown from "./NavBarFOrBlog/DropDown";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../Authentication/auth-hook";
 import LanguageSelector from "./LanguageSelector";
-import ai from "../../assets/generative.png"
+import ai from "../../assets/generative.png";
 import { RiAiGenerate } from "react-icons/ri";
 
 export default function ResponsiveNav() {
@@ -67,6 +67,7 @@ export default function ResponsiveNav() {
               <li>
                 <NavLink
                   to="/blog-page"
+                  // target="_blank"
                   className=" no-underline hover:no-underline text-md font-semibold font-Poppins hover:text-red-500 focus:text-red-500 transition-colors"
                 >
                   {t("menu.blog")}
@@ -82,20 +83,18 @@ export default function ResponsiveNav() {
                 </NavLink>
               </li>
 
-                 <li>
+              <li>
                 <NavLink
                   to={"/try-mypatrakar-ai"}
-                  className="no-underline hover:no-underline text-md font-semibold text-white font-Poppins hover:text-white focus:text-red-500 transition-colors animate-pulse "
+                  className="no-underline hover:no-underline text-md font-semibold text-white font-Poppins hover:text-white focus:text-white transition-colors animate-pulse "
                 >
-                 <div className="flex items-center justify-center gap-2 bg-red-500 p-2 rounded ">
-<span>
-{/* <img src={ai} alt="This is generate shorts with AI" className="w-7 h-7 text-red-500" /> */}
-<RiAiGenerate size={20}/>
-</span>
-                  <span>
-                     {t("menu.mypatrakar_ai")}
-                  </span>
-                 </div>
+                  <div className="flex items-center justify-center gap-2 bg-red-500 p-2 rounded ">
+                    <span>
+                      {/* <img src={ai} alt="This is generate shorts with AI" className="w-7 h-7 text-red-500" /> */}
+                      <RiAiGenerate size={20} />
+                    </span>
+                    <span>{t("menu.AI")}</span>
+                  </div>
                 </NavLink>
               </li>
             </ul>

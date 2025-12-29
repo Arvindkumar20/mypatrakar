@@ -1,4 +1,3 @@
-
 // import React, { useState } from "react";
 // import { useTranslation } from "react-i18next";
 
@@ -81,11 +80,10 @@
 //         isOpen={isModalOpen}
 //         closeModal={() => setIsModalOpen(false)}
 //       />
-   
+
 //     </div>
 //   );
 // }
-
 
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -107,40 +105,39 @@ export default function FooterTop() {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-const getInTouch = [
-  {
-    icon: <AiOutlinePhone className="text-red-500 text-xl rotate-90" />,
-    text: "+91 7905320279",
-    link: "tel:+917905320279",
-  },
-  {
-    icon: <AiOutlinePhone className="text-red-500 text-xl rotate-90" />,
-    text: "0522-4343-194",
-    link: "tel:05224343194",
-  },
-  {
-    icon: <AiOutlineEnvironment className="text-red-500 text-xl" />,
-    text: t("footer.top.address"),
-    link: "https://www.google.com/maps/search/?api=1&query=Building No 10/703, Ground Floor, near Arvindo Park Road, Sector 10, Indira Nagar, Lucknow, Uttar Pradesh 226016",
-  },
-  {
-    icon: <AiOutlineMail className="text-red-500 text-xl" />,
-    text: "sales@mypatrakar.com",
-    link: "mailto:sales@mypatrakar.com",
-  },
-];
-
+  const getInTouch = [
+    {
+      icon: <AiOutlinePhone className="text-red-500 text-xl rotate-90" />,
+      text: "+91 7905320279",
+      link: "tel:+917905320279",
+    },
+    {
+      icon: <AiOutlinePhone className="text-red-500 text-xl rotate-90" />,
+      text: "+91 95578 78427",
+      link: "tel:+91 95578 78427",
+    },
+    {
+      icon: <AiOutlineEnvironment className="text-red-500 text-xl" />,
+      text: t("footer.top.address"),
+      link: "https://www.google.com/maps/search/?api=1&query=Building No 10/703, Ground Floor, near Arvindo Park Road, Sector 10, Indira Nagar, Lucknow, Uttar Pradesh 226016",
+    },
+    {
+      icon: <AiOutlineMail className="text-red-500 text-xl" />,
+      text: "sales@mypatrakar.com",
+      link: "mailto:sales@mypatrakar.com",
+    },
+  ];
 
   return (
     <div className="w-full bg-gradient-to-br py-4 px-4 sm:px-6 lg:px-10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
-
         {/* LEFT SECTION (UseFullLinks + Navigation) */}
-        <div className="w-full lg:w-1/2 flex flex-col md:flex-row 
+        <div
+          className="w-full lg:w-1/2 flex flex-col md:flex-row 
                         items-start justify-start 
                         bg-gray-800 rounded-2xl shadow-xl p-4 
-                        border border-gray-700 gap-6">
-
+                        border border-gray-700 gap-6"
+        >
           <div className="w-full md:w-1/2">
             <UseFullLinks />
           </div>
@@ -152,7 +149,6 @@ const getInTouch = [
 
         {/* RIGHT SECTION (GetInTouch + Contact Form) */}
         <div className="w-full lg:w-1/2 flex flex-col md:flex-row gap-6">
-          
           {/* GET IN TOUCH */}
           <div className="w-full md:w-1/2 bg-gray-800 rounded-2xl shadow-xl p-4 border border-gray-700">
             <GetInTouchCard t={t} getInTouch={getInTouch} />
@@ -169,7 +165,6 @@ const getInTouch = [
 
             <ContactForm t={t} onSuccess={() => setIsModalOpen(true)} />
           </div>
-
         </div>
       </div>
 

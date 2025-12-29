@@ -4,7 +4,6 @@ const API = axios.create({
   // baseURL: "/api",  // Correct concatenation
   baseURL: "https://super-admin.hindtechitsolutions.com/api", // Correct concatenation
 });
-import { cacheAsync } from "../utils/cache";
 const AuthToken = "abc123";
 // get api
 

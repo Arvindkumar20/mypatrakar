@@ -288,7 +288,7 @@
 //               <p className="text-[#111418]  text-lg mb-2 font-bold leading-tight tracking-[-0.015em]">
 //                 {label}
 //               </p>
-            
+
 //               <p className="text-[#5f718c] w-[160px] text-sm font-normal leading-normal">
 //                 {recommended}
 //               </p>
@@ -396,9 +396,6 @@
 //     </div>
 //   </div>
 
-
-
-  
 // </div>
 
 //     </>
@@ -426,15 +423,12 @@
 
 // export default LogoUpload;
 
-
-
-
-
 import React, { useState, useRef, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FiUpload, FiCheck, FiX } from "react-icons/fi";
 import { PreViewContext } from "../../../context/PreViewContext";
 import { FiUploadCloud } from "react-icons/fi";
+import { Info } from "lucide-react";
 
 const LogoUpload = ({ setFile, file, onUploadComplete }) => {
   const { appPreview, webPreview, updateAppPreview, updateWebPreview } =
@@ -516,8 +510,10 @@ const LogoUpload = ({ setFile, file, onUploadComplete }) => {
 
       const imgUrl = await mockUpload(selectedFile);
 
-      if (type === "app_logo") updateAppPreview({ ...appPreview, logo: imgUrl });
-      if (type === "web_logo") updateWebPreview({ ...webPreview, logo: imgUrl });
+      if (type === "app_logo")
+        updateAppPreview({ ...appPreview, logo: imgUrl });
+      if (type === "web_logo")
+        updateWebPreview({ ...webPreview, logo: imgUrl });
       if (type === "owner_profile_pic")
         updateAppPreview({ ...appPreview, owner_profile_pic: imgUrl });
 
@@ -531,7 +527,7 @@ const LogoUpload = ({ setFile, file, onUploadComplete }) => {
 
       onUploadComplete(type, { file: selectedFile, preview: imgUrl });
     } catch (err) {
-      openPopup(err); 
+      openPopup(err);
       setDimensionWarning((p) => ({ ...p, [type]: err }));
     }
 
@@ -590,9 +586,9 @@ const LogoUpload = ({ setFile, file, onUploadComplete }) => {
           </div>
         ) : (
           <>
-         <div className="bg-gray-200 p-3 rounded-full">
-           <FiUploadCloud size={25}/>
-         </div>
+            <div className="bg-gray-200 p-3 rounded-full">
+              <FiUploadCloud size={25} />
+            </div>
             <p className="font-bold">{label}</p>
             <p className="text-sm text-gray-500 mb-2">{recommended}</p>
 
@@ -641,6 +637,50 @@ const LogoUpload = ({ setFile, file, onUploadComplete }) => {
           ownerProfileRef
         )}
       </div>
+      {/* // Add this directly in your LogoUpload component where you want to show the message */}
+     <div className="mt-6 rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 p-5 shadow-sm hover:shadow-md transition-all duration-300">
+  <div className="flex items-start gap-4">
+    {/* Icon */}
+    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+      <Info size={18} />
+    </div>
+
+    {/* Content */}
+    <div className="flex flex-col gap-4 w-full">
+      {/* Tip 1 */}
+      <p className="text-sm text-gray-700 leading-relaxed">
+        Optimize image size using{" "}
+        <a
+          href="https://imageresizer.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-blue-600 hover:text-indigo-700 underline underline-offset-4"
+        >
+          Image Resizer
+        </a>{" "}
+        to ensure fast loading and sharp visuals.
+      </p>
+
+      {/* Divider */}
+      <div className="h-px bg-blue-200/60" />
+
+      {/* Tip 2 */}
+      <p className="text-sm text-gray-700 leading-relaxed">
+        Remove unwanted backgrounds easily with{" "}
+        <a
+          href="https://remove.bg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-blue-600 hover:text-indigo-700 underline underline-offset-4"
+        >
+          AI Background Remover
+        </a>{" "}
+        for clean, professional-looking logos.
+      </p>
+    </div>
+  </div>
+</div>
+
 
       {/* 🔥 CENTER POPUP */}
       {showPopup && (

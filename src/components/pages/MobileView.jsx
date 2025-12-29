@@ -1,13 +1,30 @@
 import React from "react";
 
-import phone1 from "../../assets/mobileview/MobileView1.webp";
-import phone2 from "../../assets/mobileview/MobileView2.webp";
-import phone3 from "../../assets/mobileview/MobileView3.webp";
-import phone4 from "../../assets/mobileview/MobileView4.webp";
-import phone5 from "../../assets/mobileview/MobileView5.webp";
-import phone6 from "../../assets/mobileview/MobileView6.webp";
-import phone7 from "../../assets/mobileview/MobileView7.webp";
-import phone8 from "../../assets/mobileview/MobileView8.webp";
+import phone1 from "../../assets/mobileview/1.1.png";
+import phone2 from "../../assets/mobileview/1.2.png";
+import phone3 from "../../assets/mobileview/1.3.png";
+import phone4 from "../../assets/mobileview/1.4.png";
+import phone5 from "../../assets/mobileview/1.5.png";
+import phone6 from "../../assets/mobileview/3.png";
+import phone7 from "../../assets/mobileview/4.png";
+import phone8 from "../../assets/mobileview/5.png";
+import phone9 from "../../assets/mobileview/6.png";
+import phone10 from "../../assets/mobileview/7.png";
+import phone11 from "../../assets/mobileview/8.png";
+import phone12 from "../../assets/mobileview/9.png";
+import phone13 from "../../assets/mobileview/10.png";
+import phone14 from "../../assets/mobileview/11.png";
+import phone15 from "../../assets/mobileview/12.png";
+import phone16 from "../../assets/mobileview/13.png";
+import phone17 from "../../assets/mobileview/14.png";
+import phone18 from "../../assets/mobileview/15.png";
+import phone19 from "../../assets/mobileview/16.png";
+import phone20 from "../../assets/mobileview/17.png";
+import phone21 from "../../assets/mobileview/18.png";
+import phone22 from "../../assets/mobileview/20.png";
+
+// import phone24 from "../../assets/mobileview/21.png";
+// import phone25 from "../../assets/mobileview/22.png";
 import play from "../../assets/mobileview/grid.png";
 import phone from "../../assets/mobileview/Mobile.webp";
 import ViewItemList from "./ViewItemList";
@@ -104,6 +121,160 @@ export default function MobileView() {
         t("app.feature8.features.feature3"),
       ],
       image: phone8,
+    },
+        {
+      sn: t("app.feature9.heading"),
+      heading: t("app.feature9.subHeading"),
+      description: t("app.feature9.desc"),
+      features: [
+        t("app.feature9.features.feature1"),
+        t("app.feature9.features.feature2"),
+        t("app.feature9.features.feature3"),
+      ],
+      image: phone9,
+    },
+     {
+      sn: t("app.feature10.heading"),
+      heading: t("app.feature10.subHeading"),
+      description: t("app.feature10.desc"),
+      features: [
+        t("app.feature10.features.feature1"),
+        t("app.feature10.features.feature2"),
+        t("app.feature10.features.feature3"),
+      ],
+      image: phone10,
+    },
+     {
+      sn: t("app.feature11.heading"),
+      heading: t("app.feature11.subHeading"),
+      description: t("app.feature11.desc"),
+      features: [
+        t("app.feature11.features.feature1"),
+        t("app.feature11.features.feature2"),
+        t("app.feature11.features.feature3"),
+      ],
+      image: phone11,
+    },
+     {
+      sn: t("app.feature12.heading"),
+      heading: t("app.feature12.subHeading"),
+      description: t("app.feature12.desc"),
+      features: [
+        t("app.feature12.features.feature1"),
+        t("app.feature12.features.feature2"),
+        t("app.feature12.features.feature3"),
+      ],
+      image: phone12,
+    },
+     {
+      sn: t("app.feature13.heading"),
+      heading: t("app.feature13.subHeading"),
+      description: t("app.feature13.desc"),
+      features: [
+        t("app.feature13.features.feature1"),
+        t("app.feature13.features.feature2"),
+        t("app.feature13.features.feature3"),
+      ],
+      image: phone13,
+    },
+     {
+      sn: t("app.feature14.heading"),
+      heading: t("app.feature14.subHeading"),
+      description: t("app.feature14.desc"),
+      features: [
+        t("app.feature14.features.feature1"),
+        t("app.feature14.features.feature2"),
+        t("app.feature14.features.feature3"),
+      ],
+      image: phone14,
+    },
+     {
+      sn: t("app.feature15.heading"),
+      heading: t("app.feature15.subHeading"),
+      description: t("app.feature15.desc"),
+      features: [
+        t("app.feature15.features.feature1"),
+        t("app.feature15.features.feature2"),
+        t("app.feature15.features.feature3"),
+      ],
+      image: phone15,
+    },
+     {
+      sn: t("app.feature16.heading"),
+      heading: t("app.feature16.subHeading"),
+      description: t("app.feature16.desc"),
+      features: [
+        t("app.feature16.features.feature1"),
+        t("app.feature16.features.feature2"),
+        t("app.feature16.features.feature3"),
+      ],
+      image: phone16,
+    },
+     {
+      sn: t("app.feature17.heading"),
+      heading: t("app.feature17.subHeading"),
+      description: t("app.feature17.desc"),
+      features: [
+        t("app.feature17.features.feature1"),
+        t("app.feature17.features.feature2"),
+        t("app.feature17.features.feature3"),
+      ],
+      image: phone17,
+    },
+     {
+      sn: t("app.feature18.heading"),
+      heading: t("app.feature18.subHeading"),
+      description: t("app.feature18.desc"),
+      features: [
+        t("app.feature18.features.feature1"),
+        t("app.feature18.features.feature2"),
+        t("app.feature18.features.feature3"),
+      ],
+      image: phone18,
+    },
+     {
+      sn: t("app.feature19.heading"),
+      heading: t("app.feature19.subHeading"),
+      description: t("app.feature19.desc"),
+      features: [
+        t("app.feature19.features.feature1"),
+        t("app.feature19.features.feature2"),
+        t("app.feature19.features.feature3"),
+      ],
+      image: phone19,
+    },
+     {
+      sn: t("app.feature20.heading"),
+      heading: t("app.feature20.subHeading"),
+      description: t("app.feature20.desc"),
+      features: [
+        t("app.feature20.features.feature1"),
+        t("app.feature20.features.feature2"),
+        t("app.feature20.features.feature3"),
+      ],
+      image: phone20,
+    },
+     {
+      sn: t("app.feature21.heading"),
+      heading: t("app.feature21.subHeading"),
+      description: t("app.feature21.desc"),
+      features: [
+        t("app.feature21.features.feature1"),
+        t("app.feature21.features.feature2"),
+        t("app.feature21.features.feature3"),
+      ],
+      image: phone21,
+    },
+      {
+      sn: t("app.feature22.heading"),
+      heading: t("app.feature22.subHeading"),
+      description: t("app.feature22.desc"),
+      features: [
+        t("app.feature22.features.feature1"),
+        t("app.feature22.features.feature2"),
+        t("app.feature22.features.feature3"),
+      ],
+      image: phone22,
     },
   ];
 

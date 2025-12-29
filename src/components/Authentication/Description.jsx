@@ -1,11 +1,10 @@
 import React from "react";
 import logo from "../../assets/LG1.svg";
 import { FaCheckCircle } from "react-icons/fa";
-import reporterLogo from "../../assets/reporterIcon1.png";
-import reporterLogo2 from "../../assets/reporterIcon2.png";
-import reporterLogo3 from "../../assets/reporterIcon3.png";
-import reporterLogo4 from "../../assets/reporterIcon4.png";
-import reporterLogo5 from "../../assets/reporterIcon5.png";
+import kutumb from "../../assets/reporters/kutumb.png";
+import astv from "../../assets/reporters/astv.png";
+import indiaupdesh from "../../assets/reporters/indiaupdesh.png";
+import publicbharat from "../../assets/reporters/publicbharat.png";
 import { Link } from "react-router-dom";
 import DemoCallCard from "../Home/ScheduleDemo/DemoCallCard";
 import { useTranslation } from "react-i18next";
@@ -13,41 +12,37 @@ import { motion } from "framer-motion";
 
 const reporterIcons = [
   {
-    reporterLOgo: reporterLogo,
-    reporterName: "Arti News",
+    reporterLOgo: kutumb,
+    reporterName: "Kutumb Jagran News",
   },
   {
-    reporterLOgo: reporterLogo2,
-    reporterName: "MN TV",
+    reporterLOgo: astv,
+    reporterName: "ASTV 24 Ankit snwad",
   },
   {
-    reporterLOgo: reporterLogo3,
-    reporterName: "David Brown",
+    reporterLOgo: indiaupdesh,
+    reporterName: "India Updesh",
   },
   {
-    reporterLOgo: reporterLogo4,
-    reporterName: "Bihar 24/7",
-  },
-  {
-    reporterLOgo: reporterLogo5,
-    reporterName: "Delhi News",
+    reporterLOgo: publicbharat,
+    reporterName: "Public Bharat ",
   },
 ];
 
 export default function Description({ guid }) {
   const { t } = useTranslation();
-  
+
   // Animation variants
   const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
-  
+
   const item = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -55,13 +50,13 @@ export default function Description({ guid }) {
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100
-      }
-    }
+        stiffness: 100,
+      },
+    },
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="hidden md:flex flex-col items-start p-6 md:p-8 space-y-8 bg-gradient-to-br from-red-50 to-red-100 text-black rounded-l-2xl"
       initial="hidden"
       animate="visible"
@@ -105,18 +100,20 @@ export default function Description({ guid }) {
 
       {/* Trusted By Section */}
       <motion.div className="w-full mt-4" variants={item}>
-        <p className="text-sm text-gray-950 mb-3">Trusted by leading journalists:</p>
+        <p className="text-sm text-gray-950 mb-3">
+          Trusted by leading journalists:
+        </p>
         <div className="flex flex-wrap items-center gap-4 md:gap-5 lg:gap-6  backdrop-blur-sm p-4 rounded-xl">
           {reporterIcons?.map((item, index) => (
-            <motion.div 
+            <motion.div
               key={index}
-              className="transition-all duration-300 hover:scale-110"
+              className="transition-all duration-300 hover:scale-110 w-12 md:w-20 lg:w-24 h-24 overflow-hidden  bg-transparent"
               whileHover={{ y: -5 }}
             >
               <img
                 src={item.reporterLOgo}
                 alt={item.reporterName}
-                className="w-12 md:w-14 lg:w-16 object-contain rounded"
+                className="w-full h-full object-cover "
                 loading="lazy"
                 title={item.reporterName}
               />
@@ -126,7 +123,7 @@ export default function Description({ guid }) {
       </motion.div>
 
       {/* Help Section */}
-      <motion.div 
+      <motion.div
         className="flex flex-wrap items-center gap-2 pt-4 text-sm md:text-base text-gray-950"
         variants={item}
       >
@@ -142,7 +139,7 @@ export default function Description({ guid }) {
       </motion.div>
 
       {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
+      {/* <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black/30 to-transparent"></div> */}
     </motion.div>
   );
 }

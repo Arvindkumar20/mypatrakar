@@ -8,6 +8,7 @@
     "blog": "ब्लॉग",
     "signupForFree": "मोफत साइन अप करा",
     "signin": "साइन इन करा",
+    "AI": "MyPatrakar AI वापरून पहा",
     "product": {
       "product": "उत्पादने",
       "website": "वेबसाइट",
@@ -59,7 +60,22 @@
       "mainHeading": "उत्तम न्यूज पोर्टल डिझाइन हवे आहे?",
       "mainHeadingDesc": "कधीही कॉल करा किंवा संदेश पाठवा, आम्ही 24 तासांत उत्तर देऊ.",
       "getInTouch": "संपर्क साधा",
-      "address": "बिल्डिंग क्र. 10/703, ग्राउंड फ्लोर, सेक्टर 10, इंदिरा नगर, लखनऊ, उत्तर प्रदेश - 226016"
+      "address": "बिल्डिंग क्र. 10/703, ग्राउंड फ्लोर, सेक्टर 10, इंदिरा नगर, लखनऊ, उत्तर प्रदेश - 226016",
+      "form": {
+        "heading": "सुरुवात करा",
+        "subheading": "",
+        "phone": "फोन नंबर",
+        "message": "संदेश",
+        "button1": "कॉलसाठी विनंती करा",
+        "button2": "कॉल विनंती यशस्वी",
+        "phonePlaceholder": "आपला फोन नंबर टाका",
+        "messagePlaceholder": "आपला संदेश लिहा"
+      },
+      "modal": {
+        "title": "यशस्वी",
+        "description": "आपली विनंती यशस्वीरित्या सबमिट झाली आहे",
+        "button": "ठीक आहे"
+      }
     },
     "bottom": {
       "heading1": "उपयुक्त लिंक्स",
@@ -277,40 +293,39 @@
     "politics": "राजकारण",
     "sports": "क्रीडा"
   },
-  "webPreview":{
-  "header": {
-    "advertise": "आमच्यासोबत जाहिरात करा",
-    "navigation": {
-      "desh": "देश",
-      "news": "बातम्या",
-      "uttar_pradesh": "उत्तर प्रदेश",
-      "madhya_pradesh": "मध्य प्रदेश",
-      "entertainment": "मनोरंजन",
-      "misc": "इतर"
-    }
-  },
-  "footer": {
-    "navigation": {
-      "home": "होम",
-      "about": "आमच्याबद्दल",
-      "terms": "अटी व शर्ती",
-      "privacy": "गोपनीयता धोरण",
-      "contact": "संपर्क"
+  "webPreview": {
+    "header": {
+      "advertise": "आमच्यासोबत जाहिरात करा",
+      "navigation": {
+        "desh": "देश",
+        "news": "बातम्या",
+        "uttar_pradesh": "उत्तर प्रदेश",
+        "madhya_pradesh": "मध्य प्रदेश",
+        "entertainment": "मनोरंजन",
+        "misc": "इतर"
+      }
     },
-    "exclusive": "#BS_EXCLUSIVE",
-    "copyright": "My Patrakar. सर्व हक्क राखीव.",
-    "powered": "MyPatrakar द्वारे विकसित आणि सादर"
-  },
-  "mainContent": {
-    "advertisement": "जाहिरात",
-    "loading": "लोड करत आहे..."
-  },
-  "loginCard": {
-    "login": "लॉगिन",
-    "signup": "साइन अप",
+    "footer": {
+      "navigation": {
+        "home": "होम",
+        "about": "आमच्याबद्दल",
+        "terms": "अटी व शर्ती",
+        "privacy": "गोपनीयता धोरण",
+        "contact": "संपर्क"
+      },
+      "exclusive": "#BS_EXCLUSIVE",
+      "copyright": "My Patrakar. सर्व हक्क राखीव.",
+      "powered": "MyPatrakar द्वारे विकसित आणि सादर"
+    },
+    "mainContent": {
+      "advertisement": "जाहिरात",
+      "loading": "लोड करत आहे..."
+    },
+    "loginCard": {
+      "login": "लॉगिन",
+      "signup": "साइन अप",
       "welcome": "परत स्वागत आहे",
-  "desc": "तुमच्या खात्यात पुढे जाण्यासाठी साइन इन करा"
+      "desc": "तुमच्या खात्यात पुढे जाण्यासाठी साइन इन करा"
+    }
   }
-}
-
 }
