@@ -9,5 +9,8 @@ export default function AnalyticsTracker() {
     pageview(location.pathname + location.search);
   }, [location]);
 
+
+  
+
   return null;
 }
