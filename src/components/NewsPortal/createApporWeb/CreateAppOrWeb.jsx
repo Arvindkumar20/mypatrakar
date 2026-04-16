@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import AppColor from "./AppColor";
-import BasicDetails from "./basicDetails";
 import Cancel from "../Cancel";
 import SocialMediaLinks from "./SocialMediaLinks";
 import WebColor from "./WebColor";
@@ -15,7 +14,7 @@ import { checkObjNotEmpty } from "../../../utils/CheckObjEmptyOrNot";
 import { AuthContext } from "../../../context/Auth-context";
 import { CreateAppOrWebCustomer, DecryptString } from "../../../api";
 import { useSessionStorage } from "../../../hooks/sessionStorage";
-
+import BasicDetails from "./BasicDetails"
 const CreateAppOrWeb = () => {
   const [empty, setEmpty] = useState(false);
   const [submitForm, setSubmitForm] = useState(false);
