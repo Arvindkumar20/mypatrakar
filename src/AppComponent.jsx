@@ -365,7 +365,7 @@ const Home = React.lazy(() => import("./components/Home/Home"));
 const Pricing = React.lazy(() => import("./components/Home/price/Pricing"));
 const WebView = React.lazy(() => import("./components/pages/WebView"));
 const MobileView = React.lazy(() => import("./components/pages/MobileView"));
-const AppDemoLanding = React.lazy(() => import("./components/pages/AppdemoLanding.jsx"));
+const AppDemoLanding = React.lazy(() => import("./components/pages/AppDemoLanding.jsx"));
 const WebDemoLanding = React.lazy(() => import("./components/pages/WebDemoLanding.jsx"));
 const PreBooking = React.lazy(() => import("./components/prebooking/PreBooking.jsx"));
 const ShortGenerator = React.lazy(() => import("./components/Home/shortsAI/pages/ShortGenerator.jsx"));

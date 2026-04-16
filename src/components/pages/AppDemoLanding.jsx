@@ -50,7 +50,7 @@ const AppDemoLanding = () => {
                 <span className="text-[#FE0101]">Before You Buy It</span>
               </h1>
               <p className="mt-6 text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                Don't just imagine it. Download our app and experience a
+                {`Don't`} just imagine it. Download our app and experience a
                 real-time demo of your own fully branded news application.
                 Customize colors, fonts, and layouts instantly.
               </p>
