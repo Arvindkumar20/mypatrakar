@@ -80,7 +80,7 @@ export default function Navigation() {
               <Link
                 key={index}
                 to={item.to}
-                className="flex items-center gap-3 text-white hover:text-red-500 transition-colors"
+                className="flex items-center gap-3 text-white hover:text-red-500 transition-colors focus:text-red-500"
               >
                 <FontAwesomeIcon icon={item.icon} className="w-5" />
                 {item.text}

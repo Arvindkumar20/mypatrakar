@@ -3,7 +3,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { GetFeature } from "../../api";
 import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../../context/LanguageContext";
-import { Helmet } from "react-helmet-async";
+
 
 export default function Features() {
   const { translate } = useContext(LanguageContext);
@@ -17,7 +17,7 @@ export default function Features() {
       // console.log(res.data.response);
       setFeatures(res.data.response);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
   useEffect(() => {

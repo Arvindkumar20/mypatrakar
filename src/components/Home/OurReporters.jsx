@@ -49,7 +49,7 @@ export default function OurReporters() {
       </section>
 
       {/* Reporters Grid */}
-      <section className="w-full ml-60 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 place-items-center">
+      <section className="w-full ml-0 lg:ml-60 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 place-items-center">
         {reporter.map((item, index) => (
           <div key={index} className="flex flex-col items-center">
             <img
@@ -58,9 +58,9 @@ export default function OurReporters() {
               className="w-40 h-40 sm:w-28 sm:h-28 lg:w-24 lg:h-24 object-cover rounded-xl hover:scale-105 transition-transform duration-200  "
               loading="lazy"
             />
-            <p className="text-gray-800 font-medium text-sm mt-2 text-center">
+            {/* <p className="text-gray-800 font-medium text-sm mt-2 text-center">
               {item.reporterName}
-            </p>
+            </p> */}
           </div>
         ))}
       </section>

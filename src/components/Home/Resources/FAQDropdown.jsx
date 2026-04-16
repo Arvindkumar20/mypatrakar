@@ -16,7 +16,7 @@ const FAQDropdown = ({ question, answer }) => {
         {/* Question Section */}
         <button
           onClick={toggleAnswer}
-          className="w-full flex justify-between items-center px-6 py-4 bg-white  focus:outline-none transition-colors rounded-t-lg"
+          className="w-full text-start flex justify-between items-center px-6 py-4 bg-white  focus:outline-none transition-colors rounded-t-lg"
         >
           <span
             className="text-base md:text-md lg:text-md font-semibold text-gray-800"

@@ -61,7 +61,7 @@ const StateCitySelector = () => {
 
       setStates(formattedStates);
     } catch (err) {
-      console.error("Failed to load states", err);
+      // console.error("Failed to load states", err);
     }
   };
 
@@ -73,7 +73,7 @@ const StateCitySelector = () => {
 
     try {
       setLoadingCities(true);
-      console.log(basicDetails)
+      // console.log(basicDetails)
       const res = await getCitiesBySates(basicDetails.owner_state);
       const citiesArray = res?.data?.data || [];
 
@@ -85,7 +85,7 @@ const StateCitySelector = () => {
 
       setCities(formattedCities);
     } catch (err) {
-      console.error("Failed to load cities", err);
+      // console.error("Failed to load cities", err);
       setCities([]);
     } finally {
       setLoadingCities(false);

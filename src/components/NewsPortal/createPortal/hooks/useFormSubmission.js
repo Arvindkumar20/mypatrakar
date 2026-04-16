@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CreateNewPortal } from "../../../../api";
 
-
 export const useFormSubmission = (
   formData,
   validateForm,
@@ -12,7 +11,7 @@ export const useFormSubmission = (
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setStatus((prev) => ({ ...prev, error: null }));
     
     if (!validateForm()) return;
@@ -32,6 +31,7 @@ export const useFormSubmission = (
       };
 
       const res = await CreateNewPortal(payload);
+      
       if (res.data?.response) {
         setSessionData("packageDetails", {
           purchaseId: res.data.response.purchase_id,
@@ -45,13 +45,31 @@ export const useFormSubmission = (
       }
     } catch (error) {
       console.error("Portal creation error:", error);
-      setStatus((prev) => ({
-        ...prev,
+
+      let serverErrorMessage = "Failed to create portal. Please try again.";
+
+      if (error.response?.data) {
+        const data = error.response.data;
+
+  
+        if (data.errors && typeof data.errors === 'object') {
+
+          serverErrorMessage = Object.values(data.errors)
+            .flat() 
+            .join(" | ");
+        } 
+    
+        else if (data.status_message) {
+          serverErrorMessage = data.status_message;
+        }
+      } else if (error.message) {
+        serverErrorMessage = error.message;
+      }
+
+      setStatus({
         isLoading: false,
-        error:
-          error?.response?.data?.status_message ||
-          "Failed to create portal. Please try again.",
-      }));
+        error: serverErrorMessage, 
+      });
     }
   };
 

@@ -206,21 +206,27 @@ export default function SignUp() {
         />
         <meta name="robots" content="index, follow" />
       </Helmet>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="max-w-7xl mx-auto"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          <div className="flex flex-col lg:flex-row gap-0 lg:gap-8 bg-white rounded-3xl overflow-hidden shadow-2xl">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100  flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8">
+        {/* <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8"> */}
+
+        <div className="w-full max-w-6xl mx-auto">
+          <motion.div
+            // className="max-w-7xl mx-auto"
+            className="flex flex-col lg:flex-row gap-0 lg:gap-8 bg-white rounded-3xl overflow-hidden shadow-2xl"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            {/* <div className="flex flex-col lg:flex-row gap-0 lg:gap-8 bg-white rounded-3xl overflow-hidden shadow-2xl"> */}
             {/* Description Section */}
-            <motion.div
-              className="hidden lg:flex lg:w-1/2"
-              variants={itemVariants}
-            >
+            {/* <motion.div
+                className="hidden lg:flex lg:w-1/2"
+                variants={itemVariants}
+              > */}
+            <div className="hidden lg:flex lg:w-1/2">
               <Description guid={guid} />
-            </motion.div>
+            </div>
+            {/* </motion.div> */}
 
             {/* Form Section */}
             <motion.div
@@ -445,15 +451,16 @@ export default function SignUp() {
                         className="text-red-500 hover:underline"
                         target="_blank"
                       >
-                         Terms & Conditions
+                        Terms & Conditions
                       </Link>
                     </p>
                   </motion.div>
                 </motion.form>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
+            {/* </div> */}
+          </motion.div>
+        </div>
         {/* OTP Dialog */}
         {open && !errors.general && (
           <OtpVerificationDialog

@@ -13,7 +13,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error("Error caught in ErrorBoundary:", error, errorInfo);
+    // console.error("Error caught in ErrorBoundary:", error, errorInfo);
   }
 
   handleReload = () => {

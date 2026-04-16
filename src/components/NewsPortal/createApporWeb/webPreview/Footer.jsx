@@ -26,55 +26,54 @@ export const Footer = memo(
         t("webPreview.footer.navigation.privacy"),
         t("webPreview.footer.navigation.contact"),
       ],
-      [t]
+      [t],
     );
 
-  const socialMediaIcons = useMemo(
-  () => [
-    {
-      key: "fb_link",
-      icon: FaFacebookF,
-      label: "facebook",
-      color: "text-[#1877F2] hover:text-[#145DBF]",
-    },
-    {
-      key: "twitter_link",
-      icon: FaTwitter,
-      label: "twitter",
-      color: "text-[#1DA1F2] hover:text-[#0D8DDA]",
-    },
-    {
-      key: "linkedin_link",
-      icon: FaLinkedinIn,
-      label: "linkedin",
-      color: "text-[#0A66C2] hover:text-[#004182]",
-    },
-    {
-      key: "insta_link",
-      icon: FaInstagram,
-      label: "instagram",
-      color: "text-[#E4405F] hover:text-[#D6294E]",
-    },
-    {
-      key: "youtube_link",
-      icon: FaYoutube,
-      label: "youtube",
-      color: "text-[#FF0000] hover:text-[#CC0000]",
-    },
-    {
-      key: "telegram_link",
-      icon: FaTelegram,
-      label: "telegram",
-      color: "text-[#229ED9] hover:text-[#1C8BC0]",
-    },
-  ],
-  []
-);
-
+    const socialMediaIcons = useMemo(
+      () => [
+        {
+          key: "fb_link",
+          icon: FaFacebookF,
+          label: "facebook",
+          color: "text-[#1877F2] hover:text-[#145DBF]",
+        },
+        {
+          key: "twitter_link",
+          icon: FaTwitter,
+          label: "twitter",
+          color: "text-[#1DA1F2] hover:text-[#0D8DDA]",
+        },
+        {
+          key: "linkedin_link",
+          icon: FaLinkedinIn,
+          label: "linkedin",
+          color: "text-[#0A66C2] hover:text-[#004182]",
+        },
+        {
+          key: "insta_link",
+          icon: FaInstagram,
+          label: "instagram",
+          color: "text-[#E4405F] hover:text-[#D6294E]",
+        },
+        {
+          key: "youtube_link",
+          icon: FaYoutube,
+          label: "youtube",
+          color: "text-[#FF0000] hover:text-[#CC0000]",
+        },
+        {
+          key: "telegram_link",
+          icon: FaTelegram,
+          label: "telegram",
+          color: "text-[#229ED9] hover:text-[#1C8BC0]",
+        },
+      ],
+      [],
+    );
 
     const fontFamilyStyle = useMemo(
       () => ({ fontFamily: fontBottom || webPreview.font_bottom }),
-      [fontBottom, webPreview.font_bottom]
+      [fontBottom, webPreview.font_bottom],
     );
 
     return (
@@ -89,7 +88,7 @@ export const Footer = memo(
       >
         <div className="max-w-7xl mx-auto px-6 py-3 grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-12">
           <div className="space-y-2">
-            <h3 className="font-semibold text-md" style={fontFamilyStyle}>
+            <h3 className="font-semibold text-lg" style={fontFamilyStyle}>
               Navigation
             </h3>
             {navigationItems.map((item, idx) => (
@@ -110,7 +109,7 @@ export const Footer = memo(
           <div className="relative space-y-2 hidden md:block">
             <div>
               <h3
-                className="font-semibold text-md relative"
+                className="font-semibold text-lg relative"
                 style={fontFamilyStyle}
               >
                 #BS_EXCLUSIVE
@@ -143,36 +142,30 @@ export const Footer = memo(
         </div>
         <div className="flex items-center justify-between px-2 border-t border-gray-700 text-center py-2 text-[10px]">
           <div className="text-xs">
-            © {new Date().getFullYear()} {t("webPreview.footer.copyright")}
+            © 2026 {t("webPreview.footer.copyright")}
           </div>
-        
-       {socialLinks && (
-  <div className="flex gap-2">
-    {socialMediaIcons?.map(({ key, icon: Icon, label, color }) => {
-      const link = socialLinks[key];
 
-      if (!link) return null;
+          {socialLinks && (
+            <div className="flex gap-2">
+              {socialMediaIcons?.map(({ key, icon: Icon, label, color }) => {
+                const link = socialLinks[key];
 
-      return (
-        <a
-          key={key}
-          aria-label={label}
-          href={link}
-          target="_blank"
-        
-        >
-          <Icon size={18} className={color} />
-        </a>
-      );
-    })}
-  </div>
-)}
+                if (!link) return null;
+
+                return (
+                  <a key={key} aria-label={label} href={link} target="_blank">
+                    <Icon size={18} className={color} />
+                  </a>
+                );
+              })}
+            </div>
+          )}
 
           <div>{t("webPreview.footer.powered")}</div>
         </div>
       </footer>
     );
-  }
+  },
 );
 
 Footer.displayName = "Footer";

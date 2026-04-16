@@ -17,10 +17,10 @@ export default function AfterLoginDashboard() {
       setIsLoading(true);
       const userData = JSON.parse(sessionStorage.getItem("userData"));
       const res = await GetPortalList(userData.userId);
-      console.log(res);
+      // console.log(res);
       setPortalList(res.data.response || []);
     } catch (error) {
-      console.error("Failed to fetch portal list:", error);
+      // console.error("Failed to fetch portal list:", error);
     } finally {
       setIsLoading(false);
     }

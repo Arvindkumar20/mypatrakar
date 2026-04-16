@@ -6,7 +6,7 @@ export default function LoginCard({ logo }) {
   const { t } = useTranslation();
   return (
     <div className=" flex items-center justify-center bg-blue-500">
-      <div className="bg-white shadow-md rounded-md  w-36 text-center">
+      <div className="bg-white shadow-md rounded-md  w-40 text-center p-1">
         {/* Logo */}
         {/* <div className="flex justify-center mt-2">
           <imganslati
@@ -32,11 +32,11 @@ export default function LoginCard({ logo }) {
         </div>
 
         {/* Title */}
-        <h2 className="text-md font-bold text-gray-800 mb-1">
+        <h2 className="text-lg font-bold text-gray-800 mb-1">
           {t("webPreview.loginCard.welcome")}
         </h2>
         <p className="text-gray-500 text-xs mb-2">
-           {t("webPreview.loginCard.desc")}
+          {t("webPreview.loginCard.desc")}
         </p>
 
         {/* Google Button */}

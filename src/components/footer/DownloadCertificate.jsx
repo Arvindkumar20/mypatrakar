@@ -56,7 +56,7 @@ const DownloadCertificate = () => {
       } else {
         toast.error("Failed to download certificate.");
       }
-      console.error(err);
+      // console.error(err);
     } finally {
       setLoading(false);
     }

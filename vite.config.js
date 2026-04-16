@@ -6,24 +6,19 @@ export default defineConfig({
   plugins: [
     react()
   ],
+  build: {
+    target: "es2015",    // ✅ Safari / iPhone safe
+    sourcemap: false,    // ✅ Hide source code & reduce bundle size
+    minify: "terser",    // ✅ Smaller bundle for low memory devices
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://mypatrakar.hindtechitsolutions.com', // ✅ Backend URL HTTPS
+        changeOrigin: true,   // ✅ Host header matches target
+        secure: true,         // ✅ Accept only valid certificates
+        rewrite: (path) => path.replace(/^\/api/, ''), // ✅ Adjust path if needed
+      },
+    },
+  },
 });
-
-// import { defineConfig } from 'vite';
-// import react from '@vitejs/plugin-react';
-
-// import { defineConfig } from 'vite';
-// import react from '@vitejs/plugin-react';
-
-// export default defineConfig({
-//   plugins: [react()],
-//   server: {
-//     proxy: {
-//       '/api': {
-//         target: 'https://mypatrakar.hindtechitsolutions.com', // Use HTTPS if your backend redirects to HTTPS
-//         changeOrigin: true, // Ensures the Host header matches the target
-//         secure: false, // Allow self-signed certificates (if any)
-//         rewrite: (path) => path.replace(/^\/api/, ''), // Adjust path if needed
-//       },
-//     },
-//   },
-// });

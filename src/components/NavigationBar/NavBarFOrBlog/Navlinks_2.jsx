@@ -47,7 +47,7 @@ const ResponsiveNav = () => {
       <nav className="mx-auto max-w-7xl px-4 lg:px-6">
         <div className="flex items-center justify-between py-4">
           <ul className="hidden lg:flex gap-6 items-center text-lg">
-            {categories.map((cat) => (
+            {categories.slice(0,5).map((cat) => (
               <li key={cat.category_id}>
                 <div
                   style={style}
@@ -78,29 +78,27 @@ const ResponsiveNav = () => {
 
       {/* Mobile Side Menu */}
       <div
-        className={`lg:hidden fixed inset-y-0 left-0 z-50 w-full bg-white p-6 shadow-lg transform transition-transform ${
-          isMenuOpen ? "translate-y-0" : "-translate-y-full"
-        } duration-300 ease-in-out rounded-md`}
+        className={`lg:hidden fixed inset-y-0 left-0 z-50 w-full h-[500px] bg-white p-6 shadow-lg
+  transform transition-transform duration-300 ease-in-out
+  ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        {/* Close Button */}
         <div
-          className="flex justify-start items-start mb-8 p-2 rounded bg-gray-200 w-10 mx-auto cursor-pointer"
+          className="absolute top-4 right-4 p-2 rounded bg-gray-200 cursor-pointer"
           onClick={handleMenuToggle}
         >
           <IoClose size={24} />
         </div>
 
-        {/* Mobile Navigation Links */}
-        <ul className="flex flex-col gap-4 text-start">
-          {categories.map((cat) => (
+        <ul className="flex flex-col gap-4 mt-12">
+          {categories.slice(0, 5).map((cat) => (
             <li key={cat.category_id}>
               <div
-                style={style}
-                className={`cursor-pointer py-2 px-4 rounded font-semibold flex items-center gap-2 transition-colors ${
-                  activeCategory === cat.category_id
-                    ? "text-red-500 bg-red-100"
-                    : "text-gray-700 hover:text-red-500 hover:bg-red-100"
-                }`}
+                className={`cursor-pointer py-2 px-4 rounded font-semibold flex items-center gap-2
+          ${
+            activeCategory === cat.category_id
+              ? "text-red-500 bg-red-100"
+              : "text-gray-700 hover:text-red-500 hover:bg-red-100"
+          }`}
                 onClick={() =>
                   handleSelectCategory(cat.category_id, cat.category)
                 }

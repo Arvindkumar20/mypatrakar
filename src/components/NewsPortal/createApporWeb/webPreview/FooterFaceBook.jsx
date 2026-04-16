@@ -62,7 +62,7 @@ function FooterFaceBookComponent({ url }) {
   const [facebookPageUrl, setFacebookPageUrl] = useState(
     "https://www.facebook.com/HindtechLucknow"
   );
-console.log(url)
+// console.log(url)
   useEffect(() => {
     if (!url) return;
 
@@ -83,7 +83,7 @@ console.log(url)
       const fbUrl = new URL(cleanedUrl);
       setFacebookPageUrl(fbUrl.href);
     } catch (err) {
-      console.error("Invalid Facebook URL:", url);
+      // console.error("Invalid Facebook URL:", url);
       setFacebookPageUrl("https://www.facebook.com/HindtechLucknow");
     }
   }, [url]);

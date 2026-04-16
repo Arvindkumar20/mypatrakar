@@ -14,7 +14,7 @@ const navigate=useNavigate();
       const res = await BlogCategoryId();
       setCategories(res.data.response);
     } catch (error) {
-      console.error("Error fetching category:", error);
+      // console.error("Error fetching category:", error);
     }
   };
 

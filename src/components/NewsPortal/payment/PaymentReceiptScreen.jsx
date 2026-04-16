@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import {
-  Download,
   ArrowLeft,
   CheckCircle2,
   FileText,
@@ -66,7 +65,7 @@ export default function PaymentReceiptScreen() {
   // --- Handler for the Continue Button ---
   const handleBackToDashboard = () => {
     // Placeholder for navigation logic
-    console.log("Navigating back to Dashboard...");
+    // console.log("Navigating back to Dashboard...");
   };
 
   return (

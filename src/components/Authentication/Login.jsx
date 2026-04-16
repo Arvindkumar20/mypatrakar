@@ -47,6 +47,7 @@ export default function Login() {
     };
     try {
       const res = await LoginSendOtp({ mobile: phone });
+      // console.log(res)
       if (res?.data?.response) {
         setAuthToken(res.data.response);
         setOpen(true);
@@ -158,14 +159,17 @@ export default function Login() {
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4 sm:p-6 lg:p-8">
         <div className="w-full max-w-6xl mx-auto">
+       
           <motion.div
             className="flex flex-col lg:flex-row gap-0 lg:gap-8 bg-white rounded-3xl overflow-hidden shadow-2xl"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
           >
+        
             {/* Description Panel */}
             <div className="hidden lg:flex lg:w-1/2">
+            
               <Description
                 guid={[
                   {

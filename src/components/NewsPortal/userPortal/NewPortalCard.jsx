@@ -1,166 +1,4 @@
-// import React, { useEffect, useState, useContext } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../../context/Auth-context";
-// import { useSessionStorage } from "../../../hooks/sessionStorage";
-// import { EncryptString } from "../../../api";
-// import { FiArrowRight } from "react-icons/fi";
-// import { toast } from "react-toastify";
 
-// export default function NewPortalCard({
-//   agency_name,
-//   news,
-//   package_name,
-//   package_id,
-//   purchase_date,
-//   purchase_id,
-//   status,
-//   users,
-//   request_status,
-//   purchase_status,
-//   payment_status,
-// }) {
-//   const auth = useContext(AuthContext);
-//   const { requestStatus } = auth;
-
-//   const isPurchaseCompleted =
-//     purchase_status?.toLowerCase() !== "pending" &&
-//     payment_status?.toLowerCase() !== "pending";
-//   const { setSessionData, getSessionData } = useSessionStorage();
-//   const navigate = useNavigate();
-
-//   const userData = JSON.parse(sessionStorage.getItem("userData"));
-//   const userId = userData?.userId;
-//   // console.log(purchase_id);
-//   const EncryptParams = async () => {
-//     try {
-//       const [pkg, pur, usr] = await Promise.all([
-//         EncryptString(package_id),
-//         EncryptString(purchase_id),
-//         EncryptString(userId),
-//       ]);
-//       return {
-//         package_id: pkg.data.response,
-//         purchase_id: pur.data.response,
-//         user_id: usr.data.response,
-//       };
-//     } catch (err) {
-//       console.error("Error encrypting IDs:", err);
-//       throw new Error("Failed to process your request. Please try again.");
-//     }
-//   };
-
-//   const handleOpenDashboard = async () => {
-//     try {
-//       if (!userId) {
-//         return navigate("/login");
-//       }
-//       const encryptedIds = await EncryptParams();
-//       const packageDetails = getSessionData("packageDetails");
-//       if (!packageDetails) {
-//         setSessionData("packageDetails", {
-//           purchaseId: encryptedIds.purchase_id,
-//           packageId: encryptedIds.package_id,
-//           userId: encryptedIds.user_id,
-//         });
-//       }
-//       if (request_status?.toLowerCase() !== "created") {
-//         toast.success("Please Your dashboard deliverd within 48 Hours");
-//       }
-//       if (
-//         request_status?.toLowerCase() == "pending" ||
-//         request_status?.toLowerCase() == "rejected"
-//       ) {
-//         if (isPurchaseCompleted) {
-//           navigate("/portal/createAppOrWeb");
-//         } else {
-//           navigate(
-//             `/portal/payment/${encryptedIds.package_id}/${encryptedIds.purchase_id}/${encryptedIds.user_id}`
-//           );
-//         }
-//       } else {
-//         toast.success("Please Your dashboard deliverd within 48 Hours");
-//       }
-//     } catch (error) {
-//       console.error("Error navigating to dashboard:", error);
-//     }
-//   };
-
-//   const statusColors = {
-//     active: "text-green-600 bg-green-100",
-//     pending: "text-yellow-600 bg-yellow-100",
-//     inactive: "text-red-600 bg-red-100",
-//     default: "text-gray-600 bg-gray-100",
-//   };
-
-//   const getStatusColor = (status) => {
-//     const lowerStatus = status?.toLowerCase();
-//     return statusColors[lowerStatus] || statusColors.default;
-//   };
-
-//   return (
-//     <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 h-full flex flex-col">
-//       {/* Status Badge */}
-//       <div
-//         className={`${getStatusColor(
-//           status
-//         )} text-xs font-medium px-2 py-1 rounded-full inline-block mb-4 self-start`}
-//       >
-//         {status || "N/A"}
-//       </div>
-
-//       {/* Agency Name */}
-//       <h3
-//         className="text-xl font-bold text-gray-800 mb-2 line-clamp-2"
-//         title={agency_name}
-//       >
-//         {agency_name || "Unnamed Portal"}
-//       </h3>
-
-//       {/* Package Name */}
-//       {package_name && (
-//         <p className="text-sm text-gray-500 mb-1">
-//           Package: <span className="font-medium">{package_name}</span>
-//         </p>
-//       )}
-
-//       {/* Purchase Date */}
-//       {purchase_date && (
-//         <p className="text-xs text-gray-400 mb-4">
-//           Since {new Date(purchase_date).toLocaleDateString()}
-//         </p>
-//       )}
-
-//       {/* Stats */}
-//       <div className="flex items-center gap-4 text-sm text-gray-600 mb-6 mt-auto">
-//         <div>
-//           <span className="font-semibold">{news || 0}</span>
-//         </div>
-//         <div>
-//           <span className="font-semibold">{users || 0}</span>
-//         </div>
-//       </div>
-
-//       {/* Action Button */}
-//       {isPurchaseCompleted ? (
-//         <button
-//           onClick={handleOpenDashboard}
-//           className="mt-auto w-full flex items-center justify-center gap-2 py-2 px-4 border border-green-600 rounded-lg text-green-600 font-medium hover:bg-red-50 transition-colors duration-200"
-//         >
-//           Open Dashboard
-//           <FiArrowRight className="text-lg" />
-//         </button>
-//       ) : (
-//         <button
-//           onClick={handleOpenDashboard}
-//           className="mt-auto w-full flex items-center justify-center gap-2 py-2 px-4 border border-red-600 rounded-lg text-red-600 font-medium hover:bg-red-50 transition-colors duration-200"
-//         >
-//           Make Payment
-//           <FiArrowRight className="text-lg" />
-//         </button>
-//       )}
-//     </div>
-//   );
-// }
 import React, { useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/Auth-context";
@@ -229,7 +67,7 @@ export default function NewPortalCard({
         user_id: usr.data.response,
       };
     } catch (err) {
-      console.error("Encryption failed:", err);
+      // console.error("Encryption failed:", err);
       throw new Error("Failed to process your request. Please try again.");
     }
   }, [package_id, purchase_id, userId]);
@@ -270,7 +108,7 @@ export default function NewPortalCard({
       // If created or others
       toast.success("Your dashboard will be delivered within 48 hours.");
     } catch (error) {
-      console.error("Navigation error:", error);
+      // console.error("Navigation error:", error);
       toast.error(error.message || "Something went wrong. Please try again.");
     }
   }, [

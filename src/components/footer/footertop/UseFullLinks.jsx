@@ -59,7 +59,7 @@ export default function UseFullLinks() {
           >
             <Link
               to={item.href}
-              className="flex items-center gap-2 text-white hover:text-red-500 transition"
+              className="flex items-center gap-2 text-white hover:text-red-500 transition focus:text-red-500"
             >
               <FontAwesomeIcon icon={item.icon} />
               <span>{item.text}</span>

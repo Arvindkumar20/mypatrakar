@@ -38,7 +38,7 @@ export default function AppViewOnHome() {
           </NavLink>
         </div>
         <div className="flex flex-col items-center justify-center ">
-          <NavLink to={"/product/website"}>
+          <NavLink to={"/product/web-demo"}>
             <img
               src={Laptop}
               alt="Phone view of application"

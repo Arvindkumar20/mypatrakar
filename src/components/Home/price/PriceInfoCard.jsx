@@ -1,16 +1,11 @@
 import { useContext, useState } from "react";
-import {
-  BsCheck2,
-
-  BsChevronDown
-} from "react-icons/bs";
+import { BsCheck2 } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../context/Auth-context";
+
 import { LanguageContext } from "../../../context/LanguageContext";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../Authentication/auth-hook";
 import { FaCircleArrowDown } from "react-icons/fa6";
-
 
 export default function PriceInfoCard({
   packageName,
@@ -21,6 +16,7 @@ export default function PriceInfoCard({
   realPrice,
   atPriceFeatures,
 }) {
+  // console.log(packageName);
   const { isLogin } = useAuth();
   const { translate } = useContext(LanguageContext);
   const { t } = useTranslation();
@@ -28,7 +24,7 @@ export default function PriceInfoCard({
 
   // Convert days to months (30 days = 1 month)
   const convertToMonths = (days) => Math.floor(days / 30);
-  
+
   // Calculate monthly price
   const calculateMonthlyPrice = (totalPrice, days) => {
     const months = convertToMonths(days);
@@ -53,8 +49,8 @@ export default function PriceInfoCard({
 
   const formatIndianPrice = (amount) =>
     amount.toLocaleString("en-IN", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     });
 
   // Get the appropriate price based on package type
@@ -62,7 +58,7 @@ export default function PriceInfoCard({
     if (packageName === "MyPatrakar Enterprise") {
       return payAble; // One-time payment
     }
-    
+
     // For Basic and Premium, show monthly price
     return calculateMonthlyPrice(payAble, packageDesc);
   };
@@ -73,19 +69,19 @@ export default function PriceInfoCard({
       const quarterlyPrice = calculateQuarterlyPrice(payAble, packageDesc);
       return {
         text: `Billed Quarterly ${currencyIcon}`,
-        price: quarterlyPrice
+        price: quarterlyPrice,
       };
     }
     if (packageName === "MyPatrakar Premium") {
       const yearlyPrice = calculateYearlyPrice(payAble, packageDesc);
       return {
         text: `Billed Yearly ${currencyIcon}`,
-        price: yearlyPrice
+        price: yearlyPrice,
       };
     }
     return {
       text: "",
-      price: 0
+      price: 0,
     };
   };
 
@@ -120,7 +116,7 @@ export default function PriceInfoCard({
         <div className="mt-4">
           <p className="text-3xl font-medium text-gray-900 flex items-center justify-center gap-1">
             {currencyIcon}
-            {formatIndianPrice(getDisplayPrice())}
+            {formatIndianPrice(getDisplayPrice())}.00
             {packageName !== "MyPatrakar Enterprise" ? (
               <span className="text-sm font-semibold">/ monthly</span>
             ) : (
@@ -135,11 +131,12 @@ export default function PriceInfoCard({
             </span>
           </p>
 
-          {packageName !== "MyPatrakar Enterprise" &&billingInfo?.price!==0 &&(
-            <p className="text-md font-semibold text-gray-900 mt-2 text-center">
-              {billingInfo?.text} {formatIndianPrice(billingInfo?.price)}
-            </p>
-          )}
+          {packageName !== "MyPatrakar Enterprise" &&
+            billingInfo?.price !== 0 && (
+              <p className="text-md font-semibold text-gray-900 mt-2 text-center">
+                {billingInfo?.text} {formatIndianPrice(billingInfo?.price)}
+              </p>
+            )}
 
           <p className="text-sm text-gray-700 mt-1 text-center">
             {t("cardTaxText")}
@@ -153,11 +150,18 @@ export default function PriceInfoCard({
           className="text-gray-700 hover:text-black transition "
           aria-label="Toggle more info"
         >
-          {isExpanded ? <FaCircleArrowDown className="animate-pulse rotate-180" size={20} /> : <FaCircleArrowDown className="animate-pulse" size={20} />}
+          {isExpanded ? (
+            <FaCircleArrowDown className="animate-pulse rotate-180" size={20} />
+          ) : (
+            <FaCircleArrowDown className="animate-pulse" size={20} />
+          )}
         </button>
       </div>
 
-      <div className="text-center mt-6" style={{ fontFamily: "Jost, sans-serif" }}>
+      <div
+        className="text-center mt-6"
+        style={{ fontFamily: "Jost, sans-serif" }}
+      >
         <hr />
         <div className="px-6 space-y-3 mt-4 mb-2">
           {packageName === "MyPatrakar Premium" && (
@@ -168,7 +172,7 @@ export default function PriceInfoCard({
               </p>
             </div>
           )}
-          
+
           {packageName === "MyPatrakar Enterprise" && (
             <div className="flex items-center gap-3">
               <BsCheck2 className="text-gray-900 text-lg" />
@@ -177,9 +181,20 @@ export default function PriceInfoCard({
               </p>
             </div>
           )}
+
+          {(packageName == "My Patrakar Yearly" ||
+            packageName == "My Patrakar Yearly (Global)") && (
+            <div className="flex items-start gap-3">
+              <BsCheck2 className="text-gray-900 text-lg" />
+              <p className="text-gray-800 font-bold text-md">
+                Custom Domain Included
+              </p>
+            </div>
+          )}
           {atPriceFeatures?.map((feature, index) => (
             <div key={index} className="flex items-start gap-3">
               <BsCheck2 className="text-gray-900 text-lg" />
+
               <p className="text-gray-800 text-md">{translate(feature)}</p>
             </div>
           ))}

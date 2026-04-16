@@ -88,7 +88,7 @@ export default function BlogTags() {
   const handleTagClick = (tag) => {
     setActiveTag(tag === activeTag ? null : tag);
     // In a real implementation, you would filter blogs by this tag
-    console.log(`Filtering by tag: ${tag}`);
+    // console.log(`Filtering by tag: ${tag}`);
   };
   const filteredTags = allTags.filter(tagObj => 
     tagObj.tag.toLowerCase().includes(searchTerm.toLowerCase())

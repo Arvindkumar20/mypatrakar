@@ -47,7 +47,7 @@
     "mainHeading": "Why choose My Patrakar for your News Portal Development",
     "button": "Download Brochure",
     "functions": {
-      "Vote": "Empower People’s Voice",
+      "vote": "Empower People’s Voice",
       "voteDesc": "Create Exit Polls and Social Voting on Current Issues with your News Portal",
       "reporter": "Enhanced Reporting",
       "reporterDesc": "Separate Reporter Panel in the Admin Panel for Streamlined News Publishing      – Empower Your Editorial Team with Efficiency!",
@@ -284,13 +284,13 @@
       }
     },
     "feature10": {
-      "heading": "#Feature 10",
-      "subHeading": "Layout with top-Notch & App-UI Feel",
-      "desc": "Displays the preview inside a real mobile-style frame including a notch, rounded corners, status bar spacing, and an app-like reading experience for product demo pages.",
+      "heading": "#Featur10",
+      "subHeading": "Smart Feedback System with Integrated Social Sharing & Ad Slots",
+      "desc": "Boost user retention and monetization with a dedicated engagement section for every post. This feature combines social virality tools with a seamless feedback loop to keep your community active.",
       "features": {
-        "feature1": "Top notch section for mobile appearance.",
-        "feature2": "Image auto-scaled to fit phone screen without distortion.",
-        "feature3": "App UI feel with black device frame and inner padding."
+        "feature1": "One-Tap Social Sharing: High-visibility social triggers (Facebook, X, WhatsApp) to drive organic traffic back to your platform.",
+        "feature2": "Professional Feedback Loop: A clean, validated comment system allowing users to share insights, fostering a sense of community around your content.",
+        "feature3": "Strategic Ad Placement: Built-in native ad slots above and below engagement zones to maximize click-through rates (CTR) without disrupting user experience."
       }
     },
     "feature11": {
@@ -303,15 +303,14 @@
         "feature3": "Comment count display at top of article."
       }
     },
-    "feature12": {
+   "feature12": {
       "heading": "#Feature 12",
-      "subHeading": "Interactive Panel with Likes, Replies & Scroll Support",
-      "desc": "Displays comments in a smooth bottom sheet overlay, matching the app UI preview style with engagement controls and a clean reading experience.",
+      "subHeading": "Seamless YouTube Sync & Real-Time Content Streaming",
+      "desc": "Empower your platform with deep YouTube integration. This feature allows users to sync their entire YouTube presence—including Live streams, Shorts, and Playlists—directly into your application for a unified viewing experience.",
       "features": {
-        "feature1": "Swipe-up bottom sheet overlay for comments.",
-
-        "feature2": "User avatar, name, date & time display.",
-        "feature3": "Like, dislike and reply controls."
+        "feature1": "Real-Time Channel Sync: Automatically fetch and display channel banners, bios, and subscriber counts via official YouTube APIs.",
+        "feature2": "Unified Content Hub: Categorized browsing for VODs, Shorts, and Live events, maintaining the familiar UI/UX that users already love.",
+        "feature3": "One-Tap Engagement: Integrated 'Subscribe' and 'Share' functionalities that bridge the gap between your platform and the YouTube ecosystem."
       }
     },
     "feature13": {
@@ -325,13 +324,13 @@
       }
     },
     "feature14": {
-      "heading": "#Feature 14",
-      "subHeading": "Channel Header, Action Icons & Engagement Footer",
-      "desc": "Renders the article preview with a top channel section, profile avatar, notification/menu/share actions, article heading, description text, location & audio buttons, and an engagement footer matching the app UI style.",
+      "heading": "#Featur14",
+      "subHeading": "Immersive Shorts News Module and Frictionless Content ",
+      "desc": "A dynamic media engine that transforms long-form news into byte-sized, multi-sensory experiences. This feature is designed to reduce churn and maximize user session time through innovative interaction tools.",
       "features": {
-        "feature1": "Top channel header with back navigation and LIVE-style top bar spacing.",
-        "feature2": "Channel profile avatar with author name and published date.",
-        "feature3": "Quick action icons for share, location and audio assistance."
+        "feature1": "On-Demand News Narration: Integrated text-to-speech engine lets users 'listen' to the news, making content accessible during multitasking.",
+        "feature2": "Geo-Tagged Local Context: Deep location awareness allows users to instantly view the geographical context of a news story with a single tap.",
+        "feature3": "Integrated Viral Growth Toolkit: Frictionless social sharing (WhatsApp direct) and feedback loops (claps, bookmarks) to drive organic platform growth."
       }
     },
     "feature15": {
@@ -386,8 +385,8 @@
     },
     "feature20": {
       "heading": "#Featur20",
-      "subHeading": "HindTech IT Solutions Marketplace Ad Service Details & Contact Access",
-      "desc": "Showcases HindTech IT Solutions ad card with service overview, pricing, gallery preview, and multiple contact channels.",
+      "subHeading": "Marketplace Ad Service Details & Contact Access",
+      "desc": "Showcases ad card with service overview, pricing, gallery preview, and multiple contact channels.",
       "features": {
         "feature1": "Service title and price display with business summary.",
         "feature2": "Image gallery preview slider for ad showcase.",

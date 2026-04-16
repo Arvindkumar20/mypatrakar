@@ -43,7 +43,7 @@ export default function ReceiptPDFGenerator({
 
     pdf.save(fileName);
   } catch (error) {
-    console.error("PDF Error:", error);
+    // console.error("PDF Error:", error);
     alert("Something went wrong while generating PDF.");
   }
 };

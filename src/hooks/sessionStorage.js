@@ -7,7 +7,7 @@ export const useSessionStorage = () => {
       const jsonValue = JSON.stringify(value);
       sessionStorage.setItem(key, jsonValue);
     } catch (error) {
-      console.error("Error saving to sessionStorage:", error);
+      // console.error("Error saving to sessionStorage:", error);
     }
   }, []);
   // Get data
@@ -16,7 +16,7 @@ export const useSessionStorage = () => {
       const storedValue = sessionStorage.getItem(key);
       return storedValue ? JSON.parse(storedValue) : null;
     } catch (error) {
-      console.error("Error reading from sessionStorage:", error);
+      // console.error("Error reading from sessionStorage:", error);
       return null;
     }
   }, []);

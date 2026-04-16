@@ -1,35 +1,53 @@
 // import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
-// import { CustomerProfile, makePayment } from "../../../api";
-// import { Weight } from "lucide-react";
+// import {
+//   createOrder,
+//   CustomerProfile,
+//   makePayment,
+//   verifyOrder,
+// } from "../../../api";
 
-// const PaymentPage = ({ amount, region, user_id, purchaseId }) => {
+// const PaymentPage = ({
+//   amount,
+//   region,
+//   user_id,
+//   purchaseId,
+//   gstName,
+//   gstNumber,
+// }) => {
+//   const navigate = useNavigate();
+
 //   const [loading, setLoading] = useState(false);
 //   const [error, setError] = useState(null);
-//   const navigate = useNavigate();
 //   const [user, setUser] = useState({
 //     name: "",
 //     email: "",
 //     mobile: "",
-//     wallet: "",
 //   });
-//   console.log(region);
-//   const userId = user_id.includes(":") ? user_id.split(":")[1] : user_id;
-//   const getProfile = async () => {
-//     try {
-//       // const userId = JSON.parse(sessionStorage.getItem("userData"));
-//       const res = await CustomerProfile({ customer_id: userId });
-//       // console.log(res)
-//       setUser(res.data.response);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
 
 //   useEffect(() => {
+//     createOrder({
+//       amount,
+//       currency: region === "0" ? "INR" : "USD",
+//     });
+//   }, []);
+
+//   const userId = user_id.includes(":") ? user_id.split(":")[1] : user_id;
+
+//   // ---------------- FETCH USER PROFILE ----------------
+//   useEffect(() => {
+//     const getProfile = async () => {
+//       try {
+//         const res = await CustomerProfile({ customer_id: userId });
+//         setUser(res.data.response);
+//       } catch (err) {
+//         // console.log(err);
+//       }
+//     };
 //     getProfile();
 //   }, []);
-//   console.log(user.mobile);
+
+//   // ---------------- LOAD RAZORPAY SCRIPT ----------------
 //   const loadRazorpayScript = () => {
 //     return new Promise((resolve) => {
 //       if (window.Razorpay) return resolve(true);
@@ -42,60 +60,115 @@
 //     });
 //   };
 
+//   // ---------------- PAYMENT HANDLER ----------------
 //   const handlePayment = async () => {
 //     setLoading(true);
 //     setError(null);
 
-//     try {
-//       // 1. Load Razorpay script
-//       const loaded = await loadRazorpayScript();
-//       if (!loaded) throw new Error("Failed to load Razorpay");
-//       // 2. Directly initialize payment without order creation
-//       const options = {
-//         key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Your test/live key
-//         amount: amount * 100, // Paise
-//         currency:
-//           region == "0" || region == undefined || region == null
-//             ? "INR"
-//             : "USD",
-//         name: "MyPtrakar",
-//         description: "Payment for services",
-//         handler: async function (response) {
-//           console.log("Payment success:", response);
-//           console.log(response);
-//           const purchase_id = purchaseId.includes(":")
-//             ? purchaseId.replace(":", "")
-//             : purchaseId;
+//     const purchase_id = purchaseId.includes(":")
+//       ? purchaseId.replace(":", "")
+//       : purchaseId;
 
+//     try {
+//       const loaded = await loadRazorpayScript();
+//       if (!loaded) throw new Error("Razorpay SDK failed to load");
+
+//       const options = {
+//         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+// amount: amount * 100,
+// currency: region === "0" ? "INR" : "USD",
+//         name: "MyPtrakar",
+//         description: "Portal Subscription Payment",
+
+//         // ---------- SUCCESS ----------
+//         handler: async function (response) {
 //           try {
-//             const res = await makePayment({
-//               purchase_id: purchase_id,
-//               transection_id: response.razorpay_payment_id,
+//             const isVerified = await verifyOrder({
+//               razorpay_order_id: response.razorpay_order_id,
+//               razorpay_payment_id: response.razorpay_payment_id,
+//               razorpay_signature: response.razorpay_signature,
 //             });
-//             console.log(res);
-//             navigate("/portal/payment-reciept");
-//           } catch (error) {
-//             console.log(error);
+//             if (!isVerified) {
+//               return null;
+//             }
+//             await makePayment({
+//               purchase_id,
+//               customer_id: userId,
+//               transection_id: response.razorpay_payment_id,
+//               payment_order_id: response.razorpay_order_id || null,
+//               payment_method: "razorpay",
+//               gstName: gstName || "NA",
+//               gstNumber: gstNumber || "NA",
+//               status: "1",
+//             });
+
+// navigate("/portal/payment-reciept", {
+//   state: {
+//     purchase_id: purchase_id,
+//     customer_id: userId,
+//   },
+// });
+//           } catch (err) {
+//             // console.log(err);
+//             setError("Payment save failed");
 //           }
 //         },
+
+//         // ---------- USER DETAILS ----------
 //         prefill: {
 //           name: user.name,
 //           email: user.email,
 //           contact: user.mobile,
 //         },
+
+//         // ---------- USER CLOSE / CANCEL ----------
+//         modal: {
+//           ondismiss: async function () {
+//             try {
+//               await makePayment({
+//                 purchase_id,
+//                 transection_id: null,
+//                 order_id: null,
+//                 payment_method: "cancelled",
+//                 gstName: gstName || "NA",
+//                 gstNumber: gstNumber || "NA",
+//                 status: "2",
+//               });
+//             } catch (err) {
+//               // console.log("Cancelled payment not saved");
+//             }
+//           },
+//         },
+
 //         theme: {
-//           color: "#3399cc",
+//           color: "#ef4444",
 //         },
 //       };
 
 //       const rzp = new window.Razorpay(options);
-//       rzp.on("payment.failed", (response) => {
-//         setError(`Payment failed: ${response.error.description}`);
+
+//       // ---------- FAILED ----------
+//       rzp.on("payment.failed", async (response) => {
+//         setError(response.error.description);
+
+//         try {
+//           await makePayment({
+//             purchase_id,
+//             transection_id: response.error?.metadata?.payment_id || null,
+//             order_id: response.error?.metadata?.order_id || null,
+//             payment_method: "failed",
+//             gstName: gstName || "NA",
+//             gstNumber: gstNumber || "NA",
+//             status: "2",
+//           });
+//         } catch (err) {
+//           // console.log("Failed payment not saved");
+//         }
 //       });
+
 //       rzp.open();
 //     } catch (err) {
-//       setError(err.message || "Payment initialization failed");
-//       console.error(err);
+//       setError(err.message || "Payment failed");
 //     } finally {
 //       setLoading(false);
 //     }
@@ -110,20 +183,16 @@
 //         disabled={loading}
 //         style={loading ? styles.buttonDisabled : styles.button}
 //       >
-//         {loading ? (
-//           <span style={{ opacity: 0.7 }}>Processing Payment...</span>
-//         ) : (
-//           "Pay Securely"
-//         )}
+//         {loading ? "Processing Payment..." : "Pay Securely"}
 //       </button>
 //     </div>
 //   );
 // };
 
+// // ---------------- STYLES ----------------
 // const styles = {
 //   wrapper: {
 //     display: "flex",
-//     alignItems: "center",
 //     justifyContent: "center",
 //     padding: "2rem 1rem",
 //   },
@@ -136,7 +205,6 @@
 //     marginBottom: "1rem",
 //     border: "1px solid #fecaca",
 //   },
-
 //   button: {
 //     width: "100%",
 //     background: "#ef4444",
@@ -147,10 +215,7 @@
 //     fontSize: "17px",
 //     fontWeight: "600",
 //     cursor: "pointer",
-//     transition: "0.2s ease",
-//     boxShadow: "0 3px 10px rgba(255,0,0,0.2)",
 //   },
-
 //   buttonDisabled: {
 //     width: "100%",
 //     background: "#d1d5db",
@@ -162,18 +227,16 @@
 //     fontWeight: "600",
 //     cursor: "not-allowed",
 //   },
-
- 
 // };
 
-// export default PaymentPage;
-
-
-
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { CustomerProfile, makePayment } from "../../../api";
+import {
+  createOrder,
+  CustomerProfile,
+  makePayment,
+  verifyOrder,
+} from "../../../api";
 
 const PaymentPage = ({
   amount,
@@ -186,100 +249,272 @@ const PaymentPage = ({
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [orderId, setOrderId] = useState(null);
+  const [error, setError] = useState("");
+
+  // 🔥 CRITICAL FIXES
+  const hasCreatedOrder = useRef(false);
+  const isProcessingPayment = useRef(false);
+  const [isRegionReady, setIsRegionReady] = useState(false);
+
   const [user, setUser] = useState({
     name: "",
     email: "",
     mobile: "",
   });
 
-  const userId = user_id.includes(":") ? user_id.split(":")[1] : user_id;
+  const userId = user_id?.includes(":") ? user_id.split(":")[1] : user_id;
+  const purchase_id = purchaseId?.includes(":")
+    ? purchaseId.replace(":", "")
+    : purchaseId;
 
-  // ---------------- FETCH USER PROFILE ----------------
+  // ---------------- CHECK IF REGION IS READY ----------------
   useEffect(() => {
-    const getProfile = async () => {
+    if (region !== undefined && region !== null) {
+      setIsRegionReady(true);
+      console.log("✅ Region ready:", region);
+    }
+  }, [region]);
+
+  // ---------------- CREATE ORDER (ONLY WHEN READY) ----------------
+  useEffect(() => {
+    // 🔥 Wait for region to be ready
+    if (!isRegionReady) {
+      console.log("⏳ Waiting for region to be ready...");
+      return;
+    }
+
+    // Prevent double creation
+    if (hasCreatedOrder.current) {
+      console.log("⏭️ Order already created, skipping...");
+      return;
+    }
+
+    if (!amount || amount <= 0) {
+      console.error("❌ Invalid amount:", amount);
+      return;
+    }
+
+    const amountNum = Number(amount);
+    const amountInPaise = Math.round(amountNum * 100);
+
+    // Minimum amount check
+    const minAmount = region === "0" ? 10 : 1; // ₹10 or $1
+    if (amountInPaise < minAmount) {
+      const minDisplay = region === "0" ? "₹10" : "$1";
+      setError(
+        `Minimum payment amount is ${minDisplay}. Current: ${region === "0" ? "₹" : "$"}${amount}`,
+      );
+      return;
+    }
+
+    const initOrder = async () => {
       try {
-        const res = await CustomerProfile({ customer_id: userId });
-        setUser(res.data.response);
+        hasCreatedOrder.current = true;
+
+        const currency = region === "0" ? "INR" : "USD";
+
+        console.log("📦 Creating order (ONCE):", {
+          amountInPaise,
+          currency,
+          originalAmount: amount,
+          region,
+        });
+
+        const res = await createOrder({
+          amount: amount,
+          currency: currency,
+          receipt: `rcpt_${Date.now()}_${Math.random()}`,
+        });
+
+        console.log("✅ Order creation response:", res?.data);
+
+        const order_id =
+          res?.data?.data?.id ||
+          res?.data?.id ||
+          res?.data?.data?.order_id ||
+          res?.data?.order_id;
+
+        console.log("📝 ORDER ID:", order_id);
+
+        if (!order_id || !order_id.startsWith("order_")) {
+          throw new Error(`Invalid order id: ${order_id}`);
+        }
+
+        setOrderId(order_id);
+        setError("");
       } catch (err) {
-        console.log(err);
+        console.error("❌ CREATE ORDER ERROR:", err?.response?.data || err);
+        setError(
+          err?.response?.data?.message ||
+            err?.message ||
+            "Failed to initialize payment. Please refresh.",
+        );
+        hasCreatedOrder.current = false;
       }
     };
-    getProfile();
-  }, []);
 
-  // ---------------- LOAD RAZORPAY SCRIPT ----------------
-  const loadRazorpayScript = () => {
-    return new Promise((resolve) => {
+    initOrder();
+  }, [amount, region, isRegionReady]); // ✅ All dependencies
+
+  // ---------------- FETCH USER ----------------
+  useEffect(() => {
+    const getProfile = async () => {
+      if (!userId) return;
+
+      try {
+        const res = await CustomerProfile({ customer_id: userId });
+        const userData = res?.data?.response || {};
+        setUser({
+          name: userData.name || "",
+          email: userData.email || "",
+          mobile: userData.mobile || userData.phone || "",
+        });
+      } catch (err) {
+        console.error("Profile fetch failed", err);
+      }
+    };
+
+    getProfile();
+  }, [userId]);
+
+  // ---------------- LOAD RAZORPAY ----------------
+  const loadRazorpayScript = () =>
+    new Promise((resolve) => {
       if (window.Razorpay) return resolve(true);
 
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/checkout.js";
       script.onload = () => resolve(true);
-      script.onerror = () => resolve(false);
+      script.onerror = () => {
+        console.error("Failed to load Razorpay script");
+        resolve(false);
+      };
       document.body.appendChild(script);
     });
+
+  // ---------------- SAVE FAILED PAYMENT ----------------
+  const saveFailedPayment = async (
+    transactionId = null,
+    orderIdParam = null,
+  ) => {
+    try {
+      await makePayment({
+        purchase_id,
+        customer_id: userId,
+        transection_id: transactionId,
+        payment_order_id: orderIdParam || orderId,
+        payment_method: "razorpay",
+        gstName: gstName || "NA",
+        gstNumber: gstNumber || "NA",
+        status: "2",
+      });
+      console.log("✅ Failed payment saved");
+    } catch (err) {
+      console.error("❌ Failed to save payment status:", err);
+    }
   };
 
   // ---------------- PAYMENT HANDLER ----------------
   const handlePayment = async () => {
-    setLoading(true);
-    setError(null);
+    if (isProcessingPayment.current) {
+      console.log("⏭️ Payment already in progress...");
+      return;
+    }
 
-    const purchase_id = purchaseId.includes(":")
-      ? purchaseId.replace(":", "")
-      : purchaseId;
+    if (!orderId) {
+      setError("Order not ready. Please wait or refresh the page.");
+      return;
+    }
+
+    isProcessingPayment.current = true;
+    setLoading(true);
+    setError("");
 
     try {
+      const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
+      if (!razorpayKey) throw new Error("Payment configuration error");
+
       const loaded = await loadRazorpayScript();
-      if (!loaded) throw new Error("Razorpay SDK failed to load");
+      if (!loaded) throw new Error("Payment gateway failed to load");
+
+      const currency = region === "0" ? "INR" : "USD";
+      const amountInPaise = Math.round(Number(amount) * 100);
+
+      console.log("🔍 Opening Razorpay:", {
+        orderId,
+        amount: amountInPaise,
+        currency,
+        hasOrderId: !!orderId,
+        orderIdPrefix: orderId?.substring(0, 6),
+      });
 
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-        amount: amount * 100,
-        currency: region === "0" ? "INR" : "USD",
+        key: razorpayKey,
+        amount: amountInPaise,
+        currency: currency,
+        order_id: orderId,
         name: "MyPtrakar",
-        description: "Portal Subscription Payment",
+        description: "Subscription Payment",
 
-        // ---------- SUCCESS ----------
         handler: async function (response) {
+          console.log("✅ PAYMENT SUCCESS:", response);
+
           try {
+            const verifyRes = await verifyOrder({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            });
+            console.log(verifyRes);
+            if (verifyRes?.data?.status != "success") {
+              throw new Error("Payment verification failed");
+            }
             await makePayment({
               purchase_id,
+              customer_id: userId,
               transection_id: response.razorpay_payment_id,
+              payment_order_id: response.razorpay_order_id,
+              payment_method: "razorpay",
               gstName: gstName || "NA",
               gstNumber: gstNumber || "NA",
               status: "1",
             });
 
-            navigate("/portal/payment-reciept");
+            navigate("/portal/payment-reciept", {
+              state: {
+                purchase_id: purchase_id,
+                customer_id: userId,
+              },
+            });
           } catch (err) {
-            console.log(err);
-            setError("Payment saved failed");
+            console.error("❌ VERIFY ERROR:", err);
+            setError("Payment verification failed");
+            await saveFailedPayment(
+              response.razorpay_payment_id,
+              response.razorpay_order_id,
+            );
           }
         },
 
-        // ---------- USER DETAILS ----------
         prefill: {
-          name: user.name,
-          email: user.email,
-          contact: user.mobile,
+          name: user?.name || "",
+          email: user?.email || "",
+          contact: user?.mobile || "",
         },
 
-        // ---------- USER CLOSE / CANCEL ----------
+        notes: {
+          customer_id: userId,
+          purchase_id: purchase_id,
+          amount: amount,
+          timestamp: Date.now(),
+        },
+
         modal: {
-          ondismiss: async function () {
-            try {
-              await makePayment({
-                purchase_id,
-                transection_id: null,
-                gstName: gstName || "NA",
-                gstNumber: gstNumber || "NA",
-                status: "2",
-              });
-            } catch (err) {
-              console.log("Cancelled payment not saved");
-            }
+          ondismiss: async () => {
+            console.log("Payment modal closed by user");
+            setError("Payment cancelled");
+            await saveFailedPayment(null, orderId);
           },
         },
 
@@ -290,61 +525,128 @@ const PaymentPage = ({
 
       const rzp = new window.Razorpay(options);
 
-      // ---------- FAILED ----------
       rzp.on("payment.failed", async (response) => {
-        setError(response.error.description);
-
-        try {
-          await makePayment({
-            purchase_id,
-            transection_id: response.error?.metadata?.payment_id || null,
-            gstName: gstName || "NA",
-            gstNumber: gstNumber || "NA",
-            status: "2",
-          });
-        } catch (err) {
-          console.log("Failed payment not saved");
-        }
+        console.error("❌ PAYMENT FAILED:", response.error);
+        const errorMsg = response?.error?.description || "Payment failed";
+        setError(errorMsg);
+        await saveFailedPayment(
+          response?.error?.metadata?.payment_id || null,
+          response?.error?.metadata?.order_id || orderId,
+        );
       });
 
       rzp.open();
     } catch (err) {
-      setError(err.message || "Payment failed");
+      console.error("❌ HANDLE PAYMENT ERROR:", err);
+      setError(err.message || "Failed to initiate payment");
+      await saveFailedPayment(null, orderId);
     } finally {
       setLoading(false);
+      isProcessingPayment.current = false;
     }
   };
 
+  // ---------------- UI ----------------
   return (
     <div style={styles.wrapper}>
-      {error && <div style={styles.errorBox}>{error}</div>}
+      {error && (
+        <div style={styles.errorBox}>
+          <span>⚠️</span>
+          <span>{error}</span>
+          <button onClick={() => setError("")} style={styles.closeButton}>
+            ✕
+          </button>
+        </div>
+      )}
 
-      <button
-        onClick={handlePayment}
-        disabled={loading}
-        style={loading ? styles.buttonDisabled : styles.button}
-      >
-        {loading ? "Processing Payment..." : "Pay Securely"}
-      </button>
+      <div style={styles.paymentCard}>
+        <div style={styles.amountDisplay}>
+          <span style={styles.amountLabel}>Total Amount</span>
+          <span style={styles.amountValue}>
+            {region === "0" ? "₹" : "$"} {amount}
+          </span>
+        </div>
+
+        <button
+          onClick={handlePayment}
+          disabled={loading || !orderId || !isRegionReady}
+          style={
+            loading || !orderId || !isRegionReady
+              ? styles.buttonDisabled
+              : styles.button
+          }
+        >
+          {!isRegionReady
+            ? "⏳ Loading..."
+            : !orderId
+              ? "⏳ Initializing..."
+              : loading
+                ? "⏳ Processing..."
+                : `🔒 Pay ${region === "0" ? "₹" : "$"}${amount}`}
+        </button>
+
+        <div style={styles.securityNote}>
+          <span>🔒</span>
+          <span>Secure payment by Razorpay</span>
+        </div>
+      </div>
     </div>
   );
 };
 
-// ---------------- STYLES ----------------
+// Styles remain the same...
 const styles = {
   wrapper: {
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
     padding: "2rem 1rem",
+    maxWidth: "500px",
+    margin: "0 auto",
+  },
+  paymentCard: {
+    background: "#ffffff",
+    borderRadius: "16px",
+    padding: "24px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    border: "1px solid #e5e7eb",
+  },
+  amountDisplay: {
+    textAlign: "center",
+    padding: "20px",
+    background: "#f9fafb",
+    borderRadius: "12px",
+    marginBottom: "24px",
+  },
+  amountLabel: {
+    display: "block",
+    fontSize: "14px",
+    color: "#6b7280",
+    marginBottom: "8px",
+  },
+  amountValue: {
+    display: "block",
+    fontSize: "36px",
+    fontWeight: "700",
+    color: "#1f2937",
   },
   errorBox: {
-    color: "#b91c1c",
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
     background: "#fee2e2",
-    padding: "10px",
-    borderRadius: "8px",
-    fontSize: "14px",
-    marginBottom: "1rem",
+    color: "#991b1b",
+    padding: "12px 16px",
+    borderRadius: "12px",
+    marginBottom: "20px",
     border: "1px solid #fecaca",
+  },
+  closeButton: {
+    background: "none",
+    border: "none",
+    color: "#991b1b",
+    cursor: "pointer",
+    marginLeft: "auto",
+    fontSize: "18px",
   },
   button: {
     width: "100%",
@@ -352,21 +654,31 @@ const styles = {
     color: "white",
     padding: "14px 20px",
     border: "none",
-    borderRadius: "10px",
-    fontSize: "17px",
+    borderRadius: "12px",
+    fontSize: "16px",
     fontWeight: "600",
     cursor: "pointer",
+    marginBottom: "16px",
   },
   buttonDisabled: {
     width: "100%",
-    background: "#d1d5db",
-    color: "#fff",
+    background: "#e5e7eb",
+    color: "#9ca3af",
     padding: "14px 20px",
     border: "none",
-    borderRadius: "10px",
-    fontSize: "17px",
+    borderRadius: "12px",
+    fontSize: "16px",
     fontWeight: "600",
     cursor: "not-allowed",
+    marginBottom: "16px",
+  },
+  securityNote: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
+    fontSize: "12px",
+    color: "#6b7280",
   },
 };
 

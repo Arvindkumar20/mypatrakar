@@ -12,7 +12,7 @@ export default function TermsAndConditions() {
       setContent(res.data.response);
       // console.log(res);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   useEffect(() => {

@@ -46,7 +46,7 @@ export default function PaymentMethod({ setCircleColor }) {
       circle: "bg-green-700",
       hr: "border-green-600",
     });
-    console.log("Submitted paymentData:", paymentData);
+    // console.log("Submitted paymentData:", paymentData);
 
     setPaymentData((prev) => {
       const cleared = {};

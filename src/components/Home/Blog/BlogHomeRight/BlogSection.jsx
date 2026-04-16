@@ -7,6 +7,7 @@ import { FindBlogs } from "../../../../api";
 import { BlogContext } from "../../../../context/BlogContext";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { safeLocalStorage } from "../../../../utils/localStorage";
 
 const BlogSection = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const BlogSection = () => {
       });
       setBlogs(res.data.response);
     } catch (error) {
-      console.error("Error fetching blogs:", error);
+      // console.error("Error fetching blogs:", error);
     } finally {
       setLoading(false);
     }
@@ -34,7 +35,8 @@ const BlogSection = () => {
 
   const handleBlogClick = (blog) => {
     setBlog(blog);
-    localStorage.setItem("blog", JSON.stringify(blog));
+    safeLocalStorage.set("blog", JSON.stringify(blog));
+    // localStorage.setItem("blog", JSON.stringify(blog));
     // setBlog({
     //   blog_category: blog.blog_category,
     //   blog_category_id: blog.blog_category_id,

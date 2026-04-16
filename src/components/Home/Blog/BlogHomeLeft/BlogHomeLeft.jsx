@@ -11,6 +11,7 @@ import { FindBlogs } from "../../../../api";
 import { BlogContext } from "../../../../context/BlogContext";
 import { format } from "date-fns";
 import HtmlToPlainText from "../BlogPages/HtmlToPlainText";
+import { safeLocalStorage } from "../../../../utils/localStorage";
 
 export default function BlogHomeLeft() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function BlogHomeLeft() {
           setBlogs(res.data.response);
         }
       } catch (error) {
-        console.error("Error fetching blogs:", error);
+        // console.error("Error fetching blogs:", error);
       } finally {
         setIsLoading(false);
       }
@@ -46,7 +47,8 @@ export default function BlogHomeLeft() {
   // Handle blog card click
   const handleBlogClick = (blogData) => {
     setBlog(blogData);
-    localStorage.setItem("blog", JSON.stringify(blogData));
+    safeLocalStorage.set("blog", JSON.stringify(blogData));
+    // localStorage.setItem("blog", JSON.stringify(blogData));
     navigate(`/blog/${blogData.blog_category}/${blogData.blog_slug}`);
   };
 

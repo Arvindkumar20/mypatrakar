@@ -22,7 +22,7 @@ export default function BlogHome() {
       setError(null);
 
       const res = await BlogCategoryId();
-      console.log(res);
+      // console.log(res);
       setCat(res.data?.response || []);
 
       if (res.data?.response?.length > 0) {
@@ -30,7 +30,7 @@ export default function BlogHome() {
         setCategoryId(res.data.response[0]?.category_id);
       }
     } catch (err) {
-      console.error("Failed to fetch blog categories:", err);
+      // console.error("Failed to fetch blog categories:", err);
       setError("Failed to load blog content. Please try again.");
     } finally {
       setLoading(false);

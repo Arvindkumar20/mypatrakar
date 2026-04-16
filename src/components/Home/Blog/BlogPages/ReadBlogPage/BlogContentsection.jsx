@@ -5,7 +5,7 @@ import { BlogContext } from "../../../../../context/BlogContext";
 
 const BlogContentsection = () => {
   const { blog } = useContext(BlogContext);
-  console.log(blog);
+  // console.log(blog);
   // const breadcrumbs = useBreadcrumbs();
   return (
     <section className=" ">

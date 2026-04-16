@@ -12,7 +12,7 @@ export default function useRecommendedLanguage() {
     const fetchData = async () => {
       try {
         const res = await getLanguages();
-        console.log("API Response:", res);
+        // console.log("API Response:", res);
 
         if (isMounted) {
           setData(res.data ?? res);   // safe handle

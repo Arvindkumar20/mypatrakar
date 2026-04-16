@@ -16,7 +16,7 @@ export default function Resources() {
       const data = res?.data?.data || [];
       setResources(data);
     } catch (err) {
-      console.error("Failed to fetch resources:", err);
+      // console.error("Failed to fetch resources:", err);
       setError(true);
     } finally {
       setLoading(false);
@@ -45,7 +45,7 @@ export default function Resources() {
       <div className="min-h-screen bg-white my-24 px-4">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <h1 className="font-sans text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="font-sans text-4xl font-bold text-gray-800 mb-4 py-5">
             Frequently Asked Questions
           </h1>
           <p className="text-md font-medium text-gray-600">

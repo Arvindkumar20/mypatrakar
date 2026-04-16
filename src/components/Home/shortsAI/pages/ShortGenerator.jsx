@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from "react";
+import { useState } from "react";
 import FormSection from "./FormSection";
 import PreviewSection from "../components/PreviewSection";
 import HowItWorks from "./HowItWorks";
-import { toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
-import useOpenAI from "../utils/useOpenAI";
+
 
 export default function ShortGenerator() {
   const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ export default function ShortGenerator() {
     city: "",
     topic: "",
   });
-  const { generateContent } = useOpenAI();
+  // const { generateContent } = useOpenAI();
   const [generatedShort, setGeneratedShort] = useState({
     image: "",
     title: "",
@@ -23,37 +23,30 @@ export default function ShortGenerator() {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleGenerate = useCallback(async () => {
-    console.log("object");
-    setLoading(true);
-    // setGeneratedShort({
-    //   image: "https://picsum.photos/512/266",
-    //   title: "Amazing AI Short",
-    //   description:
-    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    // });
+//   const handleGenerate = useCallback(async () => {
+//     setLoading(true);
 
-    const result =
-      await generateContent(`Write a short, verified, and up-to-date news article from ${formData.city},  ${formData.state}, ${formData.country}, in the ${formData.category} category, written in a ${formData.tone} tone and topic ${formData.topic}. 
-The article must reflect real developments from today or at most one day old. Consider the following topic, idea, or suggestion while generating the content:.
-Return the result strictly in JSON format with the following keys:
-{
-  "title": "A short, attention-grabbing title of 5–12 words",
-  "description": "A concise summary of exactly 59 words capturing the key points",
-  "image": "A relevant and verified image URL from a real source"
-}
-Do not include any extra text, commentary, or markdown — only return valid JSON.`);
-    console.log(result);
-    setGeneratedShort(result);
-    result !== "Error generating content." && toast.success("Short generated!");
-    setLoading(false);
+//     const result =
+//       await generateContent(`Write a short, verified, and up-to-date news article from ${formData.city},  ${formData.state}, ${formData.country}, in the ${formData.category} category, written in a ${formData.tone} tone and topic ${formData.topic}. 
+// The article must reflect real developments from today or at most one day old. Consider the following topic, idea, or suggestion while generating the content:.
+// Return the result strictly in JSON format with the following keys:
+// {
+//   "title": "A short, attention-grabbing title of 5–12 words",
+//   "description": "A concise summary of exactly 59 words capturing the key points",
+//   "image": "A relevant and verified image URL from a real source"
+// }
+// Do not include any extra text, commentary, or markdown — only return valid JSON.`);
+//     console.log(result);
+//     setGeneratedShort(result);
+//     result !== "Error generating content." && toast.success("Short generated!");
+//     setLoading(false);
 
-    // Mock API delay
-    setTimeout(() => {
-      setGeneratedShort(result);
-      setLoading(false);
-    }, 1500);
-  }, []);
+//     // Mock API delay
+//     setTimeout(() => {
+//       setGeneratedShort(result);
+//       setLoading(false);
+//     }, 1500);
+//   }, []);
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center py-12 px-4 mt-20">
@@ -75,7 +68,7 @@ Do not include any extra text, commentary, or markdown — only return valid JSO
           formData={formData}
           setFormData={setFormData}
           setGeneratedShort={setGeneratedShort}
-          handleGenerate={handleGenerate}
+          // handleGenerate={handleGenerate}
           setLoading={setLoading}
           loading={loading}
         />

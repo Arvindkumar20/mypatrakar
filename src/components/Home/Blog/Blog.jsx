@@ -26,14 +26,14 @@ export default function Blog() {
       const res = await BlogCategoryId();
 // console.log("object4")
 
-      console.log(res);
+      // console.log(res);
       setCat(res.data?.response)
       // if (res.data?.response) {
       //   setCategory(res.data?.response[0]?.category);
       //   setCategoryId(res.data?.response[0]?.category_id);
       // }
     } catch (err) {
-      console.log("Failed to fetch blog categories:", err);
+      // console.log("Failed to fetch blog categories:", err);
       setError("Failed to load blog categories. Please try again later.");
     } finally {
       setLoading(false);

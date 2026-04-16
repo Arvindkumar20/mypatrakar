@@ -28,7 +28,7 @@ const statusClass={
         // console.log(res.data.response)
         setPortalList(res.data.response || []);
       } catch (error) {
-        console.error("Error fetching portal list:", error);
+        // console.error("Error fetching portal list:", error);
       }
     };
 

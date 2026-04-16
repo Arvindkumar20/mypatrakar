@@ -212,15 +212,14 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { ContactSupport } from "../../../api";
-import { useNavigate } from "react-router-dom";
 import { errorHandller } from "../../../utils/DataFetchingComponent";
 import { countryOptions, stateOptions, cityOptions } from "./data.js";
 import Swal from "sweetalert2";
-import PhoneInput from "react-phone-number-input";
+
 import "react-phone-number-input/style.css";
 
 const RequestCallbackForm = () => {
-  const navigate = useNavigate();
+
   const [errors, setErrors] = useState({
     name: null,
     email: null,
@@ -360,12 +359,13 @@ const RequestCallbackForm = () => {
           title: "Success!",
           text: "Your request has been submitted successfully. We'll contact you shortly.",
           icon: "success",
-          confirmButtonColor: "#4f46e5",
+          confirmButtonColor: "#dc2626", // red
           confirmButtonText: "OK",
           customClass: {
             popup: "rounded-lg shadow-xl",
             title: "text-2xl font-bold text-gray-800",
-            confirmButton: "px-4 py-2 rounded-lg",
+            confirmButton:
+              "px-4 py-2 rounded-lg text-white font-semibold hover:bg-red-700",
           },
         });
 
@@ -385,7 +385,7 @@ const RequestCallbackForm = () => {
         throw new Error(message || "Failed to submit request");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       Swal.fire({
         title: "Error!",
         text:
@@ -394,12 +394,13 @@ const RequestCallbackForm = () => {
           error?.response?.data?.errors?.message?.[0] ||
           "Failed to submit request. Please try again.",
         icon: "error",
-        confirmButtonColor: "#ef4444",
+        confirmButtonColor: "#dc2626", // red
         confirmButtonText: "OK",
         customClass: {
           popup: "rounded-lg shadow-xl",
           title: "text-2xl font-bold text-gray-800",
-          confirmButton: "px-4 py-2 rounded-lg",
+          confirmButton:
+            "px-4 py-2 rounded-lg text-white font-semibold hover:bg-red-700",
         },
       });
     } finally {
@@ -496,8 +497,8 @@ const RequestCallbackForm = () => {
                   backgroundColor: state.isSelected
                     ? "#4f46e5"
                     : state.isFocused
-                    ? "#e0e7ff"
-                    : "white",
+                      ? "#e0e7ff"
+                      : "white",
                   color: state.isSelected ? "white" : "#1f2937",
                 }),
               }}
@@ -562,8 +563,8 @@ const RequestCallbackForm = () => {
                   backgroundColor: state.isSelected
                     ? "#4f46e5"
                     : state.isFocused
-                    ? "#e0e7ff"
-                    : "white",
+                      ? "#e0e7ff"
+                      : "white",
                   color: state.isSelected ? "white" : "#1f2937",
                 }),
               }}
@@ -605,8 +606,8 @@ const RequestCallbackForm = () => {
                   backgroundColor: state.isSelected
                     ? "#4f46e5"
                     : state.isFocused
-                    ? "#e0e7ff"
-                    : "white",
+                      ? "#e0e7ff"
+                      : "white",
                   color: state.isSelected ? "white" : "#1f2937",
                 }),
               }}

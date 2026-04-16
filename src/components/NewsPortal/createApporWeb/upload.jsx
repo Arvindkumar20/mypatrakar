@@ -143,7 +143,7 @@ const LogoUpload = ({ setFile, file, onUploadComplete }) => {
         preview: imageUrl,
       });
     } catch (error) {
-      console.error("Upload failed:", error);
+      // console.error("Upload failed:", error);
       setErrors((prev) => ({
         ...prev,
         [type]: "Upload failed. Please try again.",
