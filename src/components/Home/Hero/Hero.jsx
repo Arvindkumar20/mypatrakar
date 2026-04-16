@@ -33,7 +33,7 @@ export default function Hero() {
   return (
     <>
       <Helmet>
-        <title>Changed | Complete News Portal Development Solution</title>
+        <title>MyPatrakar | Complete News Portal Development Solution</title>
         <meta
           name="description"
           content="MyPatrakar is the one-stop solution for building a complete news portal."
