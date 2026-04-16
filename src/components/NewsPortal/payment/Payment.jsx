@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Cancel from "../Cancel";
 import OrderSummery from "./OrderSummery";
-import PaymentMethod from "./PaymentMethod";
 
 export default function Payment() {
   const [activeStep, setActiveStep] = useState(1); // 1 for cart, 2 for checkout
