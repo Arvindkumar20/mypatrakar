@@ -424,7 +424,7 @@ import { PaymentContext } from "./context/PaymentContext";
 import { BlogContext } from "./context/BlogContext.jsx";
 import { PreviewProvider } from "./context/PreViewContext.jsx";
 import { safeLocalStorage } from "./utils/localStorage.js";
-import AppDemoLanding from "./components/pages/AppDemoLanding.jsx";
+import AppDemoLanding from "./components/pages/AppDemo.jsx";
 
 /* 🔹 Loader */
 function PageLoader() {
