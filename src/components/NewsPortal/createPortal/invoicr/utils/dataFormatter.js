@@ -1,7 +1,7 @@
 import { convertAmountToWords } from "./amountConverter";
 
 
-export const formatCombinedData = (sellerApiData, customerApiData) => {
+export const formatCombinedData = (sellerApiData, customerApiData,customerId) => {
   // Calculate GST breakdown
   const planPrice = parseFloat(customerApiData.plan_price) || 0;
   const discountAmount = parseFloat(customerApiData.discount_amt) || 0;
@@ -38,6 +38,7 @@ export const formatCombinedData = (sellerApiData, customerApiData) => {
       planName: customerApiData.package_name || "Premium Subscription",
       gstin: customerApiData.gstNumber || "GSTIN-NOT-PROVIDED",
       gstName: customerApiData.gstName || "Customer Business Name",
+      customer_id:customerId
     },
     item: {
       name: customerApiData.package_name || "Digital Subscription Service",

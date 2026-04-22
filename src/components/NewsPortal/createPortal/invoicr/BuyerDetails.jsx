@@ -1,11 +1,9 @@
 import React from "react";
 
-const BuyerDetails = ({ data }) => {
+const BuyerDetails = ({ data,customerId }) => {
   return (
     <div className="mb-8 p-4 border border-gray-200 rounded-lg text-xs">
-      <p className="font-bold text-gray-600 uppercase mb-2">
-        Billing Details
-      </p>
+      <p className="font-bold text-gray-600 uppercase mb-2">Billing Details</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-2">
         <div>
           <strong>Full Name:</strong> <span>{data.buyer.name}</span>
@@ -31,6 +29,10 @@ const BuyerDetails = ({ data }) => {
         </div>
         <div className="col-span-1 sm:col-span-1 md:col-span-2">
           <strong>GST Name:</strong> <span>{data.buyer.gstName}</span>
+        </div>
+        <div className="col-span-1 sm:col-span-1 md:col-span-2">
+          <strong>Customer Id:</strong>{" "}
+          <span>{customerId}</span>
         </div>
       </div>
     </div>

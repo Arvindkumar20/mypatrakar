@@ -35,6 +35,9 @@ const DownloadControls = ({
               <p>
                 <strong>Customer:</strong> {customerData.customer_name}
               </p>
+               <p>
+                <strong>Customer_Id:</strong> {customerData.customer_Id||"MPCU260410056"}
+              </p>
               <p>
                 <strong>Package:</strong> {customerData.package_name}
               </p>
