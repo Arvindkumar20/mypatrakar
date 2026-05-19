@@ -1,317 +1,259 @@
-// import { Helmet } from "react-helmet-async";
-// import { PrivacyAndPolicy } from "../../../api";
-// import HtmlToPlainText from "../Blog/BlogPages/HtmlToPlainText";
-// import React, { useEffect, useState } from "react";
+import React from 'react';
 
-// const PrivacyPolicy = () => {
-//   const [content, setContent] = useState("");
-//   const showPrivacyAndPolicy = async () => {
-//     try {
-//       const res = await PrivacyAndPolicy();
-//       setContent(res.data.response);
-//       // console.log(res.data.response.content);
-//     } catch (error) {
-//       return <p>{error}</p>;
-//     }
-//   };
-//   useEffect(() => {
-//     showPrivacyAndPolicy();
-//   }, []);
-//   const logoUrl = "https://mypatrakar.com/assets/LG2-CcMgpPb7.svg";
-//   return (
-//     <>
-//       <Helmet>
-//         {/* Title with Strong Keywords */}
-//         <title>
-//           Privacy Policy | MyPatrakar - Secure & Transparent Data Protection
-//         </title>
-//         {/* SEO Optimized Meta Description */}
-//         <meta
-//           name="description"
-//           content="Explore MyPatrakar's Privacy Policy to understand how we securely collect, store, and protect your personal data. 100% GDPR-compliant. Your security, our priority."
-//         />
-//         {/* Targeted Keywords for Higher Ranking */}
-//         <meta
-//           name="keywords"
-//           content="Privacy Policy, MyPatrakar Data Security, GDPR compliance, Online Privacy Protection, Personal Data Handling, Secure Information Management, News Platform Privacy"
-//         />
-//         {/* Indexing Instructions */}
-//         <meta name="robots" content="index, follow" />
-
-//         {/* Open Graph Meta Tags (For Social Media Previews) */}
-//         <meta
-//           property="og:title"
-//           content="MyPatrakar Privacy Policy - Your Data, Your Rights"
-//         />
-//         <meta
-//           property="og:description"
-//           content="Read MyPatrakar's privacy policy to understand how we handle your data securely and transparently."
-//         />
-//         <meta property="og:image" content={logoUrl} />
-//         <meta
-//           property="og:url"
-//           content="https://mypatrakar.com/privacy-policy"
-//         />
-//         <meta property="og:type" content="article" />
-
-//         {/* Twitter Card Meta Tags (For Twitter Sharing) */}
-//         <meta name="twitter:card" content="summary_large_image" />
-//         <meta
-//           name="twitter:title"
-//           content="MyPatrakar Privacy Policy - Secure & Transparent"
-//         />
-//         <meta
-//           name="twitter:description"
-//           content="Find out how MyPatrakar protects your personal data with the highest security standards."
-//         />
-//         <meta name="twitter:image" content={logoUrl} />
-
-//         {/* Schema.org JSON-LD Markup for SEO */}
-//         <script type="application/ld+json">
-//           {JSON.stringify({
-//             "@context": "https://schema.org",
-//             "@type": "WebPage",
-//             name: "Privacy Policy - MyPatrakar",
-//             url: "https://mypatrakar.com/privacy-policy",
-//             description:
-//               "MyPatrakar's Privacy Policy outlines how we securely collect, process, and protect your personal information.",
-//             publisher: {
-//               "@type": "Organization",
-//               name: "MyPatrakar",
-//               url: "https://mypatrakar.com",
-//               logo: logoUrl,
-//             },
-//           })}
-//         </script>
-//       </Helmet>
-//       <div className="container mt-36">
-//         <div className="text-center flex flex-col items-center">
-//           <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
-//           <p className="text-lg mb-2">Learn how we handle your data</p>
-//           {/* <small className="text-gray-500">Updated 1 October, 2024</small> */}
-//         </div>
-//         <hr className="my-5" />
-//         <div className="flex items-start justify-start mb-5">
-//           {content ? (
-//             <HtmlToPlainText htmlContent={content.content} id={content.id} />
-//           ) : (
-//             <p className="text-center text-xl">Loading...</p>
-//           )}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-// export default PrivacyPolicy;
-
-
-
-
-
-
-import { Helmet } from "react-helmet-async";
-import React from "react";
-
-const PrivacyPolicy = () => {
-  const privacyHtml = `
-    <h1>Privacy Policy for My Patrakar</h1>
-    <p><strong>Effective Date: 26/01/26</strong></p>
-    <p>Welcome to My Patrakar (accessible at My Patrakar).<br />
-    Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application.</p>
-
-    <h2>1. About Us</h2>
-    <p>My Patrakar is a digital platform that helps users create and manage:</p>
-    <ul>
-      <li>News portals</li>
-      <li>Mobile applications</li>
-      <li>Websites</li>
-    </ul>
-    <p>We provide ready-to-launch solutions (including rapid setup within 48 hours) for individuals, journalists, and businesses.</p>
-
-    <h2>2. Information We Collect</h2>
-    <p>We may collect the following types of information:</p>
-    <h3>a. Personal Information</h3>
-    <ul>
-      <li>Name</li>
-      <li>Email address</li>
-      <li>Phone number</li>
-      <li>Business details</li>
-    </ul>
-    <h3>b. Usage Data</h3>
-    <ul>
-      <li>App interactions</li>
-      <li>Device information</li>
-      <li>IP address</li>
-      <li>Log data</li>
-    </ul>
-    <h3>c. Uploaded Content</h3>
-    <ul>
-      <li>News content</li>
-      <li>Images/videos</li>
-      <li>Website/app-related data</li>
-    </ul>
-
-    <h2>3. Permissions We Use</h2>
-    <p>Our app may request the following permissions:</p>
-    <div class="permission-grid">
-      <div><strong>Microphone (RECORD_AUDIO)</strong><br />Voice search, Voice input</div>
-      <div><strong>Internet Access (INTERNET)</strong><br />Fetching data, Loading content</div>
-      <div><strong>Bluetooth</strong><br />Device connectivity</div>
-      <div><strong>Phone Call (CALL_PHONE)</strong><br />Direct calling features</div>
-      <div><strong>Notifications (POST_NOTIFICATIONS)</strong><br />Updates, Alerts</div>
-    </div>
-    <p>We only use these permissions when necessary for app functionality.</p>
-
-    <h2>4. How We Use Your Information</h2>
-    <ul>
-      <li>Provide and improve our services</li>
-      <li>Create and manage user websites/apps</li>
-      <li>Enable communication</li>
-      <li>Send updates and notifications</li>
-      <li>Ensure security and prevent misuse</li>
-    </ul>
-
-    <h2>5. Data Sharing</h2>
-    <p>We do <strong>NOT</strong> sell your personal data. We may share data only:</p>
-    <ul>
-      <li>With trusted service providers (hosting, analytics, etc.)</li>
-      <li>When required by law</li>
-      <li>To protect our legal rights</li>
-    </ul>
-
-    <h2>6. Data Security</h2>
-    <p>We implement:</p>
-    <ul>
-      <li>Firewall protection</li>
-      <li>Secure servers</li>
-      <li>Encryption practices (where applicable)</li>
-    </ul>
-    <p>However, no system is 100% secure, and we cannot guarantee absolute security.</p>
-
-    <h2>7. Third-Party Services</h2>
-    <ul>
-      <li>Analytics services</li>
-      <li>Hosting providers</li>
-      <li>API integrations</li>
-    </ul>
-    <p>These services may collect data according to their own privacy policies.</p>
-
-    <h2>8. User Rights</h2>
-    <p>You have the right to:</p>
-    <ul>
-      <li>Access your data</li>
-      <li>Request correction</li>
-      <li>Request deletion</li>
-      <li>Withdraw consent</li>
-    </ul>
-    <p>To do so, contact us at: <a href="mailto:info@mypatrakar.com">info@mypatrakar.com</a></p>
-
-    <h2>9. Children’s Privacy</h2>
-    <p>Our services are not intended for users under the age of 13. We do not knowingly collect data from children.</p>
-
-    <h2>10. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. Changes will be posted on this page.</p>
-
-    <h2>11. Contact Us</h2>
-    <p>If you have any questions, contact us:</p>
-    <ul>
-      <li>Website: <a href="https://mypatrakar.com/">https://mypatrakar.com/</a></li>
-      <li>Email: <a href="mailto:info@mypatrakar.com">info@mypatrakar.com</a></li>
-      <li>Phone: <a href="tel:9005622459">9005622459</a> | <a href="tel:8176091467">8176091467</a></li>
-    </ul>
-
-    <h2>12. Consent</h2>
-    <p>By using our app or website, you agree to this Privacy Policy.</p>
-  `;
-
-  const logoUrl = "https://mypatrakar.com/assets/LG2-CcMgpPb7.svg";
-
+export default function PrivacyPolicy() {
   return (
-    <>
-      <Helmet>
-        <title>Privacy Policy | MyPatrakar - Secure & Transparent Data Protection</title>
-        <meta
-          name="description"
-          content="Explore MyPatrakar's Privacy Policy to understand how we securely collect, store, and protect your personal data. 100% GDPR-compliant. Your security, our priority."
-        />
-        <meta
-          name="keywords"
-          content="Privacy Policy, MyPatrakar Data Security, GDPR compliance, Online Privacy Protection, Personal Data Handling, Secure Information Management, News Platform Privacy"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="MyPatrakar Privacy Policy - Your Data, Your Rights" />
-        <meta
-          property="og:description"
-          content="Read MyPatrakar's privacy policy to understand how we handle your data securely and transparently."
-        />
-        <meta property="og:image" content={logoUrl} />
-        <meta property="og:url" content="https://mypatrakar.com/privacy-policy" />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="MyPatrakar Privacy Policy - Secure & Transparent" />
-        <meta
-          name="twitter:description"
-          content="Find out how MyPatrakar protects your personal data with the highest security standards."
-        />
-        <meta name="twitter:image" content={logoUrl} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            name: "Privacy Policy - MyPatrakar",
-            url: "https://mypatrakar.com/privacy-policy",
-            description:
-              "MyPatrakar's Privacy Policy outlines how we securely collect, process, and protect your personal information.",
-            publisher: {
-              "@type": "Organization",
-              name: "MyPatrakar",
-              url: "https://mypatrakar.com",
-              logo: logoUrl,
-            },
-          })}
-        </script>
-      </Helmet>
-      <div className="container mx-auto px-4 py-8 mt-24 max-w-4xl">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Privacy Policy</h1>
-          <p className="text-lg text-gray-600">Learn how we handle your data</p>
+    <div className="min-h-screen bg-slate-50 py-12 pt-32 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        
+        {/* Page Header Area */}
+        <div className="bg-red-50/50 px-6 py-10 sm:px-10 sm:py-14 border-b border-slate-100 text-center sm:text-left">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+            Privacy Policy
+          </h1>
+          <p className="text-lg text-slate-600 font-medium mb-6">
+            Learn how we handle your data
+          </p>
+          <div className="inline-block bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm text-slate-500 font-medium">
+            Effective Date: <span className="text-slate-900 font-semibold">26/01/26</span>
+          </div>
         </div>
-        <div className="bg-white  p-6 md:p-10">
-          <div
-            className="prose prose-lg prose-slate max-w-none
-              prose-headings:font-semibold prose-headings:text-gray-900
-              prose-h1:text-3xl prose-h1:mb-6
-              prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-gray-200
-              prose-h3:text-xl prose-h3:mt-4 prose-h3:mb-2
-              prose-p:text-gray-700 prose-p:leading-relaxed
-              prose-ul:my-4 prose-li:text-gray-700 prose-li:mb-1
-              prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-gray-900
-              prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm"
-            dangerouslySetInnerHTML={{ __html: privacyHtml }}
-          />
-        </div>
-        <style>{`
-          .permission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-          }
-          .permission-grid div {
-         
-            padding: 0.75rem 1rem;
-           
-          }
-          @media (max-width: 640px) {
-            .permission-grid {
-              grid-template-columns: 1fr;
-            }
-          }
-        `}</style>
-      </div>
-    </>
-  );
-};
 
-export default PrivacyPolicy;
+        {/* Content Area */}
+        <div className="px-6 py-10 sm:px-10 sm:py-12 space-y-10 text-slate-600 leading-relaxed">
+          
+          {/* Introduction */}
+          <section className="prose prose-slate max-w-none">
+            <p className="text-base sm:text-lg">
+              Welcome to <strong>My Patrakar</strong> (accessible at My Patrakar). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our website and mobile application.
+            </p>
+          </section>
+
+          {/* 1. About Us */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">1.</span> About Us
+            </h2>
+            <p className="mb-3">
+              My Patrakar is a digital platform that helps users create and manage:
+            </p>
+            <ul className="list-disc pl-6 space-y-1 mb-3">
+              <li>News portals</li>
+              <li>Mobile applications</li>
+              <li>Websites</li>
+            </ul>
+            <p>
+              We provide ready-to-launch solutions (including rapid setup within 48 hours) for individuals, journalists, and businesses.
+            </p>
+          </section>
+
+          {/* 2. Information We Collect */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">2.</span> Information We Collect
+            </h2>
+            <p className="mb-4">We may collect the following types of information:</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                <h3 className="font-semibold text-slate-900 mb-3">a. Personal Information</h3>
+                <ul className="list-disc pl-5 space-y-1 text-sm">
+                  <li>Name</li>
+                  <li>Email address</li>
+                  <li>Phone number</li>
+                  <li>Business details</li>
+                </ul>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                <h3 className="font-semibold text-slate-900 mb-3">b. Usage Data</h3>
+                <ul className="list-disc pl-5 space-y-1 text-sm">
+                  <li>App interactions</li>
+                  <li>Device information</li>
+                  <li>IP address</li>
+                  <li>Log data</li>
+                </ul>
+              </div>
+              <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                <h3 className="font-semibold text-slate-900 mb-3">c. Uploaded Content</h3>
+                <ul className="list-disc pl-5 space-y-1 text-sm">
+                  <li>News content</li>
+                  <li>Images/videos</li>
+                  <li>Website/app-related data</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. Permissions We Use */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">3.</span> Permissions We Use
+            </h2>
+            <p className="mb-4">Our app may request the following permissions:</p>
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+              <ul className="divide-y divide-slate-100">
+                <li className="px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-slate-50 transition-colors">
+                  <span className="font-medium text-slate-900">Microphone <span className="text-xs font-mono text-slate-400 ml-1 bg-slate-100 px-2 py-0.5 rounded">(RECORD_AUDIO)</span></span>
+                  <span className="text-sm text-slate-500 mt-1 sm:mt-0">Voice search, Voice input</span>
+                </li>
+                <li className="px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-slate-50 transition-colors">
+                  <span className="font-medium text-slate-900">Internet Access <span className="text-xs font-mono text-slate-400 ml-1 bg-slate-100 px-2 py-0.5 rounded">(INTERNET)</span></span>
+                  <span className="text-sm text-slate-500 mt-1 sm:mt-0">Fetching data, Loading content</span>
+                </li>
+                <li className="px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-slate-50 transition-colors">
+                  <span className="font-medium text-slate-900">Bluetooth</span>
+                  <span className="text-sm text-slate-500 mt-1 sm:mt-0">Device connectivity</span>
+                </li>
+                <li className="px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-slate-50 transition-colors">
+                  <span className="font-medium text-slate-900">Phone Call <span className="text-xs font-mono text-slate-400 ml-1 bg-slate-100 px-2 py-0.5 rounded">(CALL_PHONE)</span></span>
+                  <span className="text-sm text-slate-500 mt-1 sm:mt-0">Direct calling features</span>
+                </li>
+                <li className="px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-slate-50 transition-colors">
+                  <span className="font-medium text-slate-900">Notifications <span className="text-xs font-mono text-slate-400 ml-1 bg-slate-100 px-2 py-0.5 rounded">(POST_NOTIFICATIONS)</span></span>
+                  <span className="text-sm text-slate-500 mt-1 sm:mt-0">Updates, Alerts</span>
+                </li>
+              </ul>
+            </div>
+            <p className="mt-3 text-sm italic text-slate-500">We only use these permissions when necessary for app functionality.</p>
+          </section>
+
+          {/* 4. How We Use Your Information */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">4.</span> How We Use Your Information
+            </h2>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Provide and improve our services</li>
+              <li>Create and manage user websites/apps</li>
+              <li>Enable communication</li>
+              <li>Send updates and notifications</li>
+              <li>Ensure security and prevent misuse</li>
+            </ul>
+          </section>
+
+          {/* 5. Data Sharing */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">5.</span> Data Sharing
+            </h2>
+            <p className="mb-3">
+              We do <strong className="text-slate-900 uppercase">not</strong> sell your personal data. We may share data only:
+            </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>With trusted service providers (hosting, analytics, etc.)</li>
+              <li>When required by law</li>
+              <li>To protect our legal rights</li>
+            </ul>
+          </section>
+
+          {/* 6. Data Security */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">6.</span> Data Security
+            </h2>
+            <p className="mb-3">We implement:</p>
+            <ul className="list-disc pl-6 space-y-2 mb-3">
+              <li>Firewall protection</li>
+              <li>Secure servers</li>
+              <li>Encryption practices (where applicable)</li>
+            </ul>
+            <p className="text-sm bg-amber-50 text-amber-800 p-4 rounded-lg border border-amber-100">
+              However, no system is 100% secure, and we cannot guarantee absolute security.
+            </p>
+          </section>
+
+          {/* 7. Third-Party Services */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">7.</span> Third-Party Services
+            </h2>
+            <ul className="list-disc pl-6 space-y-2 mb-3">
+              <li>Analytics services</li>
+              <li>Hosting providers</li>
+              <li>API integrations</li>
+            </ul>
+            <p>These services may collect data according to their own privacy policies.</p>
+          </section>
+
+          {/* 8. User Rights */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">8.</span> User Rights
+            </h2>
+            <p className="mb-3">You have the right to:</p>
+            <div className="flex flex-wrap gap-3 mb-4">
+              <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm font-medium">Access your data</span>
+              <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm font-medium">Request correction</span>
+              <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm font-medium">Request deletion</span>
+              <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-sm font-medium">Withdraw consent</span>
+            </div>
+            <p>
+              To do so, contact us at: <a href="mailto:info@mypatrakar.com" className="text-red-600 hover:text-red-800 font-medium">info@mypatrakar.com</a>
+            </p>
+          </section>
+
+          {/* 9. Children’s Privacy */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">9.</span> Children’s Privacy
+            </h2>
+            <p>
+              Our services are not intended for users under the age of 13. We do not knowingly collect data from children.
+            </p>
+          </section>
+
+          {/* 10. Changes to This Policy */}
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+              <span className="text-red-600 mr-2">10.</span> Changes to This Policy
+            </h2>
+            <p>
+              We may update this Privacy Policy from time to time. Changes will be posted on this page.
+            </p>
+          </section>
+
+          {/* 11. Contact Us & 12. Consent Combined in Footer-like Section */}
+          <div className="mt-12 pt-10 border-t border-slate-200">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              <section>
+                <h2 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                  <span className="text-red-600 mr-2">11.</span> Contact Us
+                </h2>
+                <p className="mb-4">If you have any questions, contact us:</p>
+                <div className="space-y-3">
+                  <p className="flex items-start">
+                    <strong className="text-slate-900 min-w-[80px]">Website:</strong>
+                    <a href="https://mypatrakar.com/" className="text-red-600 hover:underline break-all">https://mypatrakar.com/</a>
+                  </p>
+                  <p className="flex items-start">
+                    <strong className="text-slate-900 min-w-[80px]">Email:</strong>
+                    <a href="mailto:info@mypatrakar.com" className="text-red-600 hover:underline">info@mypatrakar.com</a>
+                  </p>
+                  <p className="flex items-start">
+                    <strong className="text-slate-900 min-w-[80px]">Email:</strong>
+                    <a href="mailto:info@mypatrakar.com" className="text-blue-600 hover:underline">info@mypatrakar.com</a>
+                  </p>
+                  <p className="flex items-start">
+                    <strong className="text-slate-900 min-w-[80px]">Phone:</strong>
+                    <span className="text-slate-700">9005622459 | 8176091467</span>
+                  </p>
+                </div>
+              </section>
+
+              <section className="bg-slate-50 p-6 rounded-xl">
+                <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center">
+                  <span className="text-red-600 mr-2">12.</span> Consent
+                </h2>
+                <p className="text-sm">
+                  By using our app or website, you agree to this Privacy Policy. Ensure you read and understand these terms before using our services.
+                </p>
+              </section>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}

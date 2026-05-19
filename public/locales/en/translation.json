@@ -94,6 +94,7 @@
       "heading1": "Useful Links",
       "termsAndConditions": "Terms & Condition",
       "privacyPolicy": "Privacy Policy",
+      "deleteAccount": "Delete Account",
       "navigation": "Navigation",
       "heading2": "Get Started Now",
       "headingDesc": "Register your news channel in just 2 minutes.",
@@ -468,6 +469,7 @@
         "about": "About Us",
         "terms": "Terms & Condition",
         "privacy": "Privacy & Policy",
+        "eAccount": "Delete E-Account",
         "contact": "Contact Us"
       },
       "exclusive": "#BS_EXCLUSIVE",

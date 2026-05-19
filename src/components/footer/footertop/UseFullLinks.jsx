@@ -7,6 +7,8 @@ import {
   faShieldAlt,
   faTruck,
   faUndo,
+
+  faTrashCan
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
@@ -26,6 +28,11 @@ export default function UseFullLinks() {
       href: "/privacy-policy",
       icon: faShieldAlt,
       text: t("footer.bottom.privacyPolicy"),
+    },
+     {
+      href: "/delete-account",
+      icon: faTrashCan,
+      text: t("footer.bottom.deleteAccount"),
     },
     {
       href: "/shipping-and-delivery",

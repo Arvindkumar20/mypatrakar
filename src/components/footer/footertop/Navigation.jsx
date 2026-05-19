@@ -32,6 +32,7 @@ export default function Navigation() {
       icon: faTags,
       text: t("menu.price"),
     },
+    
     // {
     //   to: "/schedule/demo",
     //   icon: faCalendarAlt,
