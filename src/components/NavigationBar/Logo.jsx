@@ -4,7 +4,7 @@ import MyPatrakarLogo from "../../assets/LG1.png";
 
 export default function Logo() {
   return (
-    <div className="flex justify-center items-center py-4 mt-1 select-none">
+    <div className="flex justify-center items-center  select-none">
       <img
         src={MyPatrakarLogo}
         alt="MyPatrakar Logo"

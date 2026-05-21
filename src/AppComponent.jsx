@@ -77,6 +77,8 @@ import { BlogContext } from "./context/BlogContext.jsx";
 import { PreviewProvider } from "./context/PreViewContext.jsx";
 import { safeLocalStorage } from "./utils/localStorage.js";
 import AppDemoLanding from "./components/pages/AppDemo.jsx";
+import AboutUs from "./components/pages/AboutUs.jsx";
+import EditorialPolicy from "./components/pages/EditorialPolicy.jsx";
 const DeleteAccount = React.lazy(
   () => import("./components/Home/delete-account/DeleteAccount.jsx"),
 );
@@ -191,7 +193,10 @@ export default function AppContent() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignUp />} />
+                    <Route path="/contact-us" element={<Contact />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/about-us" element={<AboutUs />} />
+                    <Route path="/editorial-policy" element={<EditorialPolicy />} />
                     <Route
                       path="/pricing-in-my-patrakar"
                       element={<Pricing />}

@@ -11,6 +11,7 @@ import { useAuth } from "../Authentication/auth-hook";
 import LanguageSelector from "./LanguageSelector";
 import ai from "../../assets/generative.png";
 import { RiAiGenerate } from "react-icons/ri";
+import PageDropDown from "./PageDropDown";
 
 export default function ResponsiveNav() {
   const { isLogin } = useAuth();
@@ -30,7 +31,7 @@ export default function ResponsiveNav() {
     <>
       <nav className="px-3 py-0 md:mx-12 sm:mx-5   ">
         <section className="flex items-center justify-between ">
-          <div className="flex items-center gap-5  select-none">
+          <div className="flex items-center gap-3  select-none">
             {/* Logo */}
             <NavLink to="/">
               <MyPatrakarLogo />
@@ -99,7 +100,7 @@ export default function ResponsiveNav() {
               </li>
             </ul> */}
 
-            <ul className="hidden xl:flex gap-3 xl:gap-5 items-center mt-3 font-light text-black">
+            <ul className="hidden xl:flex  lg:gap-2 xl:gap-3 items-center  mt-5 font-light text-black">
               <li>
                 <Dropdown />
               </li>
@@ -136,12 +137,13 @@ export default function ResponsiveNav() {
               </li>
 
               <li>
-                <NavLink
+                {/* <NavLink
                   to={"/contact"}
                   className=" text-black text-sm xl:text-md font-semibold font-Poppins hover:text-red-500 transition-colors active:text-red-500 focus:text-red-500"
                 >
                   {t("menu.contact")}
-                </NavLink>
+                </NavLink> */}
+                <PageDropDown />
               </li>
 
               <li>
@@ -184,7 +186,7 @@ export default function ResponsiveNav() {
           <div className="hidden xl:flex gap-2 items-center mt-3">
             {userData == "" || userData == null ? (
               <NavLink to={"/login"}>
-                <button className="text-sm xl:text-md text-black font-semibold py-2 px-3 rounded hover:bg-red-600 hover:text-white transition-colors no-underline decoration-none hover:underline">
+                <button className="text-sm xl:text-lg text-black font-semibold py-2 px-3 rounded hover:bg-red-600 hover:text-white transition-colors no-underline decoration-none hover:underline">
                   {t("menu.signin")}
                 </button>
               </NavLink>
@@ -216,139 +218,144 @@ export default function ResponsiveNav() {
       </nav>
 
       {/* Mobile Side Menu */}
-     <div
-  className={`fixed inset-y-0 left-0 z-50 w-3/4 max-w-xs 
+      <div
+        className={`fixed inset-y-0 left-0 z-50 w-3/4 max-w-xs 
   bg-gradient-to-b from-white to-gray-100 
   p-4 shadow-2xl rounded-r-2xl 
   transition-transform ease-in-out transform ${
     isMenuOpen ? "translate-x-0" : "-translate-x-full"
   } duration-300`}
->
-  {/* Close Button */}
-  <div className="flex justify-between items-center mb-6 border-b pb-3">
-    <NavLink to="/">
-      <MyPatrakarLogo />
-    </NavLink>
-    <IoClose
-      size={26}
-      className="cursor-pointer text-gray-700 hover:text-red-500 transition-colors"
-      onClick={handleMenuToggle}
-    />
-  </div>
-
-  {/* Navigation Links */}
-  <ul className="flex flex-col gap-5">
-    <li className="text-gray-500 text-xs tracking-wide uppercase">
-      {t("menu.product.product")}
-    </li>
-
-    <li>
-      <NavLink
-        to={"/product/app"}
-        className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
-        hover:bg-red-50 hover:text-red-500 transition-all text-black"
-        onClick={handleCloseMenu}
       >
-        {t("menu.product.app")}
-      </NavLink>
-    </li>
+        {/* Close Button */}
+        <div className="flex justify-between items-center mb-6 border-b pb-3">
+          <NavLink to="/">
+            <MyPatrakarLogo />
+          </NavLink>
+          <IoClose
+            size={26}
+            className="cursor-pointer text-gray-700 hover:text-red-500 transition-colors"
+            onClick={handleMenuToggle}
+          />
+        </div>
 
-    <li>
-      <NavLink
-        to={"/product/website"}
-        className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
+        {/* Navigation Links */}
+        <ul className="flex flex-col gap-5">
+          <li className="text-gray-500 text-xs tracking-wide uppercase">
+            {t("menu.product.product")}
+          </li>
+
+          <li>
+            <NavLink
+              to={"/product/app"}
+              className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
         hover:bg-red-50 hover:text-red-500 transition-all text-black"
-        onClick={handleCloseMenu}
-      >
-        {t("menu.product.website")}
-      </NavLink>
-    </li>
+              onClick={handleCloseMenu}
+            >
+              {t("menu.product.app")}
+            </NavLink>
+          </li>
 
-    <li>
-      <NavLink
-        to={"/pricing-in-my-patrakar"}
-        className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
+          <li>
+            <NavLink
+              to={"/product/website"}
+              className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
         hover:bg-red-50 hover:text-red-500 transition-all text-black"
-        onClick={handleCloseMenu}
-      >
-        {t("menu.price")}
-      </NavLink>
-    </li>
+              onClick={handleCloseMenu}
+            >
+              {t("menu.product.website")}
+            </NavLink>
+          </li>
 
-    <li className="text-left text-sm font-semibold font-Poppins text-red-500">
-      <DemoCallCard />
-    </li>
-
-    <li>
-      <NavLink
-        to={"/resources-in-my-patrakar"}
-        className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
+          <li>
+            <NavLink
+              to={"/pricing-in-my-patrakar"}
+              className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
         hover:bg-red-50 hover:text-red-500 transition-all text-black"
-        onClick={handleCloseMenu}
-      >
-        {t("menu.resources")}
-      </NavLink>
-    </li>
+              onClick={handleCloseMenu}
+            >
+              {t("menu.price")}
+            </NavLink>
+          </li>
 
-    <li>
-      <NavLink
-        to="/blog-page"
-        className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
+          <li className="text-left text-sm font-semibold font-Poppins text-red-500">
+            <DemoCallCard />
+          </li>
+
+          <li>
+            <NavLink
+              to={"/resources-in-my-patrakar"}
+              className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
         hover:bg-red-50 hover:text-red-500 transition-all text-black"
-      >
-        {t("menu.blog")}
-      </NavLink>
-    </li>
+              onClick={handleCloseMenu}
+            >
+              {t("menu.resources")}
+            </NavLink>
+          </li>
 
-    <li>
-      <NavLink
-        to={"/contact"}
-        className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
+          <li>
+            <NavLink
+              to="/blog-page"
+              className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
         hover:bg-red-50 hover:text-red-500 transition-all text-black"
-        onClick={handleCloseMenu}
-      >
-        {t("menu.contact")}
-      </NavLink>
-    </li>
-  </ul>
+            >
+              {t("menu.blog")}
+            </NavLink>
+          </li>
 
-  {/* Action Buttons */}
-  <div className="mt-6 flex flex-col gap-3 border-t pt-4">
-    {userData == "" || userData == null ? (
-      <NavLink to={"/login"} className="flex items-center justify-center hover:no-underline">
-        <button
-          className="w-full text-sm text-white font-semibold py-2.5 px-3 
+          <li>
+            <NavLink
+              to={"/contact"}
+              className="block p-2 rounded-lg text-sm font-semibold font-Poppins 
+        hover:bg-red-50 hover:text-red-500 transition-all text-black"
+              onClick={handleCloseMenu}
+            >
+              {t("menu.contact")}
+            </NavLink>
+          </li>
+        </ul>
+
+        {/* Action Buttons */}
+        <div className="mt-6 flex flex-col gap-3 border-t pt-4">
+          {userData == "" || userData == null ? (
+            <NavLink
+              to={"/login"}
+              className="flex items-center justify-center hover:no-underline"
+            >
+              <button
+                className="w-full text-sm text-white font-semibold py-2.5 px-3 
           bg-red-500 rounded-lg hover:bg-red-600 transition-all shadow-md"
-        >
-          {t("menu.signin")}
-        </button>
-      </NavLink>
-    ) : (
-      <NavLink to={"/portal"} className="flex items-center justify-center hover:no-underline">
-        <button
-          className="w-full text-sm text-white font-semibold py-2.5 px-3 
+              >
+                {t("menu.signin")}
+              </button>
+            </NavLink>
+          ) : (
+            <NavLink
+              to={"/portal"}
+              className="flex items-center justify-center hover:no-underline"
+            >
+              <button
+                className="w-full text-sm text-white font-semibold py-2.5 px-3 
           bg-red-500 rounded-lg hover:bg-red-600 transition-all shadow-md"
-        >
-          {t("menu.signin")}
-        </button>
-      </NavLink>
-    )}
+              >
+                {t("menu.signin")}
+              </button>
+            </NavLink>
+          )}
 
-    <NavLink
-      to={"/signup"}
-      onClick={handleCloseMenu}
-      className="flex items-center justify-center hover:no-underline"
-    >
-      <button
-        className="w-full text-sm text-white font-semibold py-2.5 px-3 
+          <NavLink
+            to={"/signup"}
+            onClick={handleCloseMenu}
+            className="flex items-center justify-center hover:no-underline"
+          >
+            <button
+              className="w-full text-sm text-white font-semibold py-2.5 px-3 
         bg-black rounded-lg hover:bg-gray-900 transition-all shadow-md "
-      >
-        {t("menu.signupForFree")}
-      </button>
-    </NavLink>
-  </div>
-</div>
-
+            >
+              {t("menu.signupForFree")}
+            </button>
+          </NavLink>
+        </div>
+      </div>
 
       {/* Background Overlay */}
       {isMenuOpen && (

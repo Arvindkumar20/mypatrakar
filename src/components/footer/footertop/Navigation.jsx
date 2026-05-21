@@ -4,12 +4,11 @@ import React from "react";
 import DemoCallCard from "../../Home/ScheduleDemo/DemoCallCard";
 import { Link } from "react-router-dom";
 import {
-  faCalendarAlt,
+  faCircleInfo,
   faEnvelope,
   faGlobe,
   faMobileAlt,
   faPenNib,
-  faQuestionCircle,
   faTags,
 } from "@fortawesome/free-solid-svg-icons";
 import razorpay from "../../../assets/footer/Razorpay-Logo.jpg";
@@ -32,7 +31,7 @@ export default function Navigation() {
       icon: faTags,
       text: t("menu.price"),
     },
-    
+
     // {
     //   to: "/schedule/demo",
     //   icon: faCalendarAlt,
@@ -45,9 +44,15 @@ export default function Navigation() {
       text: t("menu.blog"),
     },
     {
-      to: "/contact",
+      to: "/contact-us",
       icon: faEnvelope,
       text: t("menu.contact"),
+    },
+    {
+      to: "/about-us",
+      icon: faCircleInfo,
+      text: "About Us",
+      // text: t("menu.contact"),
     },
   ];
   return (
@@ -86,42 +91,41 @@ export default function Navigation() {
                 <FontAwesomeIcon icon={item.icon} className="w-5" />
                 {item.text}
               </Link>
-            )
+            ),
           )}
         </div>
       </div>
-     <div className="mt-4 flex flex-col items-start md:items-start gap-6">
-  {/* AWS Block */}
-  <div className="flex flex-col gap-2">
-    <p className="text-white font-bold text-lg sm:text-base">
-      Deployed on AWS
-    </p>
+      <div className="mt-4 flex flex-col items-start md:items-start gap-6">
+        {/* AWS Block */}
+        <div className="flex flex-col gap-2">
+          <p className="text-white font-bold text-lg sm:text-base">
+            Deployed on AWS
+          </p>
 
-    <div className="bg-white w-60 sm:w-48 h-20 sm:h-14 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
-      <img
-        src={AWS}
-        alt="AWS Logo"
-        className="w-full h-full object-contain p-"
-      />
-    </div>
-  </div>
+          <div className="bg-white w-60 sm:w-48 h-20 sm:h-14 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+            <img
+              src={AWS}
+              alt="AWS Logo"
+              className="w-full h-full object-contain p-"
+            />
+          </div>
+        </div>
 
-  {/* OpenAI Block */}
-  <div className="flex flex-col gap-2">
-    <p className="text-white font-bold text-lg sm:text-base">
-      Payment Powered By
-    </p>
+        {/* OpenAI Block */}
+        <div className="flex flex-col gap-2">
+          <p className="text-white font-bold text-lg sm:text-base">
+            Payment Powered By
+          </p>
 
-    <div className="bg-white w-60 sm:w-48 h-20 sm:h-14 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
-      <img
-        src={razorpay}
-        alt="OpenAI Logo"
-        className="w-full h-full object-contain "
-      />
-    </div>
-  </div>
-</div>
-
+          <div className="bg-white w-60 sm:w-48 h-20 sm:h-14 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+            <img
+              src={razorpay}
+              alt="OpenAI Logo"
+              className="w-full h-full object-contain "
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
