@@ -9,7 +9,7 @@ const EditorialPolicy = () => {
           {/* Header Section */}
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 border-l-4 border-red-500 pl-4 mb-6">
             Editorial Policy
-            <sup className="text-base text-gray-500 ml-1">®</sup>
+            <sup className="text-base text-gray-500 ml-1"></sup>
           </h1>
 
           {/* Effective Date Badge */}
@@ -21,14 +21,14 @@ const EditorialPolicy = () => {
                 <span className="font-medium text-gray-700">26/01/2026</span>
               </span>
             </div>
-            <div className="w-px h-4 bg-gray-300 hidden sm:block"></div>
-            <div className="flex items-center gap-1.5">
+            {/* <div className="w-px h-4 bg-gray-300 hidden sm:block"></div> */}
+            {/* <div className="flex items-center gap-1.5">
               <i className="fas fa-sync-alt text-red-400 text-xs"></i>
               <span>
                 Updated:{" "}
                 <span className="font-medium text-gray-700">21 May, 2026</span>
               </span>
-            </div>
+            </div> */}
           </div>
 
           {/* Editorial Content */}
@@ -37,7 +37,7 @@ const EditorialPolicy = () => {
             <p>
               Welcome to{" "}
               <strong className="font-semibold">
-                My Patrakar<sup>®</sup>
+                My Patrakar<sup></sup>
               </strong>
               . We are committed to maintaining responsible digital publishing
               standards, transparency, accuracy, and ethical journalism
@@ -45,7 +45,7 @@ const EditorialPolicy = () => {
             </p>
             <p>
               This Editorial Policy explains how content is managed, reviewed,
-              published, and maintained within the My Patrakar<sup>®</sup>{" "}
+              published, and maintained within the My Patrakar<sup></sup>{" "}
               ecosystem.
             </p>
 
@@ -54,7 +54,7 @@ const EditorialPolicy = () => {
               1. About Our Platform
             </h2>
             <p>
-              My Patrakar<sup>®</sup> is a digital media technology platform
+              My Patrakar<sup></sup> is a digital media technology platform
               that enables journalists, news publishers, media organizations,
               bloggers, and businesses to create and manage:
             </p>
@@ -96,7 +96,7 @@ const EditorialPolicy = () => {
             </h2>
             <p>
               News articles, reports, media content, and updates published
-              through My Patrakar<sup>®</sup> may originate from:
+              through My Patrakar<sup></sup> may originate from:
             </p>
             <ul className="list-disc pl-6 space-y-1">
               <li>Independent journalists</li>
@@ -177,7 +177,7 @@ const EditorialPolicy = () => {
               7. Independence &amp; Responsibility
             </h2>
             <p>
-              My Patrakar<sup>®</sup> provides publishing technology and digital
+              My Patrakar<sup></sup> provides publishing technology and digital
               infrastructure services. Opinions, reports, and published articles
               belong to their respective authors, publishers, or contributors.
             </p>
@@ -267,18 +267,18 @@ const EditorialPolicy = () => {
               published on this page with the revised effective date.
             </p>
             <p>
-              Continued use of My Patrakar<sup>®</sup> services indicates
+              Continued use of My Patrakar<sup></sup> services indicates
               acceptance of the updated policy.
             </p>
 
             {/* Footer & copyright area matching about page style */}
             <div className="bg-gray-100 p-6 rounded-lg mt-8">
               <p className="text-sm text-gray-700">
-                © My Patrakar<sup>®</sup> — All Rights Reserved.
+                © My Patrakar<sup></sup> — All Rights Reserved.
               </p>
-              <p className="text-xs text-gray-500 mt-2">
+              {/* <p className="text-xs text-gray-500 mt-2">
                 Updated At: 21 May, 2026 09:39
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

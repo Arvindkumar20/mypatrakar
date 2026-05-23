@@ -355,6 +355,17 @@ export default function ResponsiveNav() {
             </button>
           </NavLink>
         </div>
+         <div className="mt-3">
+                <NavLink
+                  to={"/try-mypatrakar-ai"}
+                  className="text-white font-semibold font-Poppins hover:text-white transition-colors active:text-white focus:text-white"
+                >
+                  <div className="flex items-center justify-center gap-1 xl:gap-2 bg-red-500 px-3 py-2 xl:px-3 xl:py-2 rounded whitespace-nowrap">
+                    <RiAiGenerate size={18} />
+                    <span className="text-sm text-white font-semibold  px-3">{t("menu.AI")}</span>
+                  </div>
+                </NavLink>
+              </div>
       </div>
 
       {/* Background Overlay */}
@@ -364,6 +375,7 @@ export default function ResponsiveNav() {
           onClick={handleMenuToggle}
         ></div>
       )}
+      
     </>
   );
 }

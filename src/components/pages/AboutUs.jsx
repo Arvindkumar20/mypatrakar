@@ -8,16 +8,33 @@ const AboutUs = () => {
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="px-6 py-8 sm:p-10">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 border-l-4 border-red-500 pl-4 mb-6">
-            About My Patrakar<sup>®</sup> - V1
+            About My Patrakar<sup></sup> - V1
           </h1>
-
+ {/* Effective Date Badge */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-8 border-b border-gray-100 pb-4">
+            <div className="flex items-center gap-1.5">
+              <i className="fas fa-calendar-alt text-red-400 text-xs"></i>
+              <span>
+                Effective Date:{" "}
+                <span className="font-medium text-gray-700">26/01/2026</span>
+              </span>
+            </div>
+            {/* <div className="w-px h-4 bg-gray-300 hidden sm:block"></div> */}
+            {/* <div className="flex items-center gap-1.5">
+              <i className="fas fa-sync-alt text-red-400 text-xs"></i>
+              <span>
+                Updated:{" "}
+                <span className="font-medium text-gray-700">21 May, 2026</span>
+              </span>
+            </div> */}
+          </div>
           <div className="prose prose-lg text-gray-700 space-y-6">
             <p>
-              Welcome to <strong>My Patrakar<sup>®</sup> - V1</strong>, a complete digital news publishing and media management platform designed for modern journalists, media agencies, reporters, bloggers, and digital news startups.
+              Welcome to <strong>My Patrakar<sup></sup> - V1</strong>, a complete digital news publishing and media management platform designed for modern journalists, media agencies, reporters, bloggers, and digital news startups.
             </p>
 
             <p>
-              My Patrakar<sup>®</sup> helps individuals and organizations create their own professional News App, News Website, and Digital News Portal quickly, efficiently, and without any technical knowledge.
+              My Patrakar<sup></sup> helps individuals and organizations create their own professional News App, News Website, and Digital News Portal quickly, efficiently, and without any technical knowledge.
             </p>
 
             <p>
@@ -26,9 +43,9 @@ const AboutUs = () => {
 
             <p>Our goal is to simplify digital journalism and make media technology accessible to everyone.</p>
 
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8">What is My Patrakar<sup>®</sup>?</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8">What is My Patrakar<sup></sup>?</h2>
             <p>
-              My Patrakar<sup>®</sup> is an all-in-one platform that allows users to:
+              My Patrakar<sup></sup> is an all-in-one platform that allows users to:
             </p>
             <ul className="list-disc pl-6 space-y-1">
               <li>Launch their own branded news mobile application</li>
@@ -43,7 +60,7 @@ const AboutUs = () => {
 
             <h2 className="text-2xl font-semibold text-gray-800 mt-8">Start Demo & Trial</h2>
             <p>
-              Before launching your own platform, My Patrakar<sup>®</sup> allows you to explore a live demo and trial experience.
+              Before launching your own platform, My Patrakar<sup></sup> allows you to explore a live demo and trial experience.
             </p>
             <p>With the demo version, users can:</p>
             <ul className="list-disc pl-6 space-y-1">
@@ -110,7 +127,7 @@ const AboutUs = () => {
               </div>
             </div>
 
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8">Who Can Use My Patrakar<sup>®</sup>?</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8">Who Can Use My Patrakar<sup></sup>?</h2>
             <div className="flex flex-wrap gap-2">
               {["Journalists", "Local Reporters", "News Agencies", "Media Startups", "Bloggers", "Content Creators", "Digital Publishers", "Regional News Channels", "Online Media Organizations"].map((item) => (
                 <span key={item} className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">
@@ -119,7 +136,7 @@ const AboutUs = () => {
               ))}
             </div>
 
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8">Why Choose My Patrakar<sup>®</sup>?</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8">Why Choose My Patrakar<sup></sup>?</h2>
             <ul className="list-disc pl-6 space-y-1">
               <li><strong>Fast Setup</strong> – Launch your own digital news platform within 48 hours using our streamlined deployment process.</li>
               <li><strong>No Technical Skills Required</strong> – The platform is designed for non-technical users and provides an easy-to-manage system.</li>
@@ -137,7 +154,7 @@ const AboutUs = () => {
               We believe every journalist should have the ability to build and manage their own digital media platform independently without depending on expensive development teams or complicated software systems.
             </p>
             <p>
-              My Patrakar<sup>®</sup> aims to support the future of regional, independent, and digital journalism through smart and scalable technology.
+              My Patrakar<sup></sup> aims to support the future of regional, independent, and digital journalism through smart and scalable technology.
             </p>
 
             <h2 className="text-2xl font-semibold text-gray-800 mt-8">Permissions Used</h2>
@@ -179,8 +196,8 @@ const AboutUs = () => {
     <Headphones size={16} className="text-red-600" />
     Support: +91 8176091467
   </p>
-              <p className="text-sm text-gray-500 mt-4">© My Patrakar<sup>®</sup> - All Rights Reserved.</p>
-              <p className="text-xs text-gray-400">Updated At: 19 May, 2026 05:34</p>
+              <p className="text-sm text-gray-500 mt-4">© My Patrakar<sup></sup> - All Rights Reserved.</p>
+              {/* <p className="text-xs text-gray-400">Updated At: 19 May, 2026 05:34</p> */}
             </div>
           </div>
         </div>
