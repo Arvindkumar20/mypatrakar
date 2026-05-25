@@ -4,6 +4,7 @@ import useResponsiveFix from "./hooks/useResponsiveFix.js";
 import ErrorBoundary from "./utils/ErrorBoundary.jsx";
 import { useEffect, Suspense, lazy } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import OfferPopup from "./OfferPopup.jsx";
 
 // ✅ Lazy load AppContent
 const AppContent = lazy(() => import("./AppComponent.jsx"));
@@ -37,7 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-
+<OfferPopup/>
       {/* <ErrorBoundary> */}
         <LanguageProvider>
           <div style={style}>

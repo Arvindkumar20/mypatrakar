@@ -20,11 +20,11 @@ API.interceptors.response.use(
       if (errors) {
         const messages = Object.values(errors).flat().join("<br/>");
 
-        Swal.fire({
-          icon: "warning",
-          title: "Please fix the following",
-          html: messages,
-        });
+        // Swal.fire({
+        //   icon: "warning",
+        //   title: "Please fix the following",
+        //   html: messages,
+        // });
       }
       return Promise.reject(error);
     }

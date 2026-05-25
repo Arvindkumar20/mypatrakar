@@ -3,22 +3,9 @@ import astv from "../../assets/reporters/astv.png";
 import indiaupdesh from "../../assets/reporters/indiaupdesh.png";
 import publicbharat from "../../assets/reporters/publicbharat.png";
 import { useTranslation } from "react-i18next";
-// import "../../../i18n";
+
 export default function OurReporters() {
   const { t } = useTranslation();
-  // const [reporters, setReporters] = useState([]);
-  // // Uncomment below for API call
-  // const showReporter = async () => {
-  //   try {
-  //     const response = await GetRepoters();
-  //     setReporters(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   showReporter();
-  // }, []);
 
   const reporter = [
     {
@@ -40,30 +27,106 @@ export default function OurReporters() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center mx-auto px-4 py-8 w-full max-w-screen-xl">
-      {/* Title */}
-      <section className="text-center mb-8 w-full">
-        <h1 className="font-bold font-sans text-2xl sm:text-3xl lg:text-4xl">
-          {t("reportersSec")}
-        </h1>
-      </section>
+    <section className="relative font-sans w-full pt-20 overflow-hidden bg-gradient-to-b from-gray-100 via-slate-100 to-white">
+      
+      {/* Background Blur Effects */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-100 rounded-full blur-3xl opacity-30"></div>
 
-      {/* Reporters Grid */}
-      <section className="w-full ml-0 lg:ml-60 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 place-items-center">
-        {reporter.map((item, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <img
-              src={item.reporterLOgo}
-              alt={item.reporterName}
-              className="w-40 h-40 sm:w-28 sm:h-28 lg:w-24 lg:h-24 object-cover rounded-xl hover:scale-105 transition-transform duration-200  "
-              loading="lazy"
-            />
-            {/* <p className="text-gray-800 font-medium text-sm mt-2 text-center">
-              {item.reporterName}
-            </p> */}
-          </div>
-        ))}
-      </section>
-    </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+        
+        {/* Heading */}
+        <div className="text-center mb-16">
+          {/* <span className="inline-block px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-600 bg-blue-100 rounded-full mb-5">
+            Trusted Media Partners
+          </span> */}
+
+          <h1
+            className="
+              text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+              font-black
+              text-gray-700
+              leading-tight
+            "
+          >
+            {t("reportersSec")}
+          </h1>
+
+          <p className="max-w-2xl mx-auto mt-5 text-slate-500 text-sm sm:text-base md:text-lg leading-relaxed">
+            Collaborating with trusted media networks to bring authentic,
+            impactful, and fast news coverage across India.
+          </p>
+        </div>
+
+        {/* Reporters Grid */}
+        <div
+          className="
+            grid 
+            grid-cols-2 
+            sm:grid-cols-2 
+            md:grid-cols-4
+            gap-6 md:gap-8
+          "
+        >
+          {reporter.map((item, index) => (
+            <div
+              key={index}
+              className="
+                group
+                relative
+                
+                
+                flex flex-col items-center justify-center
+                
+                transition-all duration-500
+                overflow-hidden
+              "
+            >
+              {/* Hover Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+              {/* Logo */}
+              <div
+                className="
+                  relative
+                  w-28 h-28 sm:w-32 sm:h-32
+                  flex items-center justify-center
+                "
+              >
+                <img
+                  src={item.reporterLOgo}
+                  alt={item.reporterName}
+                  loading="lazy"
+                  className="
+                    w-full h-full
+                    object-contain
+                    transition-all duration-500
+                    group-hover:scale-110
+                  "
+                />
+              </div>
+
+              {/* Divider */}
+              {/* <div className="w-12 h-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 my-5 group-hover:w-20 transition-all duration-500"></div> */}
+
+              {/* Name */}
+              {/* <h3
+                className="
+                  text-sm sm:text-base md:text-lg
+                  font-bold
+                  text-slate-800
+                  text-center
+                  leading-snug
+                  group-hover:text-blue-600
+                  transition-colors duration-300
+                "
+              >
+                {item.reporterName}
+              </h3> */}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

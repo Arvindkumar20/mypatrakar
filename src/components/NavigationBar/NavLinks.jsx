@@ -9,7 +9,7 @@ import Dropdown from "./NavBarFOrBlog/DropDown";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../Authentication/auth-hook";
 import LanguageSelector from "./LanguageSelector";
-import ai from "../../assets/generative.png";
+
 import { RiAiGenerate } from "react-icons/ri";
 import PageDropDown from "./PageDropDown";
 

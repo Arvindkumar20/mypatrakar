@@ -9,11 +9,12 @@ import OurReporters from "./OurReporters";
 import Pricing from "./price/Pricing";
 // import logo from '../../assets/LG2.svg'
 import { Helmet } from "react-helmet-async";
+import StartDemo from "./StartDemo";
 export default function Home() {
   const logoUrl = "https://mypatrakar.com/assets/LG2-CcMgpPb7.svg";
   return (
     <>
-     <Helmet>
+      <Helmet>
         <title>MyPatrakar | Complete News Portal Development Solution</title>
         <meta
           name="description"
@@ -67,6 +68,7 @@ export default function Home() {
           <AppViewOnHome />
           <Functionality />
           <Features />
+          {/* <StartDemo /> */}
           <Pricing />
         </main>
       </div>

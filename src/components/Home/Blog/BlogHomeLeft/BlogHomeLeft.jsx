@@ -20,7 +20,7 @@ export default function BlogHomeLeft() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3; // Changed to 4 items per page for a better example
+  const itemsPerPage = 6; // Changed to 4 items per page for a better example
   const totalPages = Math.ceil(blogS.length / itemsPerPage);
 
   // Fetch Blogs for the selected category
@@ -77,10 +77,8 @@ export default function BlogHomeLeft() {
           className="relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg cursor-pointer font-sans"
         >
           <div className="animate-pulse">
-            <div className=" relative bg-gray-200 w-full h-52 sm:h-64 " >
-              <span className="absolute top-4 left-4 bg-white text-[#d91313] text-xs sm:text-[14px] font-bold w-[100px] h-5 rounded-full shadow-md tracking-wide">
-                    
-                  </span>
+            <div className=" relative bg-gray-200 w-full h-52 sm:h-64 ">
+              <span className="absolute top-4 left-4 bg-white text-[#d91313] text-xs sm:text-[14px] font-bold w-[100px] h-5 rounded-full shadow-md tracking-wide"></span>
             </div>
             <div className="p-5 space-y-4">
               <div className="h-6 bg-gray-200 rounded w-3/4"></div>
@@ -145,7 +143,10 @@ export default function BlogHomeLeft() {
       ) : (
         <>
           {/* Main Blog Grid - Adjusted for better responsiveness */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 w-full">
+          <div
+            id="blog-section"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 w-full"
+          >
             {currentBlogs?.map((b, index) => (
               <div
                 key={index}
