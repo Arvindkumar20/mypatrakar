@@ -1,6 +1,6 @@
 # MyPatrakar – News Portal Launch Offer
 
-![Website Preview](screenshots/landingpage.png)
+![Website Preview](screenshots/initialPop.png)
 
 ## 🚀 About The Project
 
@@ -26,32 +26,40 @@ Get a complete **web portal + Android app** ready in just **48 hours** – start
 ## 📸 Screenshots
 
 ### Landing Page
+
 ![Landing Page](screenshots/landingpage.png)
 
 ### Pricing Card
-![Pricing Card](screenshots/initialPop.png)
+
+![Pricing Card](screenshots/pricing.png)
 
 ### Mobile Layout
+
 ![Mobile Layout](screenshots/mobile.png)
 
 ### OTP Verification
+
 ![OTP Verification](screenshots/otp.png)
 
 ### Dashboard
+
 ![Dashboard](screenshots/dashboard.png)
 
 ### Portal Request - Logo Settings
+
 ![Logo Settings](screenshots/logo.png)
 
 ### Portal Request - Social Links
+
 ![Social Links](screenshots/social.png)
 
 ### Portal Request - App Theme
+
 ![App Theme](screenshots/app.png)
 
 ### Portal Request - Website Theme
-![Website Theme](screenshots/website.png)
 
+![Website Theme](screenshots/website.png)
 
 ## 🛠️ Tech Stack (Assumed)
 
