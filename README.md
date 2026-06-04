@@ -24,9 +24,6 @@ Get a complete **web portal + Android app** ready in just **48 hours** – start
 > **Limited time offer** – Launch your news brand today!
 
 ## 📸 Screenshots
-
-> _Attach your screenshots here. Examples:_
-
 - `screenshots/landingpage.png` – Main hero section
 - `screenshots/initialPop.png` – Pricing card
 - `screenshots/mobile.png` – Responsive mobile layout
@@ -37,7 +34,7 @@ Get a complete **web portal + Android app** ready in just **48 hours** – start
 - `screenshots/app.png` – Portal request with app theme settings
 - `screenshots/website.png` – Portal request With website theme settings
 
-_(Remove this note and add your actual images)_
+
 
 ## 🛠️ Tech Stack (Assumed)
 
