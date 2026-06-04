@@ -24,16 +24,33 @@ Get a complete **web portal + Android app** ready in just **48 hours** – start
 > **Limited time offer** – Launch your news brand today!
 
 ## 📸 Screenshots
-- `screenshots/landingpage.png` – Main hero section
-- `screenshots/initialPop.png` – Pricing card
-- `screenshots/mobile.png` – Responsive mobile layout
-- `screenshots/otp.png` – OTP veryfication Pop Up
-- `screenshots/dashboard.png` – Dashboard
-- `screenshots/logo.png` – Portal request With Web App Logo
-- `screenshots/social.png` – Portal request With Social Links
-- `screenshots/app.png` – Portal request with app theme settings
-- `screenshots/website.png` – Portal request With website theme settings
 
+### Landing Page
+![Landing Page](screenshots/landingpage.png)
+
+### Pricing Card
+![Pricing Card](screenshots/initialPop.png)
+
+### Mobile Layout
+![Mobile Layout](screenshots/mobile.png)
+
+### OTP Verification
+![OTP Verification](screenshots/otp.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Portal Request - Logo Settings
+![Logo Settings](screenshots/logo.png)
+
+### Portal Request - Social Links
+![Social Links](screenshots/social.png)
+
+### Portal Request - App Theme
+![App Theme](screenshots/app.png)
+
+### Portal Request - Website Theme
+![Website Theme](screenshots/website.png)
 
 
 ## 🛠️ Tech Stack (Assumed)
