@@ -4,7 +4,7 @@ const baseSwal = Swal.mixin({
   background: "#ffffff",
   color: "#1e293b",
   confirmButtonColor: "#e81303",
-  confirmButtonText: "OK 👍",
+  confirmButtonText: "OK ",
   buttonsStyling: true,
   customClass: {
     popup: "rounded-2xl shadow-2xl",

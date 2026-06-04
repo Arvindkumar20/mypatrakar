@@ -1,6 +1,7 @@
 .custom-dropdown .rs-dropdown-toggle {
-    background-color: transparent !important; /* Removes default background */
-    padding: 2;
+    /* background-color: transparent !important; Removes default background */
+    /* padding: 2 0px; */
+    background-color: rgb(247, 232, 232);
   }
   
   /* .custom-dropdown-item {

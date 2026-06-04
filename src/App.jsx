@@ -2,13 +2,12 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext.jsx";
 import useResponsiveFix from "./hooks/useResponsiveFix.js";
 import ErrorBoundary from "./utils/ErrorBoundary.jsx";
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect, Suspense, lazy, useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import OfferPopup from "./OfferPopup.jsx";
 
 // ✅ Lazy load AppContent
 const AppContent = lazy(() => import("./AppComponent.jsx"));
-
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -31,22 +30,23 @@ function App() {
   const style = {
     fontFamily: "Times New Roman",
   };
-
+  const [isNav, setIsNav] = useState(true);
   const ready = useResponsiveFix();
   if (!ready) return null;
 
   return (
     <BrowserRouter>
       <ScrollToTop />
-<OfferPopup/>
       {/* <ErrorBoundary> */}
-        <LanguageProvider>
-          <div style={style}>
-            <Suspense fallback={<Loader />}>
-              <AppContent />
-            </Suspense>
-          </div>
-        </LanguageProvider>
+      <LanguageProvider>
+        <div style={style}>
+          <Suspense fallback={<Loader />}>
+            <OfferPopup setIsNav={setIsNav} />
+
+            <AppContent isNav={isNav} />
+          </Suspense>
+        </div>
+      </LanguageProvider>
       {/* </ErrorBoundary> */}
     </BrowserRouter>
   );

@@ -54,8 +54,8 @@ const EditorialPolicy = () => {
               1. About Our Platform
             </h2>
             <p>
-              My Patrakar<sup></sup> is a digital media technology platform
-              that enables journalists, news publishers, media organizations,
+              My Patrakar<sup></sup> is a digital media technology platform that
+              enables journalists, news publishers, media organizations,
               bloggers, and businesses to create and manage:
             </p>
             <ul className="list-disc pl-6 space-y-1">

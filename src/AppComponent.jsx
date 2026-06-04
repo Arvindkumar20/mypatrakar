@@ -92,7 +92,7 @@ function PageLoader() {
   );
 }
 
-export default function AppContent() {
+export default function AppContent({isNav}) {
   const location = useLocation();
   const { login, token, logout, userId, isLogin } = useAuth();
 
@@ -145,7 +145,8 @@ export default function AppContent() {
     <div className="flex flex-col min-h-screen">
       <ToastContainer position="top-center" autoClose={3000} />
 
-      {!hideNavAndFooter && <NavBar />}
+      {!hideNavAndFooter && <NavBar isNav={isNav}/>}
+      {/* {!hideNavAndFooter && !isOpen&& <NavBar />} */}
 
       <main className="flex-grow">
         {/* ✅ Providers OUTSIDE Suspense */}

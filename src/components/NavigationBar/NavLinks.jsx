@@ -31,7 +31,7 @@ export default function ResponsiveNav() {
     <>
       <nav className="px-3 py-0 md:mx-12 sm:mx-5   ">
         <section className="flex items-center justify-between ">
-          <div className="flex items-center gap-3  select-none">
+          <div className="flex items-center gap-5  select-none">
             {/* Logo */}
             <NavLink to="/">
               <MyPatrakarLogo />
@@ -100,7 +100,7 @@ export default function ResponsiveNav() {
               </li>
             </ul> */}
 
-            <ul className="hidden xl:flex  lg:gap-2 xl:gap-3 items-center  mt-5 font-light text-black">
+            <ul className="hidden xl:flex  lg:gap-3 xl:gap-4 items-center  mt-5 font-light text-black">
               <li>
                 <Dropdown />
               </li>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const STORAGE_KEY = "mypatrakar_popup_last_closed";
 
-const OfferPopup = () => {
+const OfferPopup = ({setIsNav}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ const OfferPopup = () => {
   useEffect(() => {
     const lastClosed = localStorage.getItem(STORAGE_KEY);
     if (!lastClosed) {
+      setIsNav(false);
       setIsOpen(true);
       return;
     }
@@ -21,13 +22,14 @@ const OfferPopup = () => {
 
     if (now - lastClosedTime >= oneHour) {
       setIsOpen(true);
+      setIsNav(false);
     }
   }, []);
 
   // Block body scroll when popup is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden h-[100vh]";
     } else {
       document.body.style.overflow = "unset";
     }
@@ -39,6 +41,7 @@ const OfferPopup = () => {
   // Close popup with animation + store timestamp
   const closePopup = useCallback(() => {
     setIsClosing(true);
+    setIsNav(true)
     setTimeout(() => {
       setIsOpen(false);
       setIsClosing(false);
@@ -83,6 +86,7 @@ const OfferPopup = () => {
         background:
           "radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.85) 100%)",
         backdropFilter: "blur(12px)",
+        zIndex:'1'
       }}
       onClick={handleBackdropClick}
     >
@@ -256,7 +260,7 @@ const OfferPopup = () => {
                     d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                   />
                 </svg>
-                Cancel anytime. No hidden charges. 24/7 support.
+                Reliable Service. Transparent Pricing. Expert Support.
               </p>
             </div>
 
